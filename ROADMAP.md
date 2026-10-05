@@ -137,6 +137,10 @@ Grouped navigation around Cook, Plan and Journal with context-specific views and
 
 Moved browser notification status, permission and test controls into a bell popover. Tagged as a developer pre-release with continuous integration for the software tests and build. See RELEASE-0.4.2.md. Native Linux runtime and CHEF iQ field acceptance remain the gates before a stable release.
 
+## Unreleased
+
+- Browser bundle: three.js now builds as two lazily loaded chunks, `three-renderer` (about 358 KB) and `three` (about 285 KB), fetched in parallel when the 3D cut viewer opens. This clears Vite's 500 KB warning but does not reduce total bytes: the WebGL renderer alone minifies to about 529 KB, so a real reduction would need a lighter renderer. Verified in a browser: beef model loads, card and model selection highlight, rotate works, and neither chunk loads on the first page.
+
 ## Cut explorer expansion — requested October 4, 2026
 
 Planned additions, after correcting and verifying the existing animal highlight alignment:
