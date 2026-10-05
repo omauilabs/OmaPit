@@ -1,0 +1,15 @@
+# Template: replace /ABSOLUTE/OMAPIT and /ABSOLUTE/PYTHON before enabling.
+# Use this instead of omapit-monitor.service when serving the phone/browser UI.
+[Unit]
+Description=OmaPit cook companion and background alarms
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/ABSOLUTE/PYTHON /ABSOLUTE/OMAPIT/backend/omapit.py --static /ABSOLUTE/OMAPIT/preview/dist/client --serve 4176
+Restart=on-failure
+RestartSec=3
+# Notification transports are opt-in; configure them through a private environment file.
+
+[Install]
+WantedBy=default.target

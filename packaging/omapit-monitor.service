@@ -1,0 +1,14 @@
+# Template: replace /ABSOLUTE/OMAPIT and /ABSOLUTE/PYTHON before enabling.
+[Unit]
+Description=OmaPit local cook alarm monitor
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/ABSOLUTE/PYTHON /ABSOLUTE/OMAPIT/backend/omapit.py --monitor
+Environment=OMAPIT_DESKTOP_NOTIFY=1
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

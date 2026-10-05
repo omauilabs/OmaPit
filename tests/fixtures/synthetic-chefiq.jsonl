@@ -1,0 +1,6 @@
+{"schema": 1, "device": "cq60-example", "name": "CQ60 \u00b7 synthetic example", "relative_seconds": 0, "payload_hex": "0150b004bc02bc02bc02bc02bc02b004", "rssi": -62}
+{"schema": 1, "device": "cq50-example", "name": "CQ50 \u00b7 synthetic example", "relative_seconds": 0, "payload_hex": "012055194c048a028a028a028a02", "rssi": -70}
+{"schema": 1, "device": "cq60-example", "name": "CQ60 \u00b7 synthetic example", "relative_seconds": 10, "payload_hex": "0150b504c602bc02bc02bc02bc02b004", "rssi": -62}
+{"schema": 1, "device": "cq50-example", "name": "CQ50 \u00b7 synthetic example", "relative_seconds": 10, "payload_hex": "01205519510494028a028a028a02", "rssi": -70}
+{"schema": 1, "device": "cq60-example", "name": "CQ60 \u00b7 synthetic example", "relative_seconds": 20, "payload_hex": "0150ba04d002bc02bc02bc02bc02b004", "rssi": -62}
+{"schema": 1, "device": "cq50-example", "name": "CQ50 \u00b7 synthetic example", "relative_seconds": 20, "payload_hex": "0120551956049e028a028a028a02", "rssi": -70}

@@ -1,0 +1,31 @@
+/* Background material uses theme roles, not a fixed decorative palette.
+   Theme hosts can supply --background, --foreground, --accent and --accent-secondary. */
+:root{
+ --material-base:var(--background,#151922);
+ --material-ink:var(--foreground,#c0caf5);
+ --material-accent:var(--accent,var(--amber));
+ --material-secondary:var(--accent-secondary,var(--blue));
+ --material-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath fill='%23888888' opacity='.055' filter='url(%23grain)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
+}
+body{
+ background-color:var(--material-base);
+ background-image:radial-gradient(ellipse at 12% 0%,color-mix(in srgb,var(--material-secondary) 9%,transparent),transparent 55%),radial-gradient(ellipse at 95% 95%,color-mix(in srgb,var(--material-accent) 5%,transparent),transparent 55%);
+ background-attachment:fixed;
+}
+.app{
+ background-color:var(--material-base);
+ background-image:var(--material-grain),radial-gradient(ellipse 90% 600px at 12% 0%,color-mix(in srgb,var(--material-secondary) 10%,transparent),transparent 75%),radial-gradient(ellipse 70% 700px at 100% 35%,color-mix(in srgb,var(--material-accent) 6%,transparent),transparent 75%),linear-gradient(145deg,color-mix(in srgb,var(--material-ink) 3%,transparent),transparent 45%,color-mix(in srgb,var(--material-base) 95%,black));
+ background-size:160px 160px,100% 100%,100% 100%,100% 100%;
+ border-color:color-mix(in srgb,var(--material-ink) 17%,var(--material-base));
+ box-shadow:0 28px 70px -26px #0008,0 8px 24px -12px #0005,inset 0 1px 0 color-mix(in srgb,var(--material-ink) 8%,transparent);
+}
+.app-header,.app .context-nav{
+ background-color:color-mix(in srgb,var(--material-base) 94%,transparent);
+ background-image:linear-gradient(180deg,color-mix(in srgb,var(--material-ink) 2%,transparent),transparent);
+}
+.sauce-story,.sauce-mixer,.sauce-dinner,.sauce-saved,.cut-inspector,.chart-panel,.next-step,.bottom-panel{
+ background-color:color-mix(in srgb,var(--material-base) 97%,var(--material-ink));
+ background-image:linear-gradient(145deg,color-mix(in srgb,var(--material-ink) 3%,transparent),transparent 55%);
+ box-shadow:0 12px 28px -19px #000b,inset 0 1px 0 color-mix(in srgb,var(--material-ink) 5%,transparent);
+}
+@media(forced-colors:active){body,.app,.app-header,.app .context-nav{background-image:none;box-shadow:none}}

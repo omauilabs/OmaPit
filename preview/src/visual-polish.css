@@ -1,0 +1,70 @@
+/* Fire stays beneath controls; popovers remain outside the header's bounds. */
+.app .app-header{position:relative;isolation:isolate;background:var(--material-base)}
+.header-pixel-fire{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;image-rendering:pixelated;opacity:.88;z-index:-2;border-radius:inherit}
+.app .app-header::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--material-base) 35%,transparent),color-mix(in srgb,var(--material-base) 50%,transparent) 60%,color-mix(in srgb,var(--material-base) 15%,transparent));border-radius:inherit}
+.app .app-header nav button,.app .header-right>button,.app .notification-control>summary{background:color-mix(in srgb,var(--material-base) 88%,transparent);text-shadow:0 1px 3px #0006}
+/* Shared readable detail surface across all explorer families. */
+.app :is(.explore-inspector,.rub-blender,.explore-dinner-list,.cut-inspector,.sauce-mixer,.sauce-dinner,.prep-guide aside.prep-panel,.market-budget,.equipment-inspector){background:color-mix(in srgb,var(--material-ink) 5%,var(--material-base));border-color:color-mix(in srgb,var(--material-ink) 24%,transparent);padding:28px;box-shadow:0 16px 36px -24px #0009;color:var(--material-ink)}
+.app :is(.explore-inspector,.rub-blender,.explore-dinner-list,.cut-inspector,.sauce-mixer,.sauce-dinner,.prep-guide aside.prep-panel,.market-budget,.equipment-inspector) :is(p,li,.muted,.small,.explore-detail,dd,dt){font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.75;color:color-mix(in srgb,var(--material-ink) 94%,var(--material-base));letter-spacing:normal}
+.app :is(.explore-inspector,.rub-blender,.explore-dinner-list,.cut-inspector,.sauce-mixer,.sauce-dinner,.prep-guide aside.prep-panel,.market-budget,.equipment-inspector) :is(h3,label){font-size:13px;font-weight:600;line-height:1.6;color:var(--material-ink)}
+.app :is(.explore-inspector,.rub-blender,.explore-dinner-list,.cut-inspector,.sauce-mixer,.sauce-dinner,.prep-guide aside.prep-panel,.market-budget,.equipment-inspector) :is(input,select,textarea,button){font-size:13px;line-height:1.5;min-height:42px}
+.app :is(.explore-inspector,.rub-blender,.explore-dinner-list,.cut-inspector,.sauce-mixer,.sauce-dinner,.prep-guide aside.prep-panel,.market-budget,.equipment-inspector) :is(small,a,.eyebrow,.equipment-schematic-note){font-size:12px;line-height:1.65}
+.app :is(.explore-inspector,.rub-blender,.explore-dinner-list,.cut-inspector,.sauce-mixer,.sauce-dinner,.prep-guide aside.prep-panel,.market-budget,.equipment-inspector) :is(.explore-detail,.prep-note){margin-top:20px;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--material-ink) 15%,transparent)}
+.app .explore-hero-number{color:#fff;text-shadow:0 2px 8px #000,0 0 25px #000}
+.app .explore-hero-number small{font-family:'DM Sans',sans-serif;font-size:12px;line-height:1.6;font-weight:700;letter-spacing:1.8px;background:#10141cc9;padding:9px 12px;border-radius:6px;margin-top:12px;color:#fff}
+@media(max-width:700px){.app :is(.explore-inspector,.rub-blender,.explore-dinner-list,.cut-inspector,.sauce-mixer,.sauce-dinner,.prep-guide aside.prep-panel,.market-budget,.equipment-inspector){padding:22px}.header-pixel-fire{opacity:.45}}
+.app .explore-inspector .explore-detail>span{font-size:12px;line-height:1.6;color:var(--material-accent);font-weight:600;letter-spacing:1px}.app .explore-inspector .explore-detail>b{font-size:15px;color:var(--material-ink)}
+
+/* Long names and keyboard navigation remain clear in every explorer. */
+.app :is(.explore-inspector,.rub-blender,.explore-dinner-list,.cut-inspector,.sauce-dinner,.equipment-inspector){overflow-wrap:anywhere}
+.app :is(.meal-explorer,.cut-explorer,.sauce-explorer,.prep-guide,.equipment-guide,.meat-market) :is(button,input,select,textarea,a):focus-visible{outline:2px solid var(--material-accent);outline-offset:4px}
+.app .explore-dinner-row{gap:14px;line-height:1.65}
+.app .rub-ingredient-grid{align-items:center}
+.app .rub-ingredient{grid-template-columns:minmax(0,1fr) 70px 42px 70px;gap:8px}
+.app .rub-ingredient :is(small,b){white-space:nowrap}
+@media(max-width:700px){.app .rub-ingredient{grid-template-columns:minmax(0,1fr) 60px 38px 55px;gap:5px}}
+
+/* Primary navigation floats over a continuous header scrim. */
+.app .app-header nav button{background:transparent;border-color:transparent;box-shadow:none;color:var(--material-ink);text-shadow:0 1px 2px #000,0 2px 8px #000b}
+.app .app-header nav button:hover{background:transparent;color:var(--material-accent)}
+.app .app-header nav button.selected{background:transparent;color:var(--material-accent)}
+.app .app-header nav button:focus-visible{outline:2px solid var(--material-accent);outline-offset:3px}
+.app .app-header::after{background:linear-gradient(180deg,color-mix(in srgb,var(--material-base) 75%,transparent),color-mix(in srgb,var(--material-base) 68%,transparent) 53%,color-mix(in srgb,var(--material-base) 18%,transparent) 100%)}
+
+@media(max-width:700px){
+ .app .context-nav[aria-label="Plan views"]{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px 12px}
+ .app .context-nav[aria-label="Plan views"]>button{min-height:44px;font-size:12px;padding:8px 4px}
+ .app .context-nav[aria-label="Plan views"] .explorer-nav{grid-column:1/-1;width:100%;justify-content:center;gap:10px;padding:10px 0 2px;border-left:0;border-top:1px solid var(--line)}
+ .app .context-nav[aria-label="Plan views"] .explorer-nav select{width:clamp(180px,60vw,320px);max-width:none;min-height:44px;font-size:13px}
+ .app .header-pixel-fire{top:auto;height:76px;opacity:.65}
+ .app .app-header nav button{min-height:44px}
+}
+
+.app .app-header:is(.header-animation-meats,.header-animation-utensils)::after{background:linear-gradient(180deg,color-mix(in srgb,var(--material-base) 35%,transparent),color-mix(in srgb,var(--material-base) 48%,transparent) 55%,color-mix(in srgb,var(--material-base) 20%,transparent))}
+
+/* Keep the motion legible as atmosphere, below the navigation's reading band. */
+.app .app-header nav[aria-label="Main navigation"]{isolation:isolate;position:relative}
+.app .app-header nav[aria-label="Main navigation"]::before{content:'';position:absolute;inset:-18px -44px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse,var(--material-base) 15%,color-mix(in srgb,var(--material-base) 94%,transparent) 48%,transparent 75%)}
+.app .app-header nav[aria-label="Main navigation"] button{font-weight:650;color:var(--material-ink);text-shadow:0 1px 2px var(--material-base),0 0 9px var(--material-base)}
+.app .app-header nav[aria-label="Main navigation"] button.selected{color:var(--material-accent)}
+.app .app-header .header-pixel-fire{mask-image:linear-gradient(180deg,#0008,#0008 45%,#000 85%)}
+@media(max-width:700px){.app .app-header nav[aria-label="Main navigation"]::before{inset:-10px -15px;background:linear-gradient(90deg,transparent,var(--material-base) 20%,var(--material-base) 80%,transparent)}}
+.app .app-header:is(.header-animation-kitchen,.header-animation-backyard)::after{background:linear-gradient(180deg,color-mix(in srgb,var(--material-base) 35%,transparent),color-mix(in srgb,var(--material-base) 22%,transparent))}
+.app .app-header:is(.header-animation-kitchen,.header-animation-backyard,.header-animation-smoke) .header-pixel-fire{mask-image:none;opacity:.9}
+
+/* A bounded segmented control replaces the diffuse central reading blob. */
+.app .app-header nav[aria-label="Main navigation"]{gap:4px;height:auto;padding:4px;border:1px solid color-mix(in srgb,var(--material-ink) 23%,transparent);border-radius:12px;background:color-mix(in srgb,var(--material-base) 94%,transparent);box-shadow:0 4px 14px #0003;width:max-content;max-width:100%;overflow:visible}
+.app .app-header nav[aria-label="Main navigation"]::before{display:none}
+.app .app-header nav[aria-label="Main navigation"] button{min-height:40px;padding:8px 14px;border-radius:8px;text-shadow:none;font-weight:600;transition:background .15s,color .15s}
+.app .app-header nav[aria-label="Main navigation"] button.selected{background:color-mix(in srgb,var(--material-accent) 18%,var(--material-base));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--material-accent) 40%,transparent);color:var(--material-accent)}
+.app .app-header nav[aria-label="Main navigation"] button.selected::after{display:none}
+.app .app-header nav[aria-label="Main navigation"] button:hover{background:color-mix(in srgb,var(--material-ink) 9%,var(--material-base))}
+.app .app-header.header-animation-smoke::after{background:linear-gradient(180deg,color-mix(in srgb,var(--material-base) 15%,transparent),color-mix(in srgb,var(--material-base) 25%,transparent))}
+@media(max-width:700px){.app .app-header nav[aria-label="Main navigation"]{flex:0 1 auto;margin:4px auto 0}.app .app-header nav[aria-label="Main navigation"] button{padding:8px 12px}}
+/* Let the animated stage span wide desktop windows; keep reading content bounded. */
+.app.app{max-width:none}
+.app>section,.app>.live-content{max-width:1500px;margin-inline:auto}
+@media(max-width:700px){.app .app-header:is(.header-animation-kitchen,.header-animation-backyard,.header-animation-smoke) .header-pixel-fire{top:0;height:100%}}
+
+/* Reserve space on systems with non-overlay scrollbars, including short journals. */
+html{scrollbar-gutter:stable}

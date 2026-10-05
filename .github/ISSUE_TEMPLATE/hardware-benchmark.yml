@@ -1,0 +1,24 @@
+name: Hardware benchmark
+description: Share a validated, aggregate-only hardware compatibility report.
+title: 'Hardware benchmark: '
+body:
+  - type: markdown
+    attributes:
+      value: 'Use community/benchmark.py to prepare a schema-v1 report. Never include device addresses, serials, raw packets, tokens, personal notes or journal content. Reports need maintainer review before compatibility promotion.'
+  - type: textarea
+    id: report
+    attributes:
+      label: Validated aggregate report
+      description: Paste the JSON report or submission preview; keep untested checks marked not-run.
+      render: json
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Publication and evidence
+      options:
+        - label: I reviewed the report and authorize publishing these aggregate fields in this repository.
+          required: true
+        - label: I distinguished live observations from replay and did not mark unperformed tests as passed.
+          required: true

@@ -1,0 +1,36 @@
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+work/
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+.env
+.env.*
+!.env.example
+benchmark-sharing.json
+*.submission.md
+preview/dist/
+
+# Local hardware evidence and generated media pending redistribution audit
+community/cq60-*
+explorer-images/
+preview/public/assets/
+assets/*.png
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.glb
+*.mp4
+*.mov
+*.gz
+.DS_Store
+
+# Local visual-generation archives
+theme-concepts/
+wordmarks/
+sauce-textures/
+cut-alignment-audit/

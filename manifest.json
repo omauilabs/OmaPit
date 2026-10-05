@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "local.omapit",
+  "name": "OmaPit",
+  "version": "0.4.2",
+  "description": "Local grilling companion with persistent alarms, multi-food workflows, meal timelines, recipes, bridge ingestion and experimental trend ranges.",
+  "author": "OmaPit contributors",
+  "kinds": [
+    "bar-widget",
+    "panel"
+  ],
+  "entryPoints": {
+    "barWidget": "Widget.qml",
+    "panel": "Main.qml"
+  },
+  "barWidget": {
+    "displayName": "OmaPit",
+    "category": "Utilities",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {},
+    "schema": []
+  }
+}

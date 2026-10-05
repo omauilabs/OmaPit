@@ -1,0 +1,34 @@
+<!doctype html><html><meta name="viewport" content="width=device-width,initial-scale=1"><title>OmaPit material theme study</title><style>/* Background material uses theme roles, not a fixed decorative palette.
+   Theme hosts can supply --background, --foreground, --accent and --accent-secondary. */
+:root{
+ --material-base:var(--background,#151922);
+ --material-ink:var(--foreground,#c0caf5);
+ --material-accent:var(--accent,var(--amber));
+ --material-secondary:var(--accent-secondary,var(--blue));
+ --material-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath fill='%23888888' opacity='.055' filter='url(%23grain)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
+}
+body{
+ background-color:var(--material-base);
+ background-image:radial-gradient(ellipse at 12% 0%,color-mix(in srgb,var(--material-secondary) 9%,transparent),transparent 55%),radial-gradient(ellipse at 95% 95%,color-mix(in srgb,var(--material-accent) 5%,transparent),transparent 55%);
+ background-attachment:fixed;
+}
+.app{
+ background-color:var(--material-base);
+ background-image:var(--material-grain),radial-gradient(ellipse 90% 600px at 12% 0%,color-mix(in srgb,var(--material-secondary) 10%,transparent),transparent 75%),radial-gradient(ellipse 70% 700px at 100% 35%,color-mix(in srgb,var(--material-accent) 6%,transparent),transparent 75%),linear-gradient(145deg,color-mix(in srgb,var(--material-ink) 3%,transparent),transparent 45%,color-mix(in srgb,var(--material-base) 95%,black));
+ background-size:160px 160px,100% 100%,100% 100%,100% 100%;
+ border-color:color-mix(in srgb,var(--material-ink) 17%,var(--material-base));
+ box-shadow:0 28px 70px -26px #0008,0 8px 24px -12px #0005,inset 0 1px 0 color-mix(in srgb,var(--material-ink) 8%,transparent);
+}
+.app-header,.app .context-nav{
+ background-color:color-mix(in srgb,var(--material-base) 94%,transparent);
+ background-image:linear-gradient(180deg,color-mix(in srgb,var(--material-ink) 2%,transparent),transparent);
+}
+.sauce-story,.sauce-mixer,.sauce-dinner,.sauce-saved,.cut-inspector,.chart-panel,.next-step,.bottom-panel{
+ background-color:color-mix(in srgb,var(--material-base) 97%,var(--material-ink));
+ background-image:linear-gradient(145deg,color-mix(in srgb,var(--material-ink) 3%,transparent),transparent 55%);
+ box-shadow:0 12px 28px -19px #000b,inset 0 1px 0 color-mix(in srgb,var(--material-ink) 5%,transparent);
+}
+@media(forced-colors:active){body,.app,.app-header,.app .context-nav{background-image:none;box-shadow:none}}
+
+*{box-sizing:border-box}body{margin:0;padding:40px;font:16px system-ui;color:var(--material-ink)}.app{padding:45px;min-height:650px;border:1px solid;border-radius:16px;max-width:1100px;margin:auto}h1{font-size:44px;margin:50px 0 15px}p{line-height:1.7;opacity:.75}nav{display:flex;gap:12px;flex-wrap:wrap}button{font:inherit;padding:12px 20px;border-radius:24px;border:1px solid color-mix(in srgb,var(--material-ink) 20%,transparent);background:transparent;color:inherit;cursor:pointer}.cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:55px}.sauce-story{border:1px solid color-mix(in srgb,var(--material-ink) 15%,transparent);border-radius:12px;padding:32px}.tag{color:var(--material-accent);letter-spacing:3px;font-size:12px}a{color:inherit}@media(max-width:650px){body{padding:16px}.app{padding:24px}.cards{grid-template-columns:1fr}h1{font-size:32px}}</style><main class="app"><span class="tag">OMAPIT / MATERIAL STUDY</span><h1>Quiet texture. Beautiful depth.</h1><p>The same grain, gradients and shadows, driven entirely by each theme's colors.</p><nav><button data-theme="night">Night</button><button data-theme="paper">Paper</button><button data-theme="forest">Forest</button><button data-theme="plum">Plum</button></nav><div class="cards"><article class="sauce-story"><span class="tag">SURFACE / 01</span><h2>A soft, raised surface.</h2><p>Gentle light along the top edge. A diffuse shadow underneath. No baked-in color or image backdrop.</p></article><article class="sauce-story"><span class="tag">SURFACE / 02</span><h2>Room for the content.</h2><p>Broad, low-contrast washes and fine neutral grain keep the texture in the background.</p></article></div><p><a href="/#sauces">Back to Sauce Explorer</a></p></main><script>
+const themes={night:['#151922','#c0caf5','#e0af68','#7aa2f7'],paper:['#f2eee6','#292b31','#976124','#6773a1'],forest:['#10251e','#dce8d7','#c2b87a','#5fb393'],plum:['#241c30','#e9ddec','#df9eae','#ad95d9']};for(const b of document.querySelectorAll('button'))b.onclick=()=>{const t=themes[b.dataset.theme];['--background','--foreground','--accent','--accent-secondary'].forEach((v,i)=>document.documentElement.style.setProperty(v,t[i]));};document.querySelector('button').click();</script></html>

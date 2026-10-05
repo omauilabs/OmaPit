@@ -1,0 +1,1 @@
+export function meatBudget({guests,portion,yieldPercent,reserve,price}){if(![guests,portion,yieldPercent,reserve,price].every(Number.isFinite)||guests<1||portion<=0||yieldPercent<=0||yieldPercent>100||reserve<0||price<0)return null;const cooked=guests*portion/16*(1+reserve/100),raw=cooked/(yieldPercent/100);return {cooked,raw,total:raw*price,perGuest:raw*price/guests}}

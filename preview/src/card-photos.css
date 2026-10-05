@@ -1,0 +1,16 @@
+.app .photo-card{position:relative;isolation:isolate;overflow:hidden;background:#15191d;color:#fff5e8;border:1px solid #ffffff36;text-align:left;min-height:220px;box-shadow:0 10px 24px -16px #000b}
+.app .photo-card::before{content:'';position:absolute;z-index:-2;top:50%;left:0;width:100%;aspect-ratio:1;transform:translateY(-50%);background-image:var(--card-photo);background-size:var(--photo-size);background-position:var(--photo-position);background-repeat:no-repeat;pointer-events:none}
+.app .photo-card::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#090d1252 0%,#090d1260 25%,#090d12bd 64%,#090d12ed 100%);pointer-events:none}
+.app .photo-card :is(h2,h3,b,strong){color:#fff5e8;text-shadow:0 1px 4px #0009}
+.app .photo-card :is(p,small,.explore-card-bottom,.pepper-flavor,.equipment-effort){color:#f0e9df;text-shadow:0 1px 3px #000}
+.app .photo-card :is(.explore-card-family,.equipment-card-top,.pepper-card-top){color:#ffe1ad}
+.app .photo-card.selected,.app .photo-card[aria-pressed=true]{border-color:var(--material-accent);box-shadow:0 0 0 1px var(--material-accent),0 14px 25px -16px #000c}
+.app .photo-card:hover{border-color:#ffdfaa;box-shadow:0 10px 25px -12px #000c}
+.app .photo-card:focus-visible{outline:3px solid var(--material-accent);outline-offset:4px}
+.app .rub-cards .rub-grain{display:none}
+.app .knife-grid .photo-card{min-height:210px;align-items:flex-end;padding:20px}
+.app .knife-grid .photo-card b{font-size:14px}.app .knife-grid .photo-card small{font-size:12px;line-height:1.5}
+.app .equipment-wood-grid .photo-card .wood-swatch{background:transparent;height:35px;box-shadow:none;border:0}
+.app .pepper-card.photo-card{min-height:300px}.app .photo-card .pepper-compare-toggle{color:#fff2dd;background:#090d12a6;border-color:#ffffff36}
+.app .market-card.photo-card{min-height:230px}.app .market-card.photo-card>strong{color:#ffe0a2}
+@media(prefers-reduced-motion:reduce){.app .photo-card{transition:none}}

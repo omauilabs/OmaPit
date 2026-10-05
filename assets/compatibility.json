@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "app_version": "0.4.2",
+  "devices": [
+    {
+      "model": "CHEF iQ CQ60",
+      "protocol": "4.0.0",
+      "transport": "direct BLE advertisements",
+      "implementation": "experimental",
+      "evidence": "maintainer live reception and hand-warming observation on one unit; remaining checks not run",
+      "omapit_live_test": false,
+      "live_reception_observed": true,
+      "roles": [
+        "food"
+      ],
+      "unverified_roles": [
+        "ambient",
+        "battery"
+      ],
+      "adapter_version": "0.2.0",
+      "report": "community/cq60-local-observation.json",
+      "acceptance": "CHEFIQ-HARDWARE-TEST.md"
+    },
+    {
+      "model": "CHEF iQ CQ60",
+      "protocol": "V3 / 5.0.0",
+      "transport": "direct BLE advertisements",
+      "implementation": "experimental",
+      "evidence": "synthetic fixtures and upstream-reported verification",
+      "omapit_live_test": false,
+      "roles": [
+        "food",
+        "ambient",
+        "battery"
+      ]
+    },
+    {
+      "model": "CHEF iQ CQ50 / older layouts",
+      "protocol": "V2 / legacy",
+      "transport": "direct BLE advertisements",
+      "implementation": "experimental",
+      "evidence": "synthetic fixtures; older formats lack upstream live verification",
+      "omapit_live_test": false,
+      "roles": [
+        "food",
+        "ambient",
+        "battery"
+      ]
+    }
+  ],
+  "bridges": [
+    {
+      "adapter": "JSON v1",
+      "implementation": "implemented",
+      "evidence": "contract and HTTP tests",
+      "hardware_compatibility": "publisher-specific; not a universal thermometer API"
+    },
+    {
+      "adapter": "Home Assistant REST entity polling",
+      "implementation": "experimental transport",
+      "evidence": "contract and mocked REST conversion tests",
+      "hardware_compatibility": "depends on installed integration; may depend on cloud"
+    },
+    {
+      "adapter": "MQTT exact-topic subscription",
+      "implementation": "experimental transport",
+      "evidence": "contract tests; broker acceptance pending",
+      "hardware_compatibility": "publisher must emit OmaPit schema v1"
+    }
+  ],
+  "control_commands": false
+}

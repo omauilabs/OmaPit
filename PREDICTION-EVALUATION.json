@@ -1,0 +1,84 @@
+{
+  "method": "local-trend-v1",
+  "split": "First 70% prefix; held-out suffix, one estimate per session",
+  "sessions": 6,
+  "scored": 1,
+  "abstained": 5,
+  "unscored_estimates": 0,
+  "mean_absolute_error_minutes": 0.0,
+  "range_coverage": 1,
+  "by_category": {
+    "synthetic-accelerating": {
+      "sessions": 1,
+      "scored": 0,
+      "mean_absolute_error_minutes": null,
+      "range_coverage": null
+    },
+    "synthetic-cooling": {
+      "sessions": 1,
+      "scored": 0,
+      "mean_absolute_error_minutes": null,
+      "range_coverage": null
+    },
+    "synthetic-decelerating": {
+      "sessions": 1,
+      "scored": 0,
+      "mean_absolute_error_minutes": null,
+      "range_coverage": null
+    },
+    "synthetic-dropout": {
+      "sessions": 1,
+      "scored": 0,
+      "mean_absolute_error_minutes": null,
+      "range_coverage": null
+    },
+    "synthetic-linear": {
+      "sessions": 1,
+      "scored": 1,
+      "mean_absolute_error_minutes": 0.0,
+      "range_coverage": 1
+    },
+    "synthetic-stall": {
+      "sessions": 1,
+      "scored": 0,
+      "mean_absolute_error_minutes": null,
+      "range_coverage": null
+    }
+  },
+  "results": [
+    {
+      "id": "synthetic-linear",
+      "category": "synthetic-linear",
+      "status": "estimate",
+      "error_minutes": 0.0,
+      "covered": true
+    },
+    {
+      "id": "synthetic-accelerating",
+      "category": "synthetic-accelerating",
+      "status": "insufficient"
+    },
+    {
+      "id": "synthetic-decelerating",
+      "category": "synthetic-decelerating",
+      "status": "insufficient"
+    },
+    {
+      "id": "synthetic-stall",
+      "category": "synthetic-stall",
+      "status": "insufficient"
+    },
+    {
+      "id": "synthetic-cooling",
+      "category": "synthetic-cooling",
+      "status": "stall_or_cooling"
+    },
+    {
+      "id": "synthetic-dropout",
+      "category": "synthetic-dropout",
+      "status": "insufficient"
+    }
+  ],
+  "limitations": "Diagnostic benchmark, not a calibrated probability interval or field validation. Source/cook comparability needs owner review.",
+  "evidence": "Six synthetic behavior cases only. Not real cook validation; broad abstention favors honesty over frequent estimates."
+}

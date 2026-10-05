@@ -1,0 +1,248 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "app_version",
+    "device",
+    "environment",
+    "evidence",
+    "observations",
+    "checks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "app_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[A-Za-z0-9 ._+()\\-]+$"
+    },
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manufacturer",
+        "model",
+        "firmware",
+        "protocol",
+        "adapter_version",
+        "transport"
+      ],
+      "properties": {
+        "manufacturer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9 ._+()\\-]+$"
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9 ._+()\\-]+$"
+        },
+        "firmware": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9 ._+()\\-]+$"
+        },
+        "protocol": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9 ._+()\\-]+$"
+        },
+        "adapter_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9 ._+()\\-]+$"
+        },
+        "transport": {
+          "enum": [
+            "ble",
+            "bridge",
+            "import",
+            "manual"
+          ]
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "os",
+        "architecture",
+        "python"
+      ],
+      "properties": {
+        "os": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9 ._+()\\-]+$"
+        },
+        "architecture": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9 ._+()\\-]+$"
+        },
+        "python": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9 ._+()\\-]+$"
+        }
+      }
+    },
+    "evidence": {
+      "enum": [
+        "not-tested",
+        "live-observation",
+        "real-capture-replay",
+        "synthetic-replay"
+      ]
+    },
+    "observations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "samples",
+        "valid_food_samples",
+        "valid_ambient_samples",
+        "valid_battery_samples",
+        "duration_seconds",
+        "max_gap_seconds"
+      ],
+      "properties": {
+        "samples": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "valid_food_samples": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "valid_ambient_samples": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "valid_battery_samples": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "duration_seconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "max_gap_seconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000000
+        }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "temperature_comparison",
+        "ambient",
+        "battery",
+        "wake_dock",
+        "reconnect",
+        "restart",
+        "recording",
+        "alarms",
+        "long_cook",
+        "multiple_probes"
+      ],
+      "properties": {
+        "temperature_comparison": {
+          "enum": [
+            "not-run",
+            "pass",
+            "fail"
+          ]
+        },
+        "ambient": {
+          "enum": [
+            "not-run",
+            "pass",
+            "fail"
+          ]
+        },
+        "battery": {
+          "enum": [
+            "not-run",
+            "pass",
+            "fail"
+          ]
+        },
+        "wake_dock": {
+          "enum": [
+            "not-run",
+            "pass",
+            "fail"
+          ]
+        },
+        "reconnect": {
+          "enum": [
+            "not-run",
+            "pass",
+            "fail"
+          ]
+        },
+        "restart": {
+          "enum": [
+            "not-run",
+            "pass",
+            "fail"
+          ]
+        },
+        "recording": {
+          "enum": [
+            "not-run",
+            "pass",
+            "fail"
+          ]
+        },
+        "alarms": {
+          "enum": [
+            "not-run",
+            "pass",
+            "fail"
+          ]
+        },
+        "long_cook": {
+          "enum": [
+            "not-run",
+            "pass",
+            "fail"
+          ]
+        },
+        "multiple_probes": {
+          "enum": [
+            "not-run",
+            "pass",
+            "fail"
+          ]
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OmaPit aggregate hardware benchmark v1",
+  "description": "Run benchmark.py validate for privacy pattern checks, aggregate consistency and replay evidence restrictions in addition to JSON Schema."
+}

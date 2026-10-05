@@ -1,0 +1,2 @@
+# Optional. Install in a dedicated virtual environment; manual/replay needs no packages.
+bleak>=0.22,<3

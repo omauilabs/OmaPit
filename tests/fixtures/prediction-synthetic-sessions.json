@@ -1,0 +1,1244 @@
+[
+  {
+    "id": "synthetic-linear",
+    "category": "synthetic-linear",
+    "target_f": 159.5,
+    "readings": [
+      {
+        "at": 1000,
+        "value_f": 140.0,
+        "source": "manual"
+      },
+      {
+        "at": 1060,
+        "value_f": 140.5,
+        "source": "manual"
+      },
+      {
+        "at": 1120,
+        "value_f": 141.0,
+        "source": "manual"
+      },
+      {
+        "at": 1180,
+        "value_f": 141.5,
+        "source": "manual"
+      },
+      {
+        "at": 1240,
+        "value_f": 142.0,
+        "source": "manual"
+      },
+      {
+        "at": 1300,
+        "value_f": 142.5,
+        "source": "manual"
+      },
+      {
+        "at": 1360,
+        "value_f": 143.0,
+        "source": "manual"
+      },
+      {
+        "at": 1420,
+        "value_f": 143.5,
+        "source": "manual"
+      },
+      {
+        "at": 1480,
+        "value_f": 144.0,
+        "source": "manual"
+      },
+      {
+        "at": 1540,
+        "value_f": 144.5,
+        "source": "manual"
+      },
+      {
+        "at": 1600,
+        "value_f": 145.0,
+        "source": "manual"
+      },
+      {
+        "at": 1660,
+        "value_f": 145.5,
+        "source": "manual"
+      },
+      {
+        "at": 1720,
+        "value_f": 146.0,
+        "source": "manual"
+      },
+      {
+        "at": 1780,
+        "value_f": 146.5,
+        "source": "manual"
+      },
+      {
+        "at": 1840,
+        "value_f": 147.0,
+        "source": "manual"
+      },
+      {
+        "at": 1900,
+        "value_f": 147.5,
+        "source": "manual"
+      },
+      {
+        "at": 1960,
+        "value_f": 148.0,
+        "source": "manual"
+      },
+      {
+        "at": 2020,
+        "value_f": 148.5,
+        "source": "manual"
+      },
+      {
+        "at": 2080,
+        "value_f": 149.0,
+        "source": "manual"
+      },
+      {
+        "at": 2140,
+        "value_f": 149.5,
+        "source": "manual"
+      },
+      {
+        "at": 2200,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2260,
+        "value_f": 150.5,
+        "source": "manual"
+      },
+      {
+        "at": 2320,
+        "value_f": 151.0,
+        "source": "manual"
+      },
+      {
+        "at": 2380,
+        "value_f": 151.5,
+        "source": "manual"
+      },
+      {
+        "at": 2440,
+        "value_f": 152.0,
+        "source": "manual"
+      },
+      {
+        "at": 2500,
+        "value_f": 152.5,
+        "source": "manual"
+      },
+      {
+        "at": 2560,
+        "value_f": 153.0,
+        "source": "manual"
+      },
+      {
+        "at": 2620,
+        "value_f": 153.5,
+        "source": "manual"
+      },
+      {
+        "at": 2680,
+        "value_f": 154.0,
+        "source": "manual"
+      },
+      {
+        "at": 2740,
+        "value_f": 154.5,
+        "source": "manual"
+      },
+      {
+        "at": 2800,
+        "value_f": 155.0,
+        "source": "manual"
+      },
+      {
+        "at": 2860,
+        "value_f": 155.5,
+        "source": "manual"
+      },
+      {
+        "at": 2920,
+        "value_f": 156.0,
+        "source": "manual"
+      },
+      {
+        "at": 2980,
+        "value_f": 156.5,
+        "source": "manual"
+      },
+      {
+        "at": 3040,
+        "value_f": 157.0,
+        "source": "manual"
+      },
+      {
+        "at": 3100,
+        "value_f": 157.5,
+        "source": "manual"
+      },
+      {
+        "at": 3160,
+        "value_f": 158.0,
+        "source": "manual"
+      },
+      {
+        "at": 3220,
+        "value_f": 158.5,
+        "source": "manual"
+      },
+      {
+        "at": 3280,
+        "value_f": 159.0,
+        "source": "manual"
+      },
+      {
+        "at": 3340,
+        "value_f": 159.5,
+        "source": "manual"
+      }
+    ]
+  },
+  {
+    "id": "synthetic-accelerating",
+    "category": "synthetic-accelerating",
+    "target_f": 160.826,
+    "readings": [
+      {
+        "at": 1000,
+        "value_f": 140.0,
+        "source": "manual"
+      },
+      {
+        "at": 1060,
+        "value_f": 140.306,
+        "source": "manual"
+      },
+      {
+        "at": 1120,
+        "value_f": 140.624,
+        "source": "manual"
+      },
+      {
+        "at": 1180,
+        "value_f": 140.954,
+        "source": "manual"
+      },
+      {
+        "at": 1240,
+        "value_f": 141.296,
+        "source": "manual"
+      },
+      {
+        "at": 1300,
+        "value_f": 141.65,
+        "source": "manual"
+      },
+      {
+        "at": 1360,
+        "value_f": 142.01600000000002,
+        "source": "manual"
+      },
+      {
+        "at": 1420,
+        "value_f": 142.394,
+        "source": "manual"
+      },
+      {
+        "at": 1480,
+        "value_f": 142.784,
+        "source": "manual"
+      },
+      {
+        "at": 1540,
+        "value_f": 143.18599999999998,
+        "source": "manual"
+      },
+      {
+        "at": 1600,
+        "value_f": 143.6,
+        "source": "manual"
+      },
+      {
+        "at": 1660,
+        "value_f": 144.026,
+        "source": "manual"
+      },
+      {
+        "at": 1720,
+        "value_f": 144.464,
+        "source": "manual"
+      },
+      {
+        "at": 1780,
+        "value_f": 144.91400000000002,
+        "source": "manual"
+      },
+      {
+        "at": 1840,
+        "value_f": 145.37599999999998,
+        "source": "manual"
+      },
+      {
+        "at": 1900,
+        "value_f": 145.85,
+        "source": "manual"
+      },
+      {
+        "at": 1960,
+        "value_f": 146.336,
+        "source": "manual"
+      },
+      {
+        "at": 2020,
+        "value_f": 146.834,
+        "source": "manual"
+      },
+      {
+        "at": 2080,
+        "value_f": 147.344,
+        "source": "manual"
+      },
+      {
+        "at": 2140,
+        "value_f": 147.86599999999999,
+        "source": "manual"
+      },
+      {
+        "at": 2200,
+        "value_f": 148.4,
+        "source": "manual"
+      },
+      {
+        "at": 2260,
+        "value_f": 148.946,
+        "source": "manual"
+      },
+      {
+        "at": 2320,
+        "value_f": 149.504,
+        "source": "manual"
+      },
+      {
+        "at": 2380,
+        "value_f": 150.074,
+        "source": "manual"
+      },
+      {
+        "at": 2440,
+        "value_f": 150.65599999999998,
+        "source": "manual"
+      },
+      {
+        "at": 2500,
+        "value_f": 151.25,
+        "source": "manual"
+      },
+      {
+        "at": 2560,
+        "value_f": 151.85600000000002,
+        "source": "manual"
+      },
+      {
+        "at": 2620,
+        "value_f": 152.474,
+        "source": "manual"
+      },
+      {
+        "at": 2680,
+        "value_f": 153.104,
+        "source": "manual"
+      },
+      {
+        "at": 2740,
+        "value_f": 153.74599999999998,
+        "source": "manual"
+      },
+      {
+        "at": 2800,
+        "value_f": 154.4,
+        "source": "manual"
+      },
+      {
+        "at": 2860,
+        "value_f": 155.066,
+        "source": "manual"
+      },
+      {
+        "at": 2920,
+        "value_f": 155.744,
+        "source": "manual"
+      },
+      {
+        "at": 2980,
+        "value_f": 156.434,
+        "source": "manual"
+      },
+      {
+        "at": 3040,
+        "value_f": 157.136,
+        "source": "manual"
+      },
+      {
+        "at": 3100,
+        "value_f": 157.85,
+        "source": "manual"
+      },
+      {
+        "at": 3160,
+        "value_f": 158.57600000000002,
+        "source": "manual"
+      },
+      {
+        "at": 3220,
+        "value_f": 159.314,
+        "source": "manual"
+      },
+      {
+        "at": 3280,
+        "value_f": 160.064,
+        "source": "manual"
+      },
+      {
+        "at": 3340,
+        "value_f": 160.826,
+        "source": "manual"
+      }
+    ]
+  },
+  {
+    "id": "synthetic-decelerating",
+    "category": "synthetic-decelerating",
+    "target_f": 159.03199999999998,
+    "readings": [
+      {
+        "at": 1000,
+        "value_f": 140.0,
+        "source": "manual"
+      },
+      {
+        "at": 1060,
+        "value_f": 140.792,
+        "source": "manual"
+      },
+      {
+        "at": 1120,
+        "value_f": 141.56799999999998,
+        "source": "manual"
+      },
+      {
+        "at": 1180,
+        "value_f": 142.328,
+        "source": "manual"
+      },
+      {
+        "at": 1240,
+        "value_f": 143.072,
+        "source": "manual"
+      },
+      {
+        "at": 1300,
+        "value_f": 143.8,
+        "source": "manual"
+      },
+      {
+        "at": 1360,
+        "value_f": 144.512,
+        "source": "manual"
+      },
+      {
+        "at": 1420,
+        "value_f": 145.208,
+        "source": "manual"
+      },
+      {
+        "at": 1480,
+        "value_f": 145.888,
+        "source": "manual"
+      },
+      {
+        "at": 1540,
+        "value_f": 146.552,
+        "source": "manual"
+      },
+      {
+        "at": 1600,
+        "value_f": 147.2,
+        "source": "manual"
+      },
+      {
+        "at": 1660,
+        "value_f": 147.83200000000002,
+        "source": "manual"
+      },
+      {
+        "at": 1720,
+        "value_f": 148.448,
+        "source": "manual"
+      },
+      {
+        "at": 1780,
+        "value_f": 149.048,
+        "source": "manual"
+      },
+      {
+        "at": 1840,
+        "value_f": 149.63199999999998,
+        "source": "manual"
+      },
+      {
+        "at": 1900,
+        "value_f": 150.2,
+        "source": "manual"
+      },
+      {
+        "at": 1960,
+        "value_f": 150.752,
+        "source": "manual"
+      },
+      {
+        "at": 2020,
+        "value_f": 151.28799999999998,
+        "source": "manual"
+      },
+      {
+        "at": 2080,
+        "value_f": 151.808,
+        "source": "manual"
+      },
+      {
+        "at": 2140,
+        "value_f": 152.31199999999998,
+        "source": "manual"
+      },
+      {
+        "at": 2200,
+        "value_f": 152.8,
+        "source": "manual"
+      },
+      {
+        "at": 2260,
+        "value_f": 153.27200000000002,
+        "source": "manual"
+      },
+      {
+        "at": 2320,
+        "value_f": 153.728,
+        "source": "manual"
+      },
+      {
+        "at": 2380,
+        "value_f": 154.168,
+        "source": "manual"
+      },
+      {
+        "at": 2440,
+        "value_f": 154.59199999999998,
+        "source": "manual"
+      },
+      {
+        "at": 2500,
+        "value_f": 155.0,
+        "source": "manual"
+      },
+      {
+        "at": 2560,
+        "value_f": 155.39200000000002,
+        "source": "manual"
+      },
+      {
+        "at": 2620,
+        "value_f": 155.768,
+        "source": "manual"
+      },
+      {
+        "at": 2680,
+        "value_f": 156.12800000000001,
+        "source": "manual"
+      },
+      {
+        "at": 2740,
+        "value_f": 156.47199999999998,
+        "source": "manual"
+      },
+      {
+        "at": 2800,
+        "value_f": 156.8,
+        "source": "manual"
+      },
+      {
+        "at": 2860,
+        "value_f": 157.11200000000002,
+        "source": "manual"
+      },
+      {
+        "at": 2920,
+        "value_f": 157.408,
+        "source": "manual"
+      },
+      {
+        "at": 2980,
+        "value_f": 157.68800000000002,
+        "source": "manual"
+      },
+      {
+        "at": 3040,
+        "value_f": 157.952,
+        "source": "manual"
+      },
+      {
+        "at": 3100,
+        "value_f": 158.2,
+        "source": "manual"
+      },
+      {
+        "at": 3160,
+        "value_f": 158.43200000000002,
+        "source": "manual"
+      },
+      {
+        "at": 3220,
+        "value_f": 158.648,
+        "source": "manual"
+      },
+      {
+        "at": 3280,
+        "value_f": 158.848,
+        "source": "manual"
+      },
+      {
+        "at": 3340,
+        "value_f": 159.03199999999998,
+        "source": "manual"
+      }
+    ]
+  },
+  {
+    "id": "synthetic-stall",
+    "category": "synthetic-stall",
+    "target_f": 160,
+    "readings": [
+      {
+        "at": 1000,
+        "value_f": 140.0,
+        "source": "manual"
+      },
+      {
+        "at": 1060,
+        "value_f": 140.5,
+        "source": "manual"
+      },
+      {
+        "at": 1120,
+        "value_f": 141.0,
+        "source": "manual"
+      },
+      {
+        "at": 1180,
+        "value_f": 141.5,
+        "source": "manual"
+      },
+      {
+        "at": 1240,
+        "value_f": 142.0,
+        "source": "manual"
+      },
+      {
+        "at": 1300,
+        "value_f": 142.5,
+        "source": "manual"
+      },
+      {
+        "at": 1360,
+        "value_f": 143.0,
+        "source": "manual"
+      },
+      {
+        "at": 1420,
+        "value_f": 143.5,
+        "source": "manual"
+      },
+      {
+        "at": 1480,
+        "value_f": 144.0,
+        "source": "manual"
+      },
+      {
+        "at": 1540,
+        "value_f": 144.5,
+        "source": "manual"
+      },
+      {
+        "at": 1600,
+        "value_f": 145.0,
+        "source": "manual"
+      },
+      {
+        "at": 1660,
+        "value_f": 145.5,
+        "source": "manual"
+      },
+      {
+        "at": 1720,
+        "value_f": 146.0,
+        "source": "manual"
+      },
+      {
+        "at": 1780,
+        "value_f": 146.5,
+        "source": "manual"
+      },
+      {
+        "at": 1840,
+        "value_f": 147.0,
+        "source": "manual"
+      },
+      {
+        "at": 1900,
+        "value_f": 147.5,
+        "source": "manual"
+      },
+      {
+        "at": 1960,
+        "value_f": 148.0,
+        "source": "manual"
+      },
+      {
+        "at": 2020,
+        "value_f": 148.5,
+        "source": "manual"
+      },
+      {
+        "at": 2080,
+        "value_f": 149.0,
+        "source": "manual"
+      },
+      {
+        "at": 2140,
+        "value_f": 149.5,
+        "source": "manual"
+      },
+      {
+        "at": 2200,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2260,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2320,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2380,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2440,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2500,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2560,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2620,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2680,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2740,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2800,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2860,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2920,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 2980,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 3040,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 3100,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 3160,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 3220,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 3280,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 3340,
+        "value_f": 150.0,
+        "source": "manual"
+      }
+    ]
+  },
+  {
+    "id": "synthetic-cooling",
+    "category": "synthetic-cooling",
+    "target_f": 160,
+    "readings": [
+      {
+        "at": 1000,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 1060,
+        "value_f": 149.8,
+        "source": "manual"
+      },
+      {
+        "at": 1120,
+        "value_f": 149.6,
+        "source": "manual"
+      },
+      {
+        "at": 1180,
+        "value_f": 149.4,
+        "source": "manual"
+      },
+      {
+        "at": 1240,
+        "value_f": 149.2,
+        "source": "manual"
+      },
+      {
+        "at": 1300,
+        "value_f": 149.0,
+        "source": "manual"
+      },
+      {
+        "at": 1360,
+        "value_f": 148.8,
+        "source": "manual"
+      },
+      {
+        "at": 1420,
+        "value_f": 148.6,
+        "source": "manual"
+      },
+      {
+        "at": 1480,
+        "value_f": 148.4,
+        "source": "manual"
+      },
+      {
+        "at": 1540,
+        "value_f": 148.2,
+        "source": "manual"
+      },
+      {
+        "at": 1600,
+        "value_f": 148.0,
+        "source": "manual"
+      },
+      {
+        "at": 1660,
+        "value_f": 147.8,
+        "source": "manual"
+      },
+      {
+        "at": 1720,
+        "value_f": 147.6,
+        "source": "manual"
+      },
+      {
+        "at": 1780,
+        "value_f": 147.4,
+        "source": "manual"
+      },
+      {
+        "at": 1840,
+        "value_f": 147.2,
+        "source": "manual"
+      },
+      {
+        "at": 1900,
+        "value_f": 147.0,
+        "source": "manual"
+      },
+      {
+        "at": 1960,
+        "value_f": 146.8,
+        "source": "manual"
+      },
+      {
+        "at": 2020,
+        "value_f": 146.6,
+        "source": "manual"
+      },
+      {
+        "at": 2080,
+        "value_f": 146.4,
+        "source": "manual"
+      },
+      {
+        "at": 2140,
+        "value_f": 146.2,
+        "source": "manual"
+      },
+      {
+        "at": 2200,
+        "value_f": 146.0,
+        "source": "manual"
+      },
+      {
+        "at": 2260,
+        "value_f": 145.8,
+        "source": "manual"
+      },
+      {
+        "at": 2320,
+        "value_f": 145.6,
+        "source": "manual"
+      },
+      {
+        "at": 2380,
+        "value_f": 145.4,
+        "source": "manual"
+      },
+      {
+        "at": 2440,
+        "value_f": 145.2,
+        "source": "manual"
+      },
+      {
+        "at": 2500,
+        "value_f": 145.0,
+        "source": "manual"
+      },
+      {
+        "at": 2560,
+        "value_f": 144.8,
+        "source": "manual"
+      },
+      {
+        "at": 2620,
+        "value_f": 144.6,
+        "source": "manual"
+      },
+      {
+        "at": 2680,
+        "value_f": 144.4,
+        "source": "manual"
+      },
+      {
+        "at": 2740,
+        "value_f": 144.2,
+        "source": "manual"
+      },
+      {
+        "at": 2800,
+        "value_f": 144.0,
+        "source": "manual"
+      },
+      {
+        "at": 2860,
+        "value_f": 143.8,
+        "source": "manual"
+      },
+      {
+        "at": 2920,
+        "value_f": 143.6,
+        "source": "manual"
+      },
+      {
+        "at": 2980,
+        "value_f": 143.4,
+        "source": "manual"
+      },
+      {
+        "at": 3040,
+        "value_f": 143.2,
+        "source": "manual"
+      },
+      {
+        "at": 3100,
+        "value_f": 143.0,
+        "source": "manual"
+      },
+      {
+        "at": 3160,
+        "value_f": 142.8,
+        "source": "manual"
+      },
+      {
+        "at": 3220,
+        "value_f": 142.6,
+        "source": "manual"
+      },
+      {
+        "at": 3280,
+        "value_f": 142.4,
+        "source": "manual"
+      },
+      {
+        "at": 3340,
+        "value_f": 142.2,
+        "source": "manual"
+      }
+    ]
+  },
+  {
+    "id": "synthetic-dropout",
+    "category": "synthetic-dropout",
+    "target_f": 159.5,
+    "readings": [
+      {
+        "at": 1000,
+        "value_f": 140.0,
+        "source": "manual"
+      },
+      {
+        "at": 1060,
+        "value_f": 140.5,
+        "source": "manual"
+      },
+      {
+        "at": 1120,
+        "value_f": 141.0,
+        "source": "manual"
+      },
+      {
+        "at": 1180,
+        "value_f": 141.5,
+        "source": "manual"
+      },
+      {
+        "at": 1240,
+        "value_f": 142.0,
+        "source": "manual"
+      },
+      {
+        "at": 1300,
+        "value_f": 142.5,
+        "source": "manual"
+      },
+      {
+        "at": 1360,
+        "value_f": 143.0,
+        "source": "manual"
+      },
+      {
+        "at": 1420,
+        "value_f": 143.5,
+        "source": "manual"
+      },
+      {
+        "at": 1480,
+        "value_f": 144.0,
+        "source": "manual"
+      },
+      {
+        "at": 1540,
+        "value_f": 144.5,
+        "source": "manual"
+      },
+      {
+        "at": 1600,
+        "value_f": 145.0,
+        "source": "manual"
+      },
+      {
+        "at": 1660,
+        "value_f": 145.5,
+        "source": "manual"
+      },
+      {
+        "at": 1720,
+        "value_f": 146.0,
+        "source": "manual"
+      },
+      {
+        "at": 1780,
+        "value_f": 146.5,
+        "source": "manual"
+      },
+      {
+        "at": 1840,
+        "value_f": 147.0,
+        "source": "manual"
+      },
+      {
+        "at": 1900,
+        "value_f": 147.5,
+        "source": "manual"
+      },
+      {
+        "at": 1960,
+        "value_f": 148.0,
+        "source": "manual"
+      },
+      {
+        "at": 2020,
+        "value_f": 148.5,
+        "source": "manual"
+      },
+      {
+        "at": 2080,
+        "value_f": 149.0,
+        "source": "manual"
+      },
+      {
+        "at": 2140,
+        "value_f": 149.5,
+        "source": "manual"
+      },
+      {
+        "at": 3400,
+        "value_f": 150.0,
+        "source": "manual"
+      },
+      {
+        "at": 3460,
+        "value_f": 150.5,
+        "source": "manual"
+      },
+      {
+        "at": 3520,
+        "value_f": 151.0,
+        "source": "manual"
+      },
+      {
+        "at": 3580,
+        "value_f": 151.5,
+        "source": "manual"
+      },
+      {
+        "at": 3640,
+        "value_f": 152.0,
+        "source": "manual"
+      },
+      {
+        "at": 3700,
+        "value_f": 152.5,
+        "source": "manual"
+      },
+      {
+        "at": 3760,
+        "value_f": 153.0,
+        "source": "manual"
+      },
+      {
+        "at": 3820,
+        "value_f": 153.5,
+        "source": "manual"
+      },
+      {
+        "at": 3880,
+        "value_f": 154.0,
+        "source": "manual"
+      },
+      {
+        "at": 3940,
+        "value_f": 154.5,
+        "source": "manual"
+      },
+      {
+        "at": 4000,
+        "value_f": 155.0,
+        "source": "manual"
+      },
+      {
+        "at": 4060,
+        "value_f": 155.5,
+        "source": "manual"
+      },
+      {
+        "at": 4120,
+        "value_f": 156.0,
+        "source": "manual"
+      },
+      {
+        "at": 4180,
+        "value_f": 156.5,
+        "source": "manual"
+      },
+      {
+        "at": 4240,
+        "value_f": 157.0,
+        "source": "manual"
+      },
+      {
+        "at": 4300,
+        "value_f": 157.5,
+        "source": "manual"
+      },
+      {
+        "at": 4360,
+        "value_f": 158.0,
+        "source": "manual"
+      },
+      {
+        "at": 4420,
+        "value_f": 158.5,
+        "source": "manual"
+      },
+      {
+        "at": 4480,
+        "value_f": 159.0,
+        "source": "manual"
+      },
+      {
+        "at": 4540,
+        "value_f": 159.5,
+        "source": "manual"
+      }
+    ]
+  }
+]

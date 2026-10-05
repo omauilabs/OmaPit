@@ -1,0 +1,2 @@
+Built-in imagegen; transparent background enabled.
+Use case: product-mockup. Isolated premium photorealistic overhead black kettle smoker for OmaPit. Top-down black enamel grill, lid removed, chrome grate, smoked brisket center-right with mahogany bark, charcoal bank left. Two slim metal probes: blue-accented brisket probe and amber-accented clipped grate probe, neat black wires. Cool rim light for dark Tokyo Night UI, subtle warm highlights. Complete centered object and handles, transparent margin, no legs, no text, logos, UI, labels, numbers, backdrop or ground plane.
