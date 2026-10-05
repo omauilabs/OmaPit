@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "pork",
+  "vertexCount": 245155,
+  "regions": [
+    "shoulder",
+    "loin",
+    "ham",
+    "belly",
+    "hock"
+  ],
+  "aliases": {},
+  "method": "Mesh surface geodesic labels, ridge-constrained; calibrated seeds; original vertex order preserved",
+  "counts": {
+    "shoulder": 22549,
+    "loin": 15648,
+    "ham": 12388,
+    "belly": 8792,
+    "hock": 25185
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "model": "beef",
+  "vertexCount": 447834,
+  "faceCount": 840078,
+  "regions": [
+    "chuck",
+    "rib",
+    "loin",
+    "sirloin",
+    "round",
+    "brisket",
+    "plate",
+    "flank",
+    "shank"
+  ],
+  "aliases": {},
+  "modelSha256": "6aacba3dca57f1f7a644374adb49a87794eeb339629699fe4b69f251f6de6999",
+  "method": "Curated sculpture panel cores with bounded topology/ridge seam refinement; exclusive surface triangles; UVs and normals preserved; majority-owned boundary faces; unassigned three-way junctions",
+  "counts": {
+    "chuck": 55034,
+    "rib": 28128,
+    "loin": 8102,
+    "sirloin": 45554,
+    "round": 24706,
+    "brisket": 71370,
+    "plate": 76362,
+    "flank": 46928,
+    "shank": 97472
+  },
+  "traceOverlapFacesResolved": 4115
+}

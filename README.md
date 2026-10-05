@@ -29,6 +29,19 @@ Primary areas are Cook, Plan and Journal. Cook contains Live cook, At the grill,
 
 See [0.4.0 acceptance](RELEASE-0.4.0.md). Native setup/next-action/reservation controls are included as QML source; Linux runtime and screen-reader acceptance remain open.
 
+## Visual bundle
+
+The repository includes owner-authorized AI culinary imagery, wordmarks, theme materials, Meshy animal models, cut-region data, and animation assets. See ASSET-LICENSES.md. Local journals and sensor reports remain excluded.
+
+Build the browser bundle from a fresh checkout before running it:
+
+```sh
+cd preview
+npm ci
+npm run build
+cd ..
+```
+
 ## Run the included browser preview
 
 Python 3 is sufficient for the prebuilt preview. From this directory:

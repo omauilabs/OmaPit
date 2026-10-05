@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "deer-doe",
+  "vertexCount": 220583,
+  "regions": [
+    "neck",
+    "shoulder",
+    "loin",
+    "ribs",
+    "flank",
+    "leg",
+    "shank"
+  ],
+  "aliases": {},
+  "method": "Mesh surface geodesic labels, ridge-constrained; calibrated seeds; original vertex order preserved",
+  "counts": {
+    "neck": 9059,
+    "shoulder": 27089,
+    "loin": 9073,
+    "ribs": 14235,
+    "flank": 23275,
+    "leg": 19433,
+    "shank": 25032
+  }
+}

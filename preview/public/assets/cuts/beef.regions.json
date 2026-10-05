@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "model": "beef",
+  "vertexCount": 447834,
+  "regions": [
+    "chuck",
+    "rib",
+    "loin",
+    "sirloin",
+    "round",
+    "brisket",
+    "plate",
+    "flank",
+    "shank"
+  ],
+  "aliases": {},
+  "method": "Mesh surface geodesic labels, ridge-constrained; calibrated seeds; original vertex order preserved",
+  "counts": {
+    "chuck": 16455,
+    "rib": 17920,
+    "loin": 6292,
+    "sirloin": 35973,
+    "round": 17619,
+    "brisket": 32244,
+    "plate": 48577,
+    "flank": 42775,
+    "shank": 41617
+  }
+}

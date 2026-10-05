@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "model": "deer-buck",
+  "vertexCount": 394947,
+  "faceCount": 713578,
+  "regions": [
+    "neck",
+    "shoulder",
+    "loin",
+    "ribs",
+    "flank",
+    "leg",
+    "shank"
+  ],
+  "aliases": {},
+  "modelSha256": "06af5c91f03f252690ab920f59ef108ceb646e3a16d7abd41f6f0be19fef9cf3",
+  "method": "Curated sculpture panel cores with bounded topology/ridge seam refinement; exclusive surface triangles; UVs and normals preserved; majority-owned boundary faces; unassigned three-way junctions",
+  "counts": {
+    "neck": 13600,
+    "shoulder": 86512,
+    "loin": 35838,
+    "ribs": 16722,
+    "flank": 39654,
+    "leg": 80760,
+    "shank": 42136
+  },
+  "traceOverlapFacesResolved": 95
+}

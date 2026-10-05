@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "lamb",
+  "vertexCount": 547851,
+  "regions": [
+    "shoulder",
+    "rack",
+    "loin",
+    "leg",
+    "breast",
+    "shank"
+  ],
+  "aliases": {},
+  "method": "Mesh surface geodesic labels, ridge-constrained; calibrated seeds; original vertex order preserved",
+  "counts": {
+    "shoulder": 83305,
+    "rack": 31697,
+    "loin": 36733,
+    "leg": 35639,
+    "breast": 39386,
+    "shank": 49790
+  }
+}

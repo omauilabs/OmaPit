@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "model": "lamb",
+  "vertexCount": 547851,
+  "faceCount": 1044810,
+  "regions": [
+    "shoulder",
+    "rack",
+    "loin",
+    "leg",
+    "breast",
+    "shank"
+  ],
+  "aliases": {},
+  "modelSha256": "893509c6245a210e20743281e5ce9d3ce1fc838d44280fa18fc69da239a8e46c",
+  "method": "Curated sculpture panel cores with bounded topology/ridge seam refinement; exclusive surface triangles; UVs and normals preserved; majority-owned boundary faces; unassigned three-way junctions",
+  "counts": {
+    "shoulder": 91016,
+    "rack": 56710,
+    "loin": 30574,
+    "leg": 107250,
+    "breast": 71848,
+    "shank": 149690
+  },
+  "traceOverlapFacesResolved": 0
+}

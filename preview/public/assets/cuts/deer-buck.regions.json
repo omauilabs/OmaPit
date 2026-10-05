@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "deer-buck",
+  "vertexCount": 394947,
+  "regions": [
+    "neck",
+    "shoulder",
+    "loin",
+    "ribs",
+    "flank",
+    "leg",
+    "shank"
+  ],
+  "aliases": {},
+  "method": "Mesh surface geodesic labels, ridge-constrained; calibrated seeds; original vertex order preserved",
+  "counts": {
+    "neck": 9409,
+    "shoulder": 44749,
+    "loin": 22610,
+    "ribs": 6770,
+    "flank": 48621,
+    "leg": 27879,
+    "shank": 27720
+  }
+}

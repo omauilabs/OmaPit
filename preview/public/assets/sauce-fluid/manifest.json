@@ -1,0 +1,12 @@
+{
+  "format": "OMAFLD01",
+  "frames": 120,
+  "fps": 24,
+  "loopStart": 90,
+  "method": "Blender Mantaflow viscous liquid mesh cache",
+  "resolution": 96,
+  "meshScale": 2,
+  "bytes": 31681055,
+  "sha256": "28071ef8cbb3a8909c0bb4c2d50ae790aea1c3a26c3b04a9d7e81b1abb1fc6a9",
+  "physicsParameters": "Art directed; not measured BBQ sauce rheology"
+}

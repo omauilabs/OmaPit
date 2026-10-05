@@ -14,11 +14,9 @@ benchmark-sharing.json
 *.submission.md
 preview/dist/
 
-# Local hardware evidence and generated media pending redistribution audit
+# Local hardware evidence and review archives
 community/cq60-*
 explorer-images/
-preview/public/assets/
-assets/*.png
 *.png
 *.jpg
 *.jpeg
@@ -34,3 +32,8 @@ theme-concepts/
 wordmarks/
 sauce-textures/
 cut-alignment-audit/
+
+# Owner-authorized distributable app media
+!preview/public/assets/
+!preview/public/assets/**
+!assets/grill.png

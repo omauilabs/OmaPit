@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "goat",
+  "vertexCount": 292439,
+  "regions": [
+    "shoulder",
+    "rack",
+    "loin",
+    "leg",
+    "breast",
+    "shank"
+  ],
+  "aliases": {
+    "loin": "rack"
+  },
+  "method": "Mesh surface geodesic labels, ridge-constrained; calibrated seeds; original vertex order preserved",
+  "counts": {
+    "shoulder": 49329,
+    "rack": 12510,
+    "loin": 0,
+    "leg": 25753,
+    "breast": 15702,
+    "shank": 30485
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "model": "goat",
+  "vertexCount": 292439,
+  "faceCount": 545314,
+  "regions": [
+    "shoulder",
+    "rack",
+    "loin",
+    "leg",
+    "breast",
+    "shank"
+  ],
+  "aliases": {
+    "loin": "rack"
+  },
+  "modelSha256": "9df9bf1a9c9b3159d32ed036f12d9c68e94daaea3b2220662ea63e7d6ebd47ba",
+  "method": "Curated sculpture panel cores with bounded topology/ridge seam refinement; exclusive surface triangles; UVs and normals preserved; majority-owned boundary faces; unassigned three-way junctions",
+  "counts": {
+    "shoulder": 43970,
+    "rack": 27622,
+    "loin": 0,
+    "leg": 44516,
+    "breast": 21620,
+    "shank": 74998
+  },
+  "traceOverlapFacesResolved": 0
+}

@@ -1,13 +1,15 @@
-# Distribution boundaries
+# Software and visual asset licensing
 
-LICENSE covers original OmaPit software and documentation. Third-party dependencies retain their licenses, including backend/adapters/CHEFIQ-LICENSE.txt. A public release needs a dependency/license inventory.
+LICENSE covers original OmaPit software, documentation, and owner-authorized original visual assets distributed with this repository. Third-party dependencies retain their own licenses, including backend/adapters/CHEFIQ-LICENSE.txt.
 
-Illustrative photographs, generated wordmarks, atlases and Meshy GLBs are not automatically covered by the software license. Record origin, generation/export terms and redistribution rights for each asset before a public release. The paid Meshy export and local existence of a file are not by themselves a documented redistribution grant. User attachments, manufacturer media and trademarks retain their own rights. Keep unreviewed assets outside a redistributable release or replace them with cleared alternatives.
+## Owner-authorized visual bundle
 
-Current state: software contribution tooling is ready for local use; media redistribution audit and public repository/release setup remain open. Do not claim the current bundle is fully cleared for public redistribution.
+On October 5, 2026, the project owner confirmed ownership of the AI imagery and authorized inclusion of the complete visual bundle in the public open-source repository. This supersedes the earlier local-only media exclusion.
 
-## October 5 flavor texture atlases
-`preview/public/assets/cards/hotSauces.jpg` and `rubRegions.jpg` are newly generated illustrative AI culinary texture atlases, 1448×1086 RGB each. No vendor product photography or logos were copied. They represent sauce/spice families, not exact products or recipes. Original generated PNGs remain in the local generation archive. As with existing generated media, release licensing and redistribution review remains separate from the code's MIT license; do not claim these are photographs of real tested batches.
+- Culinary card atlases, sauce textures, guide illustrations, cut photographs, and wordmarks in `preview/public/assets`: AI-generated project artwork.
+- `preview/public/assets/themes/material-atlas.jpg`: generated with the built-in image-generation tool, 1536×1024 RGB; no third-party team logos.
+- `preview/public/assets/cards/hotSauces.jpg` and `rubRegions.jpg`: generated culinary atlases, 1448×1086 RGB; no copied vendor photography or logos.
+- `preview/public/assets/cuts/*.glb`: animal meshes exported through the owner's paid Meshy workflow. Face/region data are project-generated annotations.
+- Remaining runtime visual/animation assets in `preview/public/assets` and `assets/grill.png`: project visual bundle included under the owner's authorization.
 
-## Material Atelier artwork
-`preview/public/assets/themes/material-atlas.jpg`: original generated material contact sheet, October 5, 2026, built-in image-generation tool. 1536×1024 RGB, no third-party team logos. Prompt and usage in THEMES.md; existing project media-release audit remains applicable.
+Generated culinary illustrations do not depict tested recipes or actual commercial products. Anatomical regions and educational diagrams retain the validation limits documented elsewhere. This license does not grant rights to third-party trademarks or manufacturer media not included in the bundle. Original user attachments, private generation archives, journals, and local sensor reports are not distributed.

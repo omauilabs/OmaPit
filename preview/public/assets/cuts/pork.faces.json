@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "model": "pork",
+  "vertexCount": 245155,
+  "faceCount": 451622,
+  "regions": [
+    "shoulder",
+    "loin",
+    "ham",
+    "belly",
+    "hock"
+  ],
+  "aliases": {},
+  "modelSha256": "c3639adb85c95dc747e7b793c1c500e82b1e7cd53a8f058f8baeaad4dd938b20",
+  "method": "Curated sculpture panel cores with bounded topology/ridge seam refinement; exclusive surface triangles; UVs and normals preserved; majority-owned boundary faces; unassigned three-way junctions",
+  "counts": {
+    "shoulder": 34218,
+    "loin": 27714,
+    "ham": 52482,
+    "belly": 23740,
+    "hock": 74912
+  },
+  "traceOverlapFacesResolved": 0
+}
