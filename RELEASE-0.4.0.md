@@ -17,7 +17,7 @@ The background monitor publishes a committed heartbeat. Alerts exposes that heal
 ## Validation
 
 - 69 Python tests passed, including atomic guided setup/rollback, capacity and temperature conflicts, forward/backward reservations, dependency guards, elapsed estimates retaining physical occupancy, backup/review preservation and committed HTTP monitor heartbeat.
-- Four Sites packaging tests passed. Production build passed without chunk-size or circular-chunk warnings; application, runtime and charts are separate bundles (approximately 83 / 280 / 311 KB uncompressed).
+- Four Sites packaging tests passed. Production build passed without chunk-size or circular-chunk warnings; application, runtime and charts are separate bundles (approximately 83 / 280 / 311 KB uncompressed). Later 0.4.x builds add a lazily loaded `three` chunk that exceeds the 500 KB warning; see RELEASE-0.4.2.md.
 - Browser acceptance used an isolated database. Created chicken and corn through all three setup steps, started a preheat step, reloaded and confirmed persistence, logged a phone reading that triggered a target alarm, snoozed it and completed the step. Saved a next-time note and verified it after reload.
 - Phone view and Timeline checked at 390 px; document width 375 px, with no horizontal overflow. Focused mobile navigation and full navigation expansion inspected. Viewport reset afterward. Final browser warning/error log empty.
 - Keyboard navigation now focuses screen headings after a view change. Screen-reader and native accessibility testing remains open. Smaller-screen decorative effects use a capped 1× render scale; low-end GPU performance has not been benchmarked.

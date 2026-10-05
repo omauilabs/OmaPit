@@ -14,6 +14,8 @@ Manual temperature entry, labeled demo data, and an experimental CHEF iQ BLE ada
 
 Browser notification status, permission and test controls now live in a bell popover beside Devices and the unit toggle. The panel links to alarm rules and delivery health, closes on Escape or outside click, and shows an attention dot for actionable alarms. Urgent cook alarms remain visible separately.
 
+See [0.4.2 release notes](RELEASE-0.4.2.md) for validation and open gates.
+
 ## Navigation in 0.4.1
 
 Primary areas are Cook, Plan and Journal. Cook contains Live cook, At the grill, Foods & probes and Alerts. Plan contains Timeline and New meal. Journal contains Cookbook, Recipes and Insights. Devices is a utility control. The browser remembers the last selected view in each area during the session. Native QML uses the same grouping; runtime acceptance remains open.
