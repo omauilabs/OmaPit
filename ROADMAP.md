@@ -133,6 +133,10 @@ Implemented guided setup, combined next actions, explicit grill capacity/tempera
 
 Grouped navigation around Cook, Plan and Journal with context-specific views and a separate Devices utility. Browser remembers the last view per area during the session. Native source follows the same grouping; Linux runtime remains unverified.
 
+## 0.4.2 notification bell — October 5, 2026
+
+Moved browser notification status, permission and test controls into a bell popover. Tagged as a developer pre-release with continuous integration for the software tests and build. See RELEASE-0.4.2.md. Native Linux runtime and CHEF iQ field acceptance remain the gates before a stable release.
+
 ## Cut explorer expansion — requested October 4, 2026
 
 Planned additions, after correcting and verifying the existing animal highlight alignment:
