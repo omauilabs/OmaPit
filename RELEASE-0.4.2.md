@@ -8,16 +8,20 @@ October 5, 2026. Tagged as a pre-release. This is a software milestone for the b
 - 0.4.2: browser notification status, permission and test controls moved into a bell popover beside Devices and the unit toggle. Urgent cook alarms stay visible separately.
 - Also in this build: Equipment & fire guides, the Meat market USDA snapshot, cut and sauce explorers, and the owner-authorized visual bundle (see ASSET-LICENSES.md and ROADMAP.md).
 - Continuous integration runs the Python, community benchmark and packaging tests plus the production build on every push and pull request.
+- The lazily loaded three.js bundle is split into two chunks so the production build is free of size warnings (see Bundle size).
 
 ## Software validation
 
 - 69 Python tests and 14 community benchmark tests pass.
-- Four Sites packaging tests pass. `npm ci` and `npm run build` succeed from a fresh checkout.
+- Four Sites packaging tests pass. `npm ci` and `npm run build` succeed from a fresh checkout without chunk-size warnings.
 - The preview server started against an isolated database with `--seed-demo`; desktop and 390 px layouts rendered without horizontal overflow or page errors.
+- 3D cut viewer, checked in Chromium with software WebGL: the beef model loads, card and model selection highlight the matching region, and Rotate works. The only failed request was `/favicon.ico`; the app has no favicon.
 
 ### Bundle size
 
-The production build warns that the `three` chunk (about 640 KB uncompressed, 162 KB gzip) exceeds Vite's 500 KB threshold. That chunk is loaded lazily only when the cut explorer opens a 3D model; it is not preloaded with the initial page. The 0.4.0 statement of a warning-free build no longer holds since the 3D cut explorer was added. Reducing the chunk is open work.
+three.js builds as two chunks, `three-renderer` (about 358 KB uncompressed, 88 KB gzip) and `three` (about 285 KB, 76 KB gzip). Both load lazily, in parallel, only when the cut explorer opens a 3D model; neither is preloaded with the initial page. Each is under Vite's 500 KB warning, so the production build is warning-free again.
+
+The split does not reduce total bytes: it was a single 640 KB chunk before. The WebGL renderer alone minifies to about 529 KB, so a real reduction would need a lighter renderer. That remains open work.
 
 ## Not verified
 
