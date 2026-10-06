@@ -6,6 +6,10 @@ export default defineConfig({
     outDir: "dist/client",
     rollupOptions: {output: {manualChunks(id) {
       if (id.includes('node_modules')) {
+        // Both three chunks load lazily, in parallel, with the 3D cut viewer.
+        // The WebGL renderer and its shaders alone exceed Vite's 500 KB warning,
+        // so this split keeps each request under it; total bytes are unchanged.
+        if (id.includes('/three/build/three.module.js')) return 'three-renderer';
         if (id.includes('/three/')) return 'three';
         if (/recharts|d3-|victory-vendor|decimal.js/.test(id)) return 'charts';
         return 'runtime';
