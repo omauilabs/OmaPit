@@ -137,6 +137,17 @@ Grouped navigation around Cook, Plan and Journal with context-specific views and
 
 Moved browser notification status, permission and test controls into a bell popover. Tagged as a developer pre-release with continuous integration for the software tests and build. three.js now builds as two lazily loaded chunks so the production build is free of size warnings; total bytes are unchanged. Added a favicon and phone home-screen icon. See RELEASE-0.4.2.md. Native Linux runtime and CHEF iQ field acceptance remain the gates before a stable release.
 
+## 1.0 release gates — October 10, 2026
+
+Software groundwork for the 1.0 milestone, no hardware involved:
+
+- Adapter developer guide: [ADAPTERS.md](ADAPTERS.md), backed by an adapter registry with a checked contract.
+- Published compatibility matrix: [COMPATIBILITY.md](COMPATIBILITY.md), generated from the validated manifest; claims beyond the evidence fail the tests.
+- Troubleshooting diagnostics: read-only `omapit.py diagnose` and [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
+- Reproducible install and migration/rollback documentation: `packaging/install.py` and [INSTALL.md](INSTALL.md). Tested against a temporary home folder only.
+
+Still open for 1.0: native Linux/Quickshell acceptance, exercising the install/update path on a clean Omarchy setup, the CHEF iQ owner acceptance session, and real bridge and notification sessions.
+
 ## Cut explorer expansion — requested October 4, 2026
 
 Planned additions, after correcting and verifying the existing animal highlight alignment:

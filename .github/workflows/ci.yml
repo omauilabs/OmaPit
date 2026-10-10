@@ -10,11 +10,15 @@ permissions:
 jobs:
   python:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Oldest supported (see INSTALL.md) and newest.
+        python-version: ["3.9", "3.13"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
       - name: Store and backend tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Community benchmark tests

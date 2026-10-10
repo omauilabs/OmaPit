@@ -70,7 +70,7 @@ Requires a recent Omarchy shell with plugin support and Python 3. Review the sou
 ~/.config/omarchy/plugins/local.omapit/
 ```
 
-Do not overwrite an existing directory. Then run the documented Omarchy commands:
+Or let the installer do it: `python3 packaging/install.py` copies exactly these files, refuses to overwrite a folder it did not install, and backs up the previous version on update. See [INSTALL.md](INSTALL.md) for updating, rolling back and uninstalling. If you copy by hand, do not overwrite an existing directory. Then run the documented Omarchy commands:
 
 ```sh
 omarchy-shell shell rescanPlugins
