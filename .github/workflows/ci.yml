@@ -24,6 +24,19 @@ jobs:
       - name: Community benchmark tests
         run: python -m unittest discover -s community -p 'test_*.py' -v
 
+  mqtt:
+    # MQTT bridge against a real local Mosquitto broker (tests/test_mqtt_broker.py).
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: sudo apt-get update && sudo apt-get install -y mosquitto
+      - run: pip install -r backend/requirements-bridge.txt
+      - name: Broker tests
+        run: python -m unittest discover -s tests -p 'test_mqtt_broker.py' -v
+
   preview:
     runs-on: ubuntu-latest
     defaults:
