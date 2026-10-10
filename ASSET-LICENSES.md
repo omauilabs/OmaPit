@@ -14,3 +14,7 @@ On October 5, 2026, the project owner confirmed ownership of the AI imagery and 
 - Remaining runtime visual/animation assets in `preview/public/assets` and `assets/grill.png`: project visual bundle included under the owner's authorization.
 
 Generated culinary illustrations do not depict tested recipes or actual commercial products. Anatomical regions and educational diagrams retain the validation limits documented elsewhere. This license does not grant rights to third-party trademarks or manufacturer media not included in the bundle. Original user attachments, private generation archives, journals, and local sensor reports are not distributed.
+
+## Bundled fonts
+
+The browser preview bundles DM Sans and JetBrains Mono through the `@fontsource/dm-sans` and `@fontsource/jetbrains-mono` npm packages, both under the SIL Open Font License 1.1 (OFL-1.1). The licence text ships in each package. The fonts are served with the app; OmaPit makes no requests to font services.
