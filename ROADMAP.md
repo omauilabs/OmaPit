@@ -150,9 +150,11 @@ Follow-up, same day:
 
 - The browser preview bundles its fonts and makes no third-party requests.
 - The MQTT bridge is tested in CI against a real local Mosquitto broker: retained and stale samples, reconnection, password auth and TLS. A real thermometer publisher is still untested.
+- Alarm delivery is tested in CI against a real self-hosted ntfy server: HTTPS, token access, and refusal of bad tokens and untrusted certificates. Phone receipt is still untested.
+- Every browser view passes an automated WCAG 2.1 A/AA audit (axe-core) at desktop and phone widths in CI, after fixes to three issues. Screen-reader testing is still open.
 - CI checks the native QML for syntax errors with qmllint. Omarchy-only types cannot be checked, so this is not native acceptance.
 
-Still open for 1.0: native Linux/Quickshell acceptance, exercising the install/update path on a clean Omarchy setup, the CHEF iQ owner acceptance session, Linux/BlueZ probe reception, a Home Assistant session, a real MQTT publisher, and real notification delivery.
+Still open for 1.0: native Linux/Quickshell acceptance, exercising the install/update path on a clean Omarchy setup, the CHEF iQ owner acceptance session, Linux/BlueZ probe reception, a Home Assistant session, a real MQTT publisher, phone notification receipt, and screen-reader testing.
 
 ## Cut explorer expansion — requested October 4, 2026
 
