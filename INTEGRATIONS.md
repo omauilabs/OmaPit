@@ -1,6 +1,6 @@
 # OmaPit integrations — 0.3.0
 
-Everything is opt-in. No hardware scans, Home Assistant connections, MQTT subscriptions or external messages were run automatically while developing this release. Contract tests and mock notification delivery do not establish hardware compatibility.
+Everything is opt-in. No hardware scans, Home Assistant connections, MQTT subscriptions or external messages were run automatically while developing this release; the MQTT tests use a throwaway broker on the test machine only. Contract tests and mock notification delivery do not establish hardware compatibility.
 
 ## Bridge schema v1
 
@@ -46,7 +46,7 @@ Install optional `backend/requirements-bridge.txt` in the app environment. Publi
 python3 backend/bridges.py --db JOURNAL mqtt --host YOUR_BROKER --topic omapit/temperatures --tls --port 8883
 ```
 
-Optional credentials: `OMAPIT_MQTT_USER`, `OMAPIT_MQTT_PASSWORD`. TLS verifies certificates using the system trust store. A broker acceptance test remains outstanding. Reference: [Paho Python client](https://eclipse.dev/paho/files/paho.mqtt.python/html/client.html).
+Optional credentials: `OMAPIT_MQTT_USER`, `OMAPIT_MQTT_PASSWORD`. TLS verifies certificates using the system trust store; for a broker with its own certificate authority, set `SSL_CERT_FILE` to that CA file. `tests/test_mqtt_broker.py` exercises the bridge against a real local Mosquitto broker, including retained and stale samples, reconnection, password auth and TLS. It runs when `mosquitto` and paho-mqtt are installed. No real thermometer publisher has been tested. Reference: [Paho Python client](https://eclipse.dev/paho/files/paho.mqtt.python/html/client.html).
 
 ## Phone companion
 

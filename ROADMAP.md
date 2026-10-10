@@ -146,7 +146,13 @@ Software groundwork for the 1.0 milestone, no hardware involved:
 - Troubleshooting diagnostics: read-only `omapit.py diagnose` and [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
 - Reproducible install and migration/rollback documentation: `packaging/install.py` and [INSTALL.md](INSTALL.md). Tested against a temporary home folder only.
 
-Still open for 1.0: native Linux/Quickshell acceptance, exercising the install/update path on a clean Omarchy setup, the CHEF iQ owner acceptance session, and real bridge and notification sessions.
+Follow-up, same day:
+
+- The browser preview bundles its fonts and makes no third-party requests.
+- The MQTT bridge is tested in CI against a real local Mosquitto broker: retained and stale samples, reconnection, password auth and TLS. A real thermometer publisher is still untested.
+- CI checks the native QML for syntax errors with qmllint. Omarchy-only types cannot be checked, so this is not native acceptance.
+
+Still open for 1.0: native Linux/Quickshell acceptance, exercising the install/update path on a clean Omarchy setup, the CHEF iQ owner acceptance session, Linux/BlueZ probe reception, a Home Assistant session, a real MQTT publisher, and real notification delivery.
 
 ## Cut explorer expansion — requested October 4, 2026
 

@@ -79,7 +79,7 @@ omarchy plugin enable local.omapit
 
 The widget is declared for the right bar section. Click it to open the cook journal. Native mode invokes the Python helper directly; no HTTP server is needed. Native storage is `$XDG_DATA_HOME/omapit/cooks.sqlite3`, defaulting to `~/.local/share/omapit/cooks.sqlite3`. `OMAPIT_DB` can override the store location. Native surfaces use current Omarchy foreground/background tokens; amber and blue retain their temperature meanings. The native Meal workbench exposes food workflows, probe mappings, alarms, meal steps, recipes and trend summaries. Photo attachment, comparison charts and download/restore UI are in the browser companion. Full native/browser feature parity is not claimed.
 
-Native acceptance still required: QML loading, bar placement, panel open/close, dialogs, theme switching, keyboard navigation, window sizing, and end-to-end persistence on the target Linux machine.
+CI checks the QML files for syntax errors with `packaging/check_qml.py`; that is not a runtime test. Native acceptance still required: QML loading, bar placement, panel open/close, dialogs, theme switching, keyboard navigation, window sizing, and end-to-end persistence on the target Linux machine.
 
 ## Troubleshooting
 

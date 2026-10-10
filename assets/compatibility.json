@@ -69,7 +69,7 @@
     {
       "adapter": "MQTT exact-topic subscription",
       "implementation": "experimental transport",
-      "evidence": "contract tests; broker acceptance pending",
+      "evidence": "contract tests; automated tests against a local Mosquitto 2.0 broker: live, retained, stale and out-of-order samples, reconnection, password auth and TLS verification. No real thermometer publisher tested",
       "hardware_compatibility": "publisher must emit OmaPit schema v1"
     }
   ],
