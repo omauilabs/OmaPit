@@ -81,13 +81,17 @@ The widget is declared for the right bar section. Click it to open the cook jour
 
 Native acceptance still required: QML loading, bar placement, panel open/close, dialogs, theme switching, keyboard navigation, window sizing, and end-to-end persistence on the target Linux machine.
 
+## Troubleshooting
+
+Run `python3 backend/omapit.py diagnose` for a read-only report on your install, cook store, optional packages, probes and alarm monitor. [TROUBLESHOOTING.md](TROUBLESHOOTING.md) explains each warning and how to recover a store.
+
 ## Validation
 
 ```sh
 python3 -m unittest discover -s tests -v
 ```
 
-Sixty-nine automated tests cover storage, devices, alert episodes/restarts/jitter, independent foods, bridge contracts, schedule cycles, recipes, backup/restore, source isolation, predictions and HTTP authentication/background alarms. Browser checks exercised wrap gating, note persistence after reload, unit persistence, manual readings, archive/history, responsive overflow, and modal keyboard handling. Production preview build passed. See `design-qa.md` for visual scope and limits.
+The automated tests cover storage, devices, the adapter registry and compatibility claims, read-only diagnostics, alert episodes/restarts/jitter, independent foods, bridge contracts, schedule cycles, recipes, backup/restore, source isolation, predictions and HTTP authentication/background alarms. Browser checks exercised wrap gating, note persistence after reload, unit persistence, manual readings, archive/history, responsive overflow, and modal keyboard handling. Production preview build passed. See `design-qa.md` for visual scope and limits.
 
 ## Roadmap
 
