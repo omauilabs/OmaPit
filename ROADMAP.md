@@ -135,7 +135,11 @@ Grouped navigation around Cook, Plan and Journal with context-specific views and
 
 ## 0.4.2 notification bell — October 5, 2026
 
-Moved browser notification status, permission and test controls into a bell popover. Tagged as a developer pre-release with continuous integration for the software tests and build. three.js now builds as two lazily loaded chunks so the production build is free of size warnings; total bytes are unchanged. Added a favicon and phone home-screen icon. See RELEASE-0.4.2.md. Native Linux runtime and CHEF iQ field acceptance remain the gates before a stable release.
+Moved browser notification status, permission and test controls into a bell popover. Prepared as a developer pre-release, never tagged, and folded into 0.5.0; added continuous integration for the software tests and build. three.js now builds as two lazily loaded chunks so the production build is free of size warnings; total bytes are unchanged. Added a favicon and phone home-screen icon. See RELEASE-0.4.2.md. Native Linux runtime and CHEF iQ field acceptance remain the gates before a stable release.
+
+## 0.5.0 release groundwork — October 10, 2026
+
+Bundles the untagged 0.4.2 changes with the 1.0 groundwork below. See [RELEASE-0.5.0.md](RELEASE-0.5.0.md).
 
 ## 1.0 release gates — October 10, 2026
 

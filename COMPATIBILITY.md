@@ -2,7 +2,7 @@
 
 <!-- Generated from assets/compatibility.json by `python3 backend/compatibility.py --write`. Edit the JSON, not this page. -->
 
-OmaPit 0.4.2. Every row is scoped to one model, protocol, transport and adapter version. Nothing here is a claim about other firmware, other units of the same model or the whole brand.
+OmaPit 0.5.0. Every row is scoped to one model, protocol, transport and adapter version. Nothing here is a claim about other firmware, other units of the same model or the whole brand.
 
 **Experimental** means OmaPit decodes the format but it has not passed full owner acceptance on real hardware. **Seen live** lists channels observed from real hardware; it does not cover accuracy, range, reconnection or alarms. OmaPit only reads temperatures: no adapter controls a grill, fan or probe.
 

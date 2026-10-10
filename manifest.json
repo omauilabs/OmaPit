@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "local.omapit",
   "name": "OmaPit",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Local grilling companion with persistent alarms, multi-food workflows, meal timelines, recipes, bridge ingestion and experimental trend ranges.",
   "author": "OmaPit contributors",
   "kinds": [

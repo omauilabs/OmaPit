@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "app_version": "0.4.2",
+  "app_version": "0.5.0",
   "devices": [
     {
       "model": "CHEF iQ CQ60",
