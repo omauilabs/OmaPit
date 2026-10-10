@@ -16,8 +16,11 @@ import planner
 
 STAGES = ['Smoke', 'Wrap', 'Rest', 'Serve']
 
+def store_path(path=None):
+    return Path(path or os.environ.get('OMAPIT_DB', Path(os.environ.get('XDG_DATA_HOME', Path.home()/'.local/share'))/'omapit/cooks.sqlite3'))
+
 def database(path=None):
-    path = Path(path or os.environ.get('OMAPIT_DB', Path(os.environ.get('XDG_DATA_HOME', Path.home()/'.local/share'))/'omapit/cooks.sqlite3'))
+    path = store_path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     db = sqlite3.connect(path, timeout=10)
     db.row_factory = sqlite3.Row
@@ -162,6 +165,10 @@ def dispatch(db, command, payload):
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--db');parser.add_argument('--payload-file',help='Read a JSON payload from a local file instead of command-line text');parser.add_argument('--monitor',action='store_true',help='Run persistent alarm monitoring without HTTP');parser.add_argument('--listen',default='127.0.0.1');parser.add_argument('--public-origin',help='Exact HTTPS origin of an optional private reverse proxy');parser.add_argument('--public-host',help='Exact LAN hostname/IP for phone access');parser.add_argument('--static',help='Serve a built browser preview directory');parser.add_argument('--serve',type=int);parser.add_argument('--seed-demo',action='store_true');parser.add_argument('command',nargs='?',default='snapshot');parser.add_argument('payload',nargs='?',default='{}');args=parser.parse_args()
+    if args.command=='diagnose':
+        # Before database(): diagnostics must never migrate or create the store.
+        import diagnose
+        sys.exit(diagnose.main(['--db',args.db] if args.db else []))
     db=database(args.db)
     if args.seed_demo and not db.execute('SELECT 1 FROM cooks LIMIT 1').fetchone():
         with db: seed_demo(db)

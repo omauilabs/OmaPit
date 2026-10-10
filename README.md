@@ -70,7 +70,7 @@ Requires a recent Omarchy shell with plugin support and Python 3. Review the sou
 ~/.config/omarchy/plugins/local.omapit/
 ```
 
-Do not overwrite an existing directory. Then run the documented Omarchy commands:
+Or let the installer do it: `python3 packaging/install.py` copies exactly these files, refuses to overwrite a folder it did not install, and backs up the previous version on update. See [INSTALL.md](INSTALL.md) for updating, rolling back and uninstalling. If you copy by hand, do not overwrite an existing directory. Then run the documented Omarchy commands:
 
 ```sh
 omarchy-shell shell rescanPlugins
@@ -81,17 +81,21 @@ The widget is declared for the right bar section. Click it to open the cook jour
 
 Native acceptance still required: QML loading, bar placement, panel open/close, dialogs, theme switching, keyboard navigation, window sizing, and end-to-end persistence on the target Linux machine.
 
+## Troubleshooting
+
+Run `python3 backend/omapit.py diagnose` for a read-only report on your install, cook store, optional packages, probes and alarm monitor. [TROUBLESHOOTING.md](TROUBLESHOOTING.md) explains each warning and how to recover a store.
+
 ## Validation
 
 ```sh
 python3 -m unittest discover -s tests -v
 ```
 
-Sixty-nine automated tests cover storage, devices, alert episodes/restarts/jitter, independent foods, bridge contracts, schedule cycles, recipes, backup/restore, source isolation, predictions and HTTP authentication/background alarms. Browser checks exercised wrap gating, note persistence after reload, unit persistence, manual readings, archive/history, responsive overflow, and modal keyboard handling. Production preview build passed. See `design-qa.md` for visual scope and limits.
+The automated tests cover storage, devices, the adapter registry and compatibility claims, read-only diagnostics, alert episodes/restarts/jitter, independent foods, bridge contracts, schedule cycles, recipes, backup/restore, source isolation, predictions and HTTP authentication/background alarms. Browser checks exercised wrap gating, note persistence after reload, unit persistence, manual readings, archive/history, responsive overflow, and modal keyboard handling. Production preview build passed. See `design-qa.md` for visual scope and limits.
 
 ## Roadmap
 
-See [ROADMAP.md](ROADMAP.md) for the release sequence, adapter architecture, compatibility evidence, and community capture/testing strategy. CHEF iQ CQ50 and CQ60 are both initial targets. Decoding, optional scanning, selection and automatic recording are implemented experimentally; CQ60 protocol 4.0.0 live reception has been observed on one unit; complete acceptance for it and other models remains open. Broader coverage will use direct adapters, Home Assistant, MQTT and imports as appropriate.
+See [ROADMAP.md](ROADMAP.md) for the release sequence, adapter architecture, compatibility evidence, and community capture/testing strategy. CHEF iQ CQ50 and CQ60 are both initial targets; [COMPATIBILITY.md](COMPATIBILITY.md) lists exactly what has been tested. Decoding, optional scanning, selection and automatic recording are implemented experimentally; CQ60 protocol 4.0.0 live reception has been observed on one unit; complete acceptance for it and other models remains open. Broader coverage will use direct adapters, Home Assistant, MQTT and imports as appropriate. To add a thermometer, see [ADAPTERS.md](ADAPTERS.md).
 
 Official plugin documentation: https://github.com/basecamp/omarchy/blob/master/docs/omarchy-shell.md
 
