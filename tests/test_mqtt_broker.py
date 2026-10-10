@@ -4,6 +4,7 @@ Skipped unless the `mosquitto` binary and the optional paho-mqtt package
 (backend/requirements-bridge.txt) are installed. CI runs it in the mqtt job.
 """
 import importlib.util,json,os,pathlib,pwd,queue,shutil,socket,sqlite3,subprocess,sys,tempfile,threading,time,unittest
+from tls_fixture import make_certificates
 BRIDGE=pathlib.Path(__file__).parents[1]/'backend'/'bridges.py'
 HAVE=shutil.which('mosquitto') and importlib.util.find_spec('paho')
 
@@ -93,11 +94,7 @@ class BrokerTests(unittest.TestCase):
   self.publish(self.sample(),auth=('omapit','s3cret-pass'));self.assertTrue(json.loads(self.next(lines))['accepted'])
  @unittest.skipUnless(shutil.which('openssl'),'needs openssl')
  def test_tls_verifies_the_broker_certificate(self):
-  run=lambda *a:subprocess.run(a,cwd=self.dir,check=True,capture_output=True)
-  run('openssl','req','-x509','-newkey','rsa:2048','-nodes','-days','2','-subj','/CN=OmaPit test CA','-keyout','ca.key','-out','ca.pem')
-  run('openssl','req','-newkey','rsa:2048','-nodes','-subj','/CN=localhost','-keyout','server.key','-out','server.csr')
-  (self.dir/'ext').write_text('subjectAltName=DNS:localhost,IP:127.0.0.1\n')
-  run('openssl','x509','-req','-in','server.csr','-CA','ca.pem','-CAkey','ca.key','-CAcreateserial','-days','2','-extfile','ext','-out','server.pem')
+  make_certificates(self.dir)
   self.broker(f'cafile {self.dir/"ca.pem"}\ncertfile {self.dir/"server.pem"}\nkeyfile {self.dir/"server.key"}\n')
   ca=str(self.dir/'ca.pem')
   untrusted=self.bridge('localhost','--tls',env={'SSL_CERT_FILE':str(self.dir/'server.key')})  # no CA it trusts

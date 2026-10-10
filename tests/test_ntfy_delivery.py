@@ -8,6 +8,7 @@ from unittest.mock import patch
 sys.path.insert(0,str(pathlib.Path(__file__).parents[1]/'backend'))
 import omapit as store
 import alerts,delivery
+from tls_fixture import make_certificates
 NTFY=shutil.which(os.environ.get('NTFY_BIN','ntfy'))
 TOPIC='omapit-alarms'
 
@@ -20,10 +21,7 @@ class NtfyDeliveryTests(unittest.TestCase):
  def setUpClass(cls):
   cls.tmp=tempfile.TemporaryDirectory();d=cls.dir=pathlib.Path(cls.tmp.name);cls.port=free_port()
   run=lambda *a,**kw:subprocess.run(a,cwd=d,check=True,capture_output=True,text=True,**kw)
-  run('openssl','req','-x509','-newkey','rsa:2048','-nodes','-days','2','-subj','/CN=OmaPit test CA','-keyout','ca.key','-out','ca.pem')
-  run('openssl','req','-newkey','rsa:2048','-nodes','-subj','/CN=localhost','-keyout','server.key','-out','server.csr')
-  (d/'ext').write_text('subjectAltName=DNS:localhost,IP:127.0.0.1\n')
-  run('openssl','x509','-req','-in','server.csr','-CA','ca.pem','-CAkey','ca.key','-CAcreateserial','-days','2','-extfile','ext','-out','server.pem')
+  make_certificates(d)
   cls.base=f'https://localhost:{cls.port}'
   (d/'server.yml').write_text('\n'.join([f'base-url: "{cls.base}"','listen-http: "-"',f'listen-https: "127.0.0.1:{cls.port}"',
    f'cert-file: "{d/"server.pem"}"',f'key-file: "{d/"server.key"}"',f'auth-file: "{d/"user.db"}"','auth-default-access: "deny-all"',f'cache-file: "{d/"cache.db"}"'])+'\n')
