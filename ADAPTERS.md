@@ -84,7 +84,7 @@ The address is replaced by an alias and the payload passes through `redact`. Lin
 
 ## Claiming compatibility
 
-All compatibility claims live in [assets/compatibility.json](assets/compatibility.json), one row per model + protocol + transport + adapter version. `python3 backend/compatibility.py` validates it, and the test suite runs the same check. It rejects:
+All compatibility claims live in [assets/compatibility.json](assets/compatibility.json), one row per model + protocol + transport + adapter version. [COMPATIBILITY.md](COMPATIBILITY.md) is generated from it: after editing the JSON, run `python3 backend/compatibility.py --write`. `python3 backend/compatibility.py` validates both, and the test suite runs the same checks. The validator rejects:
 
 - rows without a registered `adapter` or an `adapter_version`, or with an `adapter_version` newer than the shipped adapter;
 - `implementation: "implemented"` without an OmaPit live test (`omapit_live_test: true`). Start every new row as `experimental`;

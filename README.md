@@ -91,7 +91,7 @@ Sixty-nine automated tests cover storage, devices, alert episodes/restarts/jitte
 
 ## Roadmap
 
-See [ROADMAP.md](ROADMAP.md) for the release sequence, adapter architecture, compatibility evidence, and community capture/testing strategy. CHEF iQ CQ50 and CQ60 are both initial targets. Decoding, optional scanning, selection and automatic recording are implemented experimentally; CQ60 protocol 4.0.0 live reception has been observed on one unit; complete acceptance for it and other models remains open. Broader coverage will use direct adapters, Home Assistant, MQTT and imports as appropriate. To add a thermometer, see [ADAPTERS.md](ADAPTERS.md).
+See [ROADMAP.md](ROADMAP.md) for the release sequence, adapter architecture, compatibility evidence, and community capture/testing strategy. CHEF iQ CQ50 and CQ60 are both initial targets; [COMPATIBILITY.md](COMPATIBILITY.md) lists exactly what has been tested. Decoding, optional scanning, selection and automatic recording are implemented experimentally; CQ60 protocol 4.0.0 live reception has been observed on one unit; complete acceptance for it and other models remains open. Broader coverage will use direct adapters, Home Assistant, MQTT and imports as appropriate. To add a thermometer, see [ADAPTERS.md](ADAPTERS.md).
 
 Official plugin documentation: https://github.com/basecamp/omarchy/blob/master/docs/omarchy-shell.md
 

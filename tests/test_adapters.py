@@ -106,5 +106,16 @@ class ManifestTests(unittest.TestCase):
                  lambda m:m['devices'].append('row')]:
    self.assertTrue(self.check(mutate))
   self.assertEqual(compatibility.problems([]),['manifest must be a JSON object'])
+ def test_page_matches_manifest(self):
+  self.assertEqual(compatibility.PAGE.read_text(),compatibility.render(self.good),'run python3 backend/compatibility.py --write')
+ def test_page_only_shows_live_channels_with_live_evidence(self):
+  def seen(m,protocol):return next(l for l in compatibility.render(m).splitlines() if f'| {protocol} |' in l).split(' | ')[4]
+  self.assertEqual(seen(self.good,'4.0.0'),'food')
+  self.assertEqual(seen(self.good,'V3 / 5.0.0'),'—')  # synthetic and upstream evidence only
+  m=copy.deepcopy(self.good);m['devices'][0]['live_reception_observed']=False
+  self.assertEqual(seen(m,'4.0.0'),'—')
+ def test_page_escapes_table_cells(self):
+  m=copy.deepcopy(self.good);m['devices'][0]['evidence']='a | b'
+  self.assertIn('a \\| b',compatibility.render(m))
 
 if __name__=='__main__':unittest.main()

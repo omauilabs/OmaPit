@@ -2,7 +2,10 @@
 
 The manifest is the single source for compatibility claims. Rows are scoped to
 model + protocol + transport + adapter version, and the validator refuses
-claims the evidence cannot support. Run directly to check the shipped file.
+claims the evidence cannot support. COMPATIBILITY.md is rendered from it.
+
+  python3 backend/compatibility.py          check the manifest and the page
+  python3 backend/compatibility.py --write  regenerate COMPATIBILITY.md
 """
 import json, sys
 from pathlib import Path
@@ -71,8 +74,61 @@ def load(path=MANIFEST):
 def app_version():
     return json.loads((ROOT / 'manifest.json').read_text())['version']
 
-def main():
-    issues = problems(load(), app_version())
+PAGE = ROOT / 'COMPATIBILITY.md'
+
+def _cell(value):
+    return str(value).replace('|', '\\|').replace('\n', ' ')
+
+def _roles(names):
+    return ', '.join(r for r in ('food', 'ambient', 'battery') if r in names) or '—'
+
+def render(manifest):
+    """Render the human-readable compatibility page from the manifest."""
+    lines = [
+        '# Compatibility',
+        '',
+        '<!-- Generated from assets/compatibility.json by `python3 backend/compatibility.py --write`. Edit the JSON, not this page. -->',
+        '',
+        f"OmaPit {manifest['app_version']}. Every row is scoped to one model, protocol, transport and adapter version. "
+        'Nothing here is a claim about other firmware, other units of the same model or the whole brand.',
+        '',
+        '**Experimental** means OmaPit decodes the format but it has not passed full owner acceptance on real hardware. '
+        '**Seen live** lists channels observed from real hardware; it does not cover accuracy, range, reconnection or alarms. '
+        'OmaPit only reads temperatures: no adapter controls a grill, fan or probe.',
+        '',
+        '## Direct Bluetooth',
+        '',
+        '| Model | Protocol | Adapter | Status | Seen live | Decoded, not yet seen live | Evidence |',
+        '|---|---|---|---|---|---|---|',
+    ]
+    for row in manifest['devices']:
+        live = row.get('omapit_live_test') or row.get('live_reception_observed')
+        decoded = set(row['roles']) | set(row.get('unverified_roles', []))
+        seen = set(row['roles']) if live else set()
+        evidence = row['evidence']
+        if row.get('acceptance'): evidence += f" ([details]({row['acceptance']}))"
+        lines.append('| ' + ' | '.join(_cell(v) for v in [
+            row['model'], row['protocol'], f"{row['adapter']} {row['adapter_version']}",
+            row['implementation'].capitalize(), _roles(seen), _roles(decoded - seen), evidence]) + ' |')
+    lines += ['', '## Bridges and imports', '',
+              'A bridge carries readings from another system. Its status says nothing about which thermometers that system supports.', '',
+              '| Path | Status | Evidence | Hardware compatibility |', '|---|---|---|---|']
+    for row in manifest.get('bridges', []):
+        lines.append('| ' + ' | '.join(_cell(row[k]) for k in BRIDGE_TEXT) + ' |')
+    lines += ['', '## Not supported yet', '',
+              'MEATER, ThermoPro, Inkbird, FireBoard, Combustion and other brands are candidates under review, not supported devices. '
+              'Owners can help by sharing an aggregate report; see [community/README.md](community/README.md). '
+              'Developers can add a device by following [ADAPTERS.md](ADAPTERS.md).', '']
+    return '\n'.join(lines)
+
+def main(argv=None):
+    write = '--write' in (sys.argv[1:] if argv is None else argv)
+    manifest = load(); issues = problems(manifest, app_version())
+    if not issues:
+        page = render(manifest)
+        if write: PAGE.write_text(page)
+        elif not PAGE.is_file() or PAGE.read_text() != page:
+            issues.append('COMPATIBILITY.md is out of date; run python3 backend/compatibility.py --write')
     for issue in issues: print(issue, file=sys.stderr)
     print('compatibility manifest: ' + ('invalid' if issues else 'ok'))
     return 1 if issues else 0
