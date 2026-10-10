@@ -37,6 +37,14 @@ jobs:
       - name: Broker tests
         run: python -m unittest discover -s tests -p 'test_mqtt_broker.py' -v
 
+  qml:
+    # Syntax check only: Quickshell/Omarchy modules are unavailable here.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y qt6-declarative-dev-tools qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtquick-templates
+      - run: python3 packaging/check_qml.py
+
   preview:
     runs-on: ubuntu-latest
     defaults:

@@ -24,6 +24,7 @@ A suggested agent prompt is available in Settings → Make OmaPit better, togeth
 
 - Backend: `python3 -m unittest discover -s tests` from this directory.
 - Benchmark collector: `python3 -m unittest discover -s community -p 'test_*.py'`.
+- Native QML syntax: `python3 packaging/check_qml.py` (needs Qt's qmllint). It catches parse errors only; Quickshell and Omarchy types cannot be checked off Omarchy.
 - Browser: build from preview with `npm run build`, then check affected desktop/mobile views, console errors, keyboard focus and motion preferences. Sites handoff also requires `npm run test:sites`.
 
 Use an isolated checkout or local patch for personal customization. The public source repository is https://github.com/omauilabs/OmaPit. Release/install acceptance remains in progress. See ASSET-LICENSES.md before publishing bundled models or illustrations.
