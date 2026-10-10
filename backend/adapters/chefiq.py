@@ -8,7 +8,25 @@ experimental. Future major versions are rejected rather than guessed.
 import struct
 
 MANUFACTURER_ID = 0x05CD
+ADAPTER_ID = 'chefiq'
 ADAPTER_VERSION = '0.2.0'
+NAME = 'CHEF iQ'
+TRANSPORT = 'ble-advertisement'
+DEFAULT_NAME = 'CHEF iQ probe'
+
+def payload_from(manufacturer_data):
+    payload = manufacturer_data.get(MANUFACTURER_ID)
+    return payload if payload is not None and 2 <= len(payload) <= 18 else None
+
+def model_from_name(name):
+    return next((m for m in ['CQ50', 'CQ60'] if m in str(name).upper()), 'Unknown')
+
+def redact(payload):
+    # Status packets (and legacy temperature packets) carry a 6-byte identifier.
+    safe = bytearray(payload)
+    if (payload[0] & 15) == 3 or ((payload[0] & 15) == 1 and (payload[1] >> 4) < 2):
+        safe[2:8] = bytes(min(6, len(safe) - 2))
+    return bytes(safe)
 
 def decode(payload):
     if not isinstance(payload, bytes) or not 2 <= len(payload) <= 18:

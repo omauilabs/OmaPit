@@ -75,7 +75,7 @@ Owner acceptance: wake probe; observe plausible changing temperatures against th
 ## Immediate backlog, in dependency order
 
 - [x] Add device/channel/source schema and migration tests.
-- [ ] Define adapter interface and compatibility manifest.
+- [x] Define adapter interface and compatibility manifest. See ADAPTERS.md; `backend/compatibility.py` validates claims.
 - [x] Add recorded-data replay and malformed/partial/unknown-packet fixtures.
 - [x] Wrap the CHEF iQ parser; dispatch by detected protocol, not guessed purchase year.
 - [x] Add local scan/capture command and optional BLE dependencies.

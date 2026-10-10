@@ -12,7 +12,7 @@ Supply `--background`, `--foreground`, `--accent` and `--accent-secondary`; the 
 
 ## Adapters
 
-Keep transport → decoder → normalized samples → store separate. Start from backend/devices.py and the adapters directory. Missing battery/ambient is unknown; sentinel values are invalid; replay and historical imports cannot trigger live recording by default. Preserve timestamps and units. Test malformed, partial, future-version and multi-device data before proposing direct support. Use community reports to locate model/version gaps, not to certify whole brands.
+Follow [ADAPTERS.md](ADAPTERS.md) for the adapter contract, required tests, capture format and compatibility rules. Keep transport → decoder → normalized samples → store separate. Missing battery/ambient is unknown; sentinel values are invalid; replay and historical imports cannot trigger live recording by default. Preserve timestamps and units. Test malformed, partial, future-version and multi-device data before proposing direct support. Use community reports to locate model/version gaps, not to certify whole brands.
 
 ## Contribute with an agent
 

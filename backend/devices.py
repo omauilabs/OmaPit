@@ -1,7 +1,7 @@
 """Device storage, replay and optional BLE transport for OmaPit."""
 import argparse, asyncio, hashlib, json, math, subprocess, sys, time
 from pathlib import Path
-from adapters.chefiq import decode, MANUFACTURER_ID
+import adapters
 
 STALE_SECONDS = 30
 
@@ -64,7 +64,7 @@ def snapshot(db):
     selected=db.execute('SELECT device FROM cook_devices WHERE cook=?',(active[0],)).fetchone() if active else None
     return {'devices':result,'selected_device':selected[0] if selected else None,'scanner':scanner_state(db),'stale_seconds':STALE_SECONDS}
 
-def ingest(db, ident, payload, *, source='ble', at=None, name='', rssi=None):
+def ingest(db, ident, payload, *, source='ble', at=None, name='', rssi=None, adapter='chefiq'):
     if not db.in_transaction:db.execute('BEGIN IMMEDIATE')
     if source not in ('ble','replay'): raise ValueError('Invalid source.')
     if not isinstance(ident,str) or not 1<=len(ident)<=160: raise ValueError('Invalid device identity.')
@@ -74,10 +74,11 @@ def ingest(db, ident, payload, *, source='ble', at=None, name='', rssi=None):
     if not math.isfinite(at) or at<0 or at>time.time()+5: raise ValueError('Invalid sample timestamp.')
     known=db.execute('SELECT last_seen FROM devices WHERE id=?',(ident,)).fetchone()
     if known and at<known[0]: return False  # delayed data cannot overwrite latest state
-    name=str(name or 'CHEF iQ probe')[:80]
-    model=next((m for m in ['CQ50','CQ60'] if m in name.upper()),'Unknown')
-    try: decoded=decode(payload); error=None
-    except ValueError as e: decoded={'protocol':None,'evidence':'unsupported','adapter_version':'0.2.0','channels':{}}; error=str(e)
+    adapter=adapters.get(adapter)
+    name=str(name or adapter.DEFAULT_NAME)[:80]
+    model=adapter.model_from_name(name)
+    try: decoded=adapter.decode(payload); error=None
+    except ValueError as e: decoded={'protocol':None,'evidence':'unsupported','adapter_version':adapter.ADAPTER_VERSION,'channels':{}}; error=str(e)
     db.execute('''INSERT INTO devices VALUES(?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET
       name=excluded.name,model=excluded.model,protocol=excluded.protocol,evidence=excluded.evidence,
       last_seen=excluded.last_seen,rssi=excluded.rssi,error=excluded.error,adapter_version=excluded.adapter_version''',
@@ -115,8 +116,10 @@ def replay(db, path):
         if row.get('schema')!=1: raise ValueError('Unsupported capture schema.')
         at=float(row['relative_seconds'])
         if not math.isfinite(at) or at<0: raise ValueError('Invalid relative timestamp.')
+        # Captures without an adapter field predate the registry and are CHEF iQ.
+        adapter=adapters.get(row.get('adapter','chefiq'))
         ident='replay:'+digest+':'+str(row['device'])
-        ingest(db,ident,bytes.fromhex(row['payload_hex']),source='replay',at=at,name=row.get('name','CHEF iQ replay'),rssi=row.get('rssi'))
+        ingest(db,ident,bytes.fromhex(row['payload_hex']),source='replay',at=at,name=row.get('name',adapter.NAME+' replay'),rssi=row.get('rssi'),adapter=adapter.ADAPTER_ID)
     return len(rows)
 
 async def scan(dbpath, seconds, capture=None, address=None):
@@ -127,16 +130,15 @@ async def scan(dbpath, seconds, capture=None, address=None):
         if capture and not address: raise ValueError('Capture requires --address to select one probe.')
         if capture: output=open(capture,'x')
         def received(device, advert):
-            payload=advert.manufacturer_data.get(MANUFACTURER_ID)
-            if payload is None or not 2<=len(payload)<=18: return
+            matched=adapters.match(advert.manufacturer_data)
+            if matched is None: return
+            adapter,payload=matched
             if address and device.address.lower()!=address.lower(): return
             with db:
-                ingest(db,'ble:'+device.address,payload,name=advert.local_name or device.name or 'CHEF iQ probe',rssi=advert.rssi)
+                ingest(db,'ble:'+device.address,payload,name=advert.local_name or device.name or adapter.DEFAULT_NAME,rssi=advert.rssi,adapter=adapter.ADAPTER_ID)
             if output:
                 label=alias.setdefault(device.address,'probe-'+str(len(alias)+1))
-                safe=bytearray(payload)
-                if (payload[0]&15)==3 or ((payload[0]&15)==1 and (payload[1]>>4)<2):safe[2:8]=bytes(min(6,len(safe)-2))
-                output.write(json.dumps({'schema':1,'device':label,'name':'CHEF iQ probe','relative_seconds':round(time.time()-start,3),'payload_hex':safe.hex(),'rssi':advert.rssi})+'\n');output.flush()
+                output.write(json.dumps({'schema':1,'adapter':adapter.ADAPTER_ID,'device':label,'name':adapter.DEFAULT_NAME,'relative_seconds':round(time.time()-start,3),'payload_hex':adapter.redact(payload).hex(),'rssi':advert.rssi})+'\n');output.flush()
         async with BleakScanner(detection_callback=received):
             while True:
                 recording=db.execute("SELECT 1 FROM cooks c JOIN cook_devices d ON c.id=d.cook WHERE c.finished IS NULL AND c.source='ble' LIMIT 1").fetchone() is not None
