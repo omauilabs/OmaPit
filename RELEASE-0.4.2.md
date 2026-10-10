@@ -9,13 +9,15 @@ October 5, 2026. Tagged as a pre-release. This is a software milestone for the b
 - Also in this build: Equipment & fire guides, the Meat market USDA snapshot, cut and sauce explorers, and the owner-authorized visual bundle (see ASSET-LICENSES.md and ROADMAP.md).
 - Continuous integration runs the Python, community benchmark and packaging tests plus the production build on every push and pull request.
 - The lazily loaded three.js bundle is split into two chunks so the production build is free of size warnings (see Bundle size).
+- The browser preview has a favicon: an amber flame on the app's dark background (`favicon.svg`), plus a 180 px icon for phone home screens.
 
 ## Software validation
 
 - 69 Python tests and 14 community benchmark tests pass.
 - Four Sites packaging tests pass. `npm ci` and `npm run build` succeed from a fresh checkout without chunk-size warnings.
 - The preview server started against an isolated database with `--seed-demo`; desktop and 390 px layouts rendered without horizontal overflow or page errors.
-- 3D cut viewer, checked in Chromium with software WebGL: the beef model loads, card and model selection highlight the matching region, and Rotate works. The only failed request was `/favicon.ico`; the app has no favicon.
+- 3D cut viewer, checked in Chromium with software WebGL: the beef model loads, card and model selection highlight the matching region, and Rotate works.
+- Favicon, checked in Chromium: the page links `/favicon.svg` and the apple-touch-icon, the browser fetches the SVG, and it no longer requests `/favicon.ico`.
 
 ### Bundle size
 
