@@ -8,7 +8,7 @@ Design records, research and QA notes behind OmaPit. User-facing documentation i
 | [COMPETITIVE-RESEARCH.md](COMPETITIVE-RESEARCH.md) | Competitor review and product priorities |
 | [design-qa.md](design-qa.md) | Visual design and browser verification record |
 | [RELEASE-ACCEPTANCE.md](RELEASE-ACCEPTANCE.md) | 0.3.0 acceptance record |
-| [RELEASE-0.4.0.md](RELEASE-0.4.0.md), [RELEASE-0.4.2.md](RELEASE-0.4.2.md) | Earlier release notes |
+| [RELEASE-0.4.0.md](RELEASE-0.4.0.md), [RELEASE-0.4.2.md](RELEASE-0.4.2.md), [RELEASE-0.5.0.md](RELEASE-0.5.0.md) | Earlier release notes |
 | [CUT-EXPLORER.md](CUT-EXPLORER.md), [CUT-HIGHLIGHT-CORRECTIONS.md](CUT-HIGHLIGHT-CORRECTIONS.md), [POULTRY-STATUS.md](POULTRY-STATUS.md) | 3D cut explorer and its region alignment |
 | [MEAL-EXPLORERS.md](MEAL-EXPLORERS.md), [SAUCE-EXPLORER.md](SAUCE-EXPLORER.md), [sauce-explorer-qa.md](sauce-explorer-qa.md), [SAUCE-POUR-STUDY.md](SAUCE-POUR-STUDY.md) | Meal and sauce explorers |
 | [FLAVOR-LIBRARIES.md](FLAVOR-LIBRARIES.md), [FLAVOR-LIBRARIES-QA.md](FLAVOR-LIBRARIES-QA.md) | Rubs, sauces and the flavour maker |

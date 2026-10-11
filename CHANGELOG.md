@@ -2,7 +2,10 @@
 
 Highlights of each release, newest first. Each release has fuller notes and validation limits where linked.
 
-## Unreleased
+## 0.5.1
+
+Native theme fixes and a QML runtime test. See [0.5.1 release notes](RELEASE-0.5.1.md).
+
 
 - **Native theme fix.** The panel and bar widget now read Omarchy's palette as `Commons.Color`, as Omarchy's plugin documentation requires. A bare `Color` resolves to Qt's own type in files that import QtQuick.Controls, so the panel's background, text, border and alarm colours were undefined. The `muted` border colour, which Omarchy does not provide, is now derived from the theme's foreground.
 - **Native text follows your Omarchy font size.** Panel, widget, chart and checkbox text scale with Omarchy's `[font] base-size` (via `Style.font.body`); at the default size nothing changes. The chart's last time label is no longer clipped.
@@ -11,7 +14,7 @@ Highlights of each release, newest first. Each release has fuller notes and vali
 
 ## 0.5.0
 
-An adapter registry and guide, a generated compatibility page, a plugin installer with update and rollback, read-only diagnostics, bundled fonts, accessibility fixes, and CI against real MQTT and ntfy servers. See [0.5.0 release notes](RELEASE-0.5.0.md) for validation and open gates.
+An adapter registry and guide, a generated compatibility page, a plugin installer with update and rollback, read-only diagnostics, bundled fonts, accessibility fixes, and CI against real MQTT and ntfy servers. See [0.5.0 release notes](docs/RELEASE-0.5.0.md) for validation and open gates.
 
 ## 0.4.2: notification bell
 
