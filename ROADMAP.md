@@ -143,6 +143,7 @@ Moved browser notification status, permission and test controls into a bell popo
 - [OMARCHY-ACCEPTANCE.md](OMARCHY-ACCEPTANCE.md): a step-by-step checklist and results template for the first native run on Omarchy.
 - [ADAPTER-CANDIDATES.md](ADAPTER-CANDIDATES.md): the feasibility review of MEATER, ThermoPro, Inkbird, FireBoard and Combustion. No new brand is supported.
 - Issue forms for bugs, Omarchy acceptance results and thermometer requests, plus [SECURITY.md](SECURITY.md) for private vulnerability reports.
+- Native theme fix: the panel and widget read Omarchy's palette as `Commons.Color`, as Omarchy's plugin docs require, because a bare `Color` resolves to Qt's own type wherever QtQuick.Controls is imported, leaving the panel's colours undefined. The undocumented `muted` role is now derived from the theme foreground. CI loads the plugin offscreen against stand-ins for Quickshell and Omarchy with the real backend and fails on any QML warning; this is still not a run on Omarchy.
 
 ## 0.5.0 release groundwork — October 10, 2026
 

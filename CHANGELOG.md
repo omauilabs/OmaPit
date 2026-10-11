@@ -2,6 +2,12 @@
 
 Highlights of each release, newest first. Each release has fuller notes and validation limits where linked.
 
+## Unreleased
+
+- **Native theme fix.** The panel and bar widget now read Omarchy's palette as `Commons.Color`, as Omarchy's plugin documentation requires. A bare `Color` resolves to Qt's own type in files that import QtQuick.Controls, so the panel's background, text, border and alarm colours were undefined. The `muted` border colour, which Omarchy does not provide, is now derived from the theme's foreground.
+- **QML runtime test.** CI loads the plugin offscreen against stand-ins for Quickshell and Omarchy, with the real backend behind them, and fails on any QML warning. It walks every view, a full manual cook, the demo and a saved cook. It does not replace a run on Omarchy.
+- Issue forms, a security policy, a rewritten README and the adapter feasibility review ([ADAPTER-CANDIDATES.md](ADAPTER-CANDIDATES.md)).
+
 ## 0.5.0
 
 An adapter registry and guide, a generated compatibility page, a plugin installer with update and rollback, read-only diagnostics, bundled fonts, accessibility fixes, and CI against real MQTT and ntfy servers. See [0.5.0 release notes](RELEASE-0.5.0.md) for validation and open gates.

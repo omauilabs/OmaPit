@@ -121,7 +121,7 @@ python3 -m unittest discover -s community -p 'test_*.py' -v
 cd preview && npm test
 ```
 
-CI also checks the QML for syntax errors and audits every browser view for WCAG 2.1 A/AA issues at desktop and phone widths. A QML syntax check is not a runtime test; see [design-qa.md](docs/design-qa.md) and [RELEASE-ACCEPTANCE.md](docs/RELEASE-ACCEPTANCE.md) for what has been checked by hand.
+CI also checks the QML for syntax errors, loads the plugin offscreen against stand-ins for Quickshell and Omarchy with the real backend behind them (`tests/test_qml_runtime.py`), and audits every browser view for WCAG 2.1 A/AA issues at desktop and phone widths. Neither QML check is a run on Omarchy; see [design-qa.md](docs/design-qa.md) and [RELEASE-ACCEPTANCE.md](docs/RELEASE-ACCEPTANCE.md) for what has been checked by hand.
 
 ## Contribute
 
