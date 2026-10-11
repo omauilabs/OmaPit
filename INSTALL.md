@@ -1,6 +1,6 @@
 # Install, update and roll back
 
-The Omarchy plugin itself has not yet been accepted on a real Omarchy install. The installer below has been tested against a temporary home folder only. Please report what happens on your machine; see [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
+The Omarchy plugin itself has not yet been accepted on a real Omarchy install. The installer below has been tested against a temporary home folder only. Please report what happens on your machine: [OMARCHY-ACCEPTANCE.md](OMARCHY-ACCEPTANCE.md) is a checklist with a results block to copy, and [TROUBLESHOOTING.md](TROUBLESHOOTING.md) explains warnings.
 
 ## Install
 

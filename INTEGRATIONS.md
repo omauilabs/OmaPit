@@ -1,6 +1,6 @@
 # OmaPit integrations — 0.3.0
 
-Everything is opt-in. No hardware scans, Home Assistant connections, MQTT subscriptions or external messages were run automatically while developing this release; the MQTT tests use a throwaway broker on the test machine only. Contract tests and mock notification delivery do not establish hardware compatibility.
+Everything is opt-in. No hardware scans, Home Assistant connections, MQTT subscriptions or external messages were run automatically while developing this release; the MQTT, ntfy and Home Assistant tests use throwaway local servers on the test machine only. Contract tests and mock notification delivery do not establish hardware compatibility.
 
 ## Bridge schema v1
 
@@ -35,6 +35,8 @@ python3 backend/bridges.py --db JOURNAL ha --url http://YOUR_HA_HOST:8123 --enti
 ```
 
 Each entity becomes its own bridge device. Map it to the appropriate food. Polling defaults to 15 seconds; failures never synthesize readings. The worker preserves `last_reported` when available, otherwise `last_updated`. Integrations that only update timestamps when a value changes may appear stale at a stable temperature; a timestamp-aware publisher is preferable to pretending every HTTP poll is a new measurement. Unavailable states invalidate a channel only when they include a recognized unit and fresh timestamp; otherwise the old channel ages out. Cloud-backed HA integrations remain cloud-dependent.
+
+`tests/test_home_assistant.py` runs this bridge against a real local Home Assistant Core instance with a user access token: readings are stored with unit conversion and Home Assistant's own timestamps, an unchanged state is not recorded twice, an `unavailable` sensor clears the reading, an entity older than 30 seconds is not treated as live, and a wrong token records nothing. It runs when `HA_PYTHON` points at a Python with `homeassistant` installed. The test writes entity states through the REST API; no thermometer integration has been tested through Home Assistant.
 
 Reference: [Home Assistant REST API](https://developers.home-assistant.io/docs/api/rest/).
 
