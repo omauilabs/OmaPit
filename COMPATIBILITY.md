@@ -26,4 +26,4 @@ A bridge carries readings from another system. Its status says nothing about whi
 
 ## Not supported yet
 
-MEATER, ThermoPro, Inkbird, FireBoard, Combustion and other brands are candidates under review, not supported devices. Owners can help by sharing an aggregate report; see [community/README.md](community/README.md). Developers can add a device by following [ADAPTERS.md](ADAPTERS.md).
+MEATER, ThermoPro, Inkbird, FireBoard, Combustion and other brands are not supported. [ADAPTER-CANDIDATES.md](ADAPTER-CANDIDATES.md) reviews how each could be added. Owners can help by sharing an aggregate report; see [community/README.md](community/README.md). Developers can add a device by following [ADAPTERS.md](ADAPTERS.md).
