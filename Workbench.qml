@@ -62,7 +62,7 @@ ColumnLayout {
         RowLayout{Layout.fillWidth:true;Entry{id:foodZone;text:"Main grill";placeholderText:"Grill / zone"}Entry{id:foodTarget;placeholderText:"Personal target °"+root.data.unit;inputMethodHints:Qt.ImhFormattedNumbersOnly}}
         Choice{id:foodCategory;model:["quick","poultry","vegetables","smoke","manual"]}
         TextArea{id:foodSteps;Layout.fillWidth:true;placeholderText:"Optional steps, one per line";palette.text:root.ink;palette.base:root.bg}
-        Press{text:"Add food";enabled:!root.store.busy && root.data.active && root.data.active.source!=="demo";onClicked:root.send("food_add",{name:foodName.text,zone:foodZone.text,target:foodTarget.text,unit:root.data.unit,category:foodCategory.currentText,steps:foodSteps.text})}
+        Press{text:"Add food";enabled:!root.store.busy && !!root.data.active && root.data.active.source!=="demo";onClicked:root.send("food_add",{name:foodName.text,zone:foodZone.text,target:foodTarget.text,unit:root.data.unit,category:foodCategory.currentText,steps:foodSteps.text})}
         Repeater{model:root.foods;delegate:ColumnLayout{
             required property var modelData
             Layout.fillWidth:true;spacing:10

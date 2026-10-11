@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
-import qs.Commons
+import qs.Commons as Commons
 
 Item {
     id: root
@@ -25,8 +25,10 @@ Item {
     readonly property bool live: active && active.source==="ble"
     readonly property var last: live ? {meat:selected && selected.channels.food && selected.channels.food.value!==null?selected.channels.food.value*9/5+32:null,pit:selected && selected.channels.ambient && selected.channels.ambient.value!==null?selected.channels.ambient.value*9/5+32:null} : journalLast
     readonly property bool demo: active ? active.source === "demo" : false
-    readonly property color bg: Color.background
-    readonly property color ink: Color.foreground
+    readonly property color bg: Commons.Color.background
+    readonly property color ink: Commons.Color.foreground
+    // Omarchy has no muted role; derive it from the theme foreground.
+    readonly property color muted: Qt.rgba(ink.r, ink.g, ink.b, 0.45)
     readonly property color accent: "#e0af68"
     readonly property color blue: "#7aa2f7"
     readonly property var stages: ["Smoke","Wrap","Rest","Serve"]
@@ -45,7 +47,7 @@ Item {
         font.family:"monospace"
         font.pixelSize:13
         contentItem: Text {text:control.text;color:control.primary?root.bg:root.ink;font:control.font;horizontalAlignment:Text.AlignHCenter;verticalAlignment:Text.AlignVCenter;opacity:control.enabled?1:0.45}
-        background: Rectangle {color:control.primary?root.accent:(control.hovered?Qt.rgba(Color.foreground.r, Color.foreground.g, Color.foreground.b, 0.08):"transparent");border.color:control.primary?root.accent:Color.muted;radius:4;opacity:control.enabled?1:.5}
+        background: Rectangle {color:control.primary?root.accent:(control.hovered?Qt.rgba(Commons.Color.foreground.r, Commons.Color.foreground.g, Commons.Color.foreground.b, 0.08):"transparent");border.color:control.primary?root.accent:root.muted;radius:4;opacity:control.enabled?1:.5}
     }
     FloatingWindow {
         id:window
@@ -58,7 +60,7 @@ Item {
         ColumnLayout {
             anchors.fill:parent;spacing:0
             Rectangle {
-                Layout.fillWidth:true;Layout.preferredHeight:72;color:root.bg;border.color:Color.muted
+                Layout.fillWidth:true;Layout.preferredHeight:72;color:root.bg;border.color:root.muted
                 RowLayout {
                     anchors.fill:parent;anchors.margins:20;spacing:12
                     LabelText{text:"OmaPit";font.pixelSize:25;font.bold:true;color:root.accent}
@@ -75,7 +77,7 @@ Item {
                 Item{Layout.fillWidth:true}
             }
             ActionButton{Layout.fillWidth:true;visible:(bridge.snapshot.alarm_episodes || []).some(e=>e.resolved===null && !e.acknowledged && e.snoozed_until<Date.now()/1000);text:"A cook alarm needs attention — open alarms";onClicked:{root.view="workbench";workbench.section="alarms"}}
-            LabelText { Layout.fillWidth:true;Layout.margins:12;visible:bridge.error!=="";text:bridge.error;color:Color.urgent }
+            LabelText { Layout.fillWidth:true;Layout.margins:12;visible:bridge.error!=="";text:bridge.error;color:Commons.Color.urgent }
             ScrollView {
                 id:scroller
                 Layout.fillWidth:true;Layout.fillHeight:true;contentWidth:availableWidth;clip:true
@@ -105,14 +107,14 @@ Item {
                         RowLayout {
                             Layout.fillWidth:true;spacing:18
                             Rectangle {
-                                Layout.fillWidth:true;Layout.preferredHeight:305;color:"transparent";border.color:Color.muted;radius:4
+                                Layout.fillWidth:true;Layout.preferredHeight:305;color:"transparent";border.color:root.muted;radius:4
                                 ColumnLayout {anchors.fill:parent;anchors.margins:18
                                     LabelText{text:"Temperature history"}
                                     Chart {Layout.fillWidth:true;Layout.fillHeight:true;readings:root.readings;unit:bridge.snapshot.unit;foodColor:root.blue;pitColor:root.accent;ink:root.ink}
                                 }
                             }
                             Rectangle {
-                                visible:!(bridge.snapshot.foods || []).length;Layout.preferredWidth:290;Layout.preferredHeight:305;color:"transparent";border.color:Color.muted;radius:4
+                                visible:!(bridge.snapshot.foods || []).length;Layout.preferredWidth:290;Layout.preferredHeight:305;color:"transparent";border.color:root.muted;radius:4
                                 ColumnLayout {anchors.fill:parent;anchors.margins:20;spacing:12
                                     LabelText{text:"NEXT STEP";font.pixelSize:11;opacity:.7}
                                     LabelText{text:root.active?["Wrap when the bark is ready.","Let it cook, then rest.","Rest before you slice.","Bring everyone to the table."][root.active.stage]:"";font.pixelSize:20;font.bold:true;Layout.fillWidth:true}
@@ -124,7 +126,7 @@ Item {
                             }
                         }
                         Rectangle {
-                            Layout.fillWidth:true;Layout.preferredHeight:195;color:"transparent";border.color:Color.muted;radius:4
+                            Layout.fillWidth:true;Layout.preferredHeight:195;color:"transparent";border.color:root.muted;radius:4
                             RowLayout {anchors.fill:parent;anchors.margins:20;spacing:28
                                 ColumnLayout {Layout.preferredWidth:300;LabelText{text:"Cook stage"}
                                     RowLayout {spacing:15;Repeater {model:root.stages;delegate:LabelText {required property int index;required property string modelData;text:modelData;color:root.active && index<=root.active.stage?root.accent:root.ink;font.bold:root.active && index===root.active.stage}}}
@@ -157,7 +159,7 @@ Item {
                         LabelText{text:"Your thermometers";font.pixelSize:30}
                         LabelText{Layout.fillWidth:true;text:"CHEF iQ CQ50 / CQ60 · experimental local Bluetooth adapter. Wake the probe near this computer."}
                         ActionButton{text:bridge.snapshot.scanner && bridge.snapshot.scanner.status==="scanning"?"Listening for probes…":"Scan for 60 seconds";enabled:!bridge.snapshot.scanner || bridge.snapshot.scanner.status!=="scanning";onClicked:root.action("scan")}
-                        LabelText{Layout.fillWidth:true;text:bridge.snapshot.scanner && bridge.snapshot.scanner.error?bridge.snapshot.scanner.error:"";color:Color.urgent}
+                        LabelText{Layout.fillWidth:true;text:bridge.snapshot.scanner && bridge.snapshot.scanner.error?bridge.snapshot.scanner.error:"";color:Commons.Color.urgent}
                         Repeater {model:bridge.snapshot.devices || [];delegate:ColumnLayout {
                             required property var modelData;Layout.fillWidth:true;spacing:12
                             LabelText{Layout.fillWidth:true;text:modelData.name+" · "+modelData.model+" · "+modelData.status;font.pixelSize:20}
@@ -191,7 +193,7 @@ Item {
                 LabelText{Layout.fillWidth:true;visible:root.dialogMode==="history";text:bridge.archive?bridge.archive.cook.name+" · "+bridge.archive.cook.source:"";font.pixelSize:20}
                 Chart{Layout.fillWidth:true;Layout.preferredHeight:210;visible:root.dialogMode==="history";readings:bridge.archive?bridge.archive.readings:[];unit:bridge.snapshot.unit;foodColor:root.blue;pitColor:root.accent;ink:root.ink}
                 LabelText{Layout.fillWidth:true;visible:root.dialogMode==="history";text:bridge.archive?bridge.archive.events.map(function(e){return root.timeLabel(e.at)+"  "+e.note}).join("\n"):"";font.pixelSize:12;maximumLineCount:9;elide:Text.ElideRight}
-                LabelText{Layout.fillWidth:true;visible:bridge.error!=="";text:bridge.error;color:Color.urgent}
+                LabelText{Layout.fillWidth:true;visible:bridge.error!=="";text:bridge.error;color:Commons.Color.urgent}
                 RowLayout {
                     Item{Layout.fillWidth:true}
                     ActionButton{text:"Close";onClicked:modal.close()}

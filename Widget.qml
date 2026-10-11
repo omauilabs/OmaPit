@@ -1,5 +1,5 @@
 import QtQuick
-import qs.Commons
+import qs.Commons as Commons
 
 Item {
     id: root
@@ -19,11 +19,11 @@ Item {
     function close() { panel.close() }
     function togglePanel() { opened ? close() : open("") }
     Main { id: panel }
-    Rectangle { anchors.fill:parent; radius:4; color: hover.containsMouse ? Qt.rgba(Color.foreground.r, Color.foreground.g, Color.foreground.b, 0.08) : "transparent" }
+    Rectangle { anchors.fill:parent; radius:4; color: hover.containsMouse ? Qt.rgba(Commons.Color.foreground.r, Commons.Color.foreground.g, Commons.Color.foreground.b, 0.08) : "transparent" }
     Text {
         id: label
         anchors.centerIn:parent
-        color:root.alarm ? Color.urgent : bar ? bar.foreground : Color.foreground
+        color:root.alarm ? Commons.Color.urgent : bar ? bar.foreground : Commons.Color.foreground
         font.family: bar ? bar.fontFamily : "monospace"
         font.pixelSize:13
         text: {

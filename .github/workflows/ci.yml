@@ -38,12 +38,15 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_mqtt_broker.py' -v
 
   qml:
-    # Syntax check only: Quickshell/Omarchy modules are unavailable here.
+    # Syntax check, then a runtime load against stand-ins for Quickshell and
+    # Omarchy (tests/qml/stubs) with the real backend. Not native acceptance.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get update && sudo apt-get install -y qt6-declarative-dev-tools qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtquick-templates
+      - run: sudo apt-get update && sudo apt-get install -y qt6-declarative-dev-tools qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtquick-templates qml6-module-qtquick-window qml6-module-qtqml-workerscript qml6-module-qttest
       - run: python3 packaging/check_qml.py
+      - name: QML runtime test
+        run: OMAPIT_REQUIRE_QML=1 QMLTESTRUNNER=/usr/lib/qt6/bin/qmltestrunner python3 -m unittest tests.test_qml_runtime -v
 
   ntfy:
     # Alarm delivery to a real ntfy server (tests/test_ntfy_delivery.py), built from its pinned Go module.
