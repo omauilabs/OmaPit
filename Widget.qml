@@ -25,7 +25,7 @@ Item {
         anchors.centerIn:parent
         color:root.alarm ? Commons.Color.urgent : bar ? bar.foreground : Commons.Color.foreground
         font.family: bar ? bar.fontFamily : "monospace"
-        font.pixelSize:13
+        font.pixelSize: Math.round(13 * Commons.Style.font.body / 12)
         text: {
             var s=panel.store.snapshot, c=s.active
             if(root.alarm) return "PIT · ALARM"

@@ -9,6 +9,8 @@ ColumnLayout {
     property color bg: "#151922"
     property color accent: "#e0af68"
     property string section: "foods"
+    property real textScale: 1
+    function fontPx(size) { return Math.round(size * textScale) }
     property var data: store.snapshot
     property var foods: data.foods || []
     property var grills: data.plan ? (data.plan.resources || []) : []
@@ -20,14 +22,14 @@ ColumnLayout {
     function send(command,payload) { store.request(command,payload || {}) }
     function temperature(value) { return value===null || value===undefined?"—":Math.round(data.unit==="C"?(value-32)*5/9:value) }
     function when(value) { return value?new Date(value*1000).toLocaleString():"No goal set" }
-    component Copy: Text {color:root.ink;font.family:"monospace";font.pixelSize:13;wrapMode:Text.Wrap;Layout.fillWidth:true}
+    component Copy: Text {color:root.ink;font.family:"monospace";font.pixelSize:root.fontPx(13);wrapMode:Text.Wrap;Layout.fillWidth:true}
     component Entry: TextField {Layout.fillWidth:true;palette.text:root.ink;palette.base:root.bg;font.family:"monospace";selectByMouse:true}
     component Choice: ComboBox {Layout.fillWidth:true;palette.text:root.ink;palette.buttonText:root.ink;palette.button:root.bg}
     component Press: Button {palette.buttonText:root.ink;palette.button:root.bg;enabled:!root.store.busy}
-    Copy{text:"Meal workbench";font.pixelSize:28;color:root.accent}
+    Copy{text:"Meal workbench";font.pixelSize:root.fontPx(28);color:root.accent}
     Copy{text:"Targets are personal preferences. Experimental trends do not assess food safety. Native controls require Linux acceptance.";opacity:.8}
     ColumnLayout {visible:root.section==="next";Layout.fillWidth:true;spacing:14
-        Copy{text:"Your next move";font.pixelSize:24;color:root.accent}
+        Copy{text:"Your next move";font.pixelSize:root.fontPx(24);color:root.accent}
         Copy{text:root.urgentAlarm?root.urgentAlarm.label:root.nextTask?(root.nextTask.started?"Check progress: ":"Up next: ")+root.nextTask.name:"Add a meal plan for coordinated actions."}
         Copy{text:root.nextTask?root.when(root.nextTask.planned_start)+" · "+root.nextTask.duration/60+"m estimate":""}
         RowLayout {
@@ -39,7 +41,7 @@ ColumnLayout {
         Copy{text:"Completion needs your confirmation. Elapsed estimates do not establish doneness."}
     }
     ColumnLayout {visible:root.section==="setup";Layout.fillWidth:true;spacing:14
-        Copy{text:root.data.active?"Finish and save your active cook before creating a guided meal.":"Guided meal · one grill, main and optional side";font.pixelSize:20;color:root.accent}
+        Copy{text:root.data.active?"Finish and save your active cook before creating a guided meal.":"Guided meal · one grill, main and optional side";font.pixelSize:root.fontPx(20);color:root.accent}
         Entry{id:mealName;placeholderText:"Meal name";text:"Sunday dinner"}
         Entry{id:mealDate;placeholderText:"Serving date/time with offset";text:new Date(Date.now()+7200000).toISOString()}
         RowLayout{Entry{id:setupGrill;text:"Main grill";placeholderText:"Grill name"}Entry{id:setupCapacity;text:"2";placeholderText:"Space units"}}
@@ -66,7 +68,7 @@ ColumnLayout {
         Repeater{model:root.foods;delegate:ColumnLayout{
             required property var modelData
             Layout.fillWidth:true;spacing:10
-            Copy{text:modelData.name+" · "+modelData.zone;font.pixelSize:20;color:root.accent}
+            Copy{text:modelData.name+" · "+modelData.zone;font.pixelSize:root.fontPx(20);color:root.accent}
             Copy{text:(modelData.finished?"Completed":modelData.steps[modelData.stage])+" · target "+root.temperature(modelData.target_f)+"°"+root.data.unit+" · "+(modelData.reading?root.temperature(modelData.reading.value_f)+"° · "+(modelData.reading.fresh?"recent":"stale")+" "+modelData.reading.source:"no reading")}
             RowLayout{visible:!modelData.finished;Layout.fillWidth:true
                 Choice{id:probeChoice;model:["Manual"].concat(root.liveDevices.map(d=>d.name));currentIndex:modelData.device?root.liveDevices.findIndex(d=>d.id===modelData.device)+1:0}
@@ -122,11 +124,11 @@ ColumnLayout {
         Press{text:"Save recipe";onClicked:root.send("recipe_save",{name:recipeName.text,servings:recipeServings.text,ingredients:ingredients.text,steps:instructions.text})}
         TextArea{id:importText;Layout.fillWidth:true;placeholderText:"Paste Recipe JSON / JSON-LD / page HTML";palette.text:root.ink;palette.base:root.bg}
         Press{text:"Import recipe";onClicked:root.send("recipe_import",{text:importText.text})}
-        Repeater{model:root.data.recipes || [];delegate:ColumnLayout{required property var modelData;Layout.fillWidth:true;Copy{text:modelData.name+" · "+modelData.servings+" servings";color:root.accent;font.pixelSize:20}Copy{text:modelData.ingredients.join("\n")}Copy{text:modelData.steps.map((s,i)=>(i+1)+". "+s).join("\n")}}}
+        Repeater{model:root.data.recipes || [];delegate:ColumnLayout{required property var modelData;Layout.fillWidth:true;Copy{text:modelData.name+" · "+modelData.servings+" servings";color:root.accent;font.pixelSize:root.fontPx(20)}Copy{text:modelData.ingredients.join("\n")}Copy{text:modelData.steps.map((s,i)=>(i+1)+". "+s).join("\n")}}}
     }
     ColumnLayout{visible:root.section==="insights";Layout.fillWidth:true;spacing:16
         Repeater{model:root.foods.filter(f=>!f.finished);delegate:ColumnLayout{required property var modelData;property var forecast:root.data.predictions ? root.data.predictions[modelData.id]:null;Layout.fillWidth:true
-            Copy{text:modelData.name+" · "+(forecast && forecast.status==="estimate"?root.when(forecast.earliest)+" – "+root.when(forecast.latest):forecast?forecast.status:"Waiting for data");color:root.accent;font.pixelSize:19}
+            Copy{text:modelData.name+" · "+(forecast && forecast.status==="estimate"?root.when(forecast.earliest)+" – "+root.when(forecast.latest):forecast?forecast.status:"Waiting for data");color:root.accent;font.pixelSize:root.fontPx(19)}
             Copy{text:forecast?forecast.reason:""}
         }}
         Copy{text:"Experimental local trend ranges. Photos, per-food comparison charts, backup downloads and prediction evaluation are available in the browser companion. No calibrated confidence or hardware reliability claim is made."}

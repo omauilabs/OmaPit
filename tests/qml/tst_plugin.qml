@@ -6,6 +6,7 @@
 import QtQuick
 import QtTest
 import "../.."
+import qs.Commons as Commons
 
 TestCase {
     id: test
@@ -90,5 +91,15 @@ TestCase {
         wait(50)
         act("finish", {})
         widget.close()
+    }
+
+    function test_4_text_follows_the_omarchy_font_size() {
+        compare(panel.fontPx(14), 14, "default base size keeps the designed sizes")
+        Commons.Style.font.body = 18
+        compare(panel.fontPx(14), 21, "a larger base size scales the panel text")
+        widget.open(""); settle()
+        visitEveryView()
+        widget.close()
+        Commons.Style.font.body = 12
     }
 }
