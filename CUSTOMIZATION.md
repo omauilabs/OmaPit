@@ -24,6 +24,7 @@ A suggested agent prompt is available in Settings → Make OmaPit better, togeth
 
 - Backend: `python3 -m unittest discover -s tests` from this directory.
 - Benchmark collector: `python3 -m unittest discover -s community -p 'test_*.py'`.
-- Browser: build from preview with `npm run build`, then check affected desktop/mobile views, console errors, keyboard focus and motion preferences. Sites handoff also requires `npm run test:sites`.
+- Native QML syntax: `python3 packaging/check_qml.py` (needs Qt's qmllint). It catches parse errors only; Quickshell and Omarchy types cannot be checked off Omarchy.
+- Browser: build from preview with `npm run build`, then check affected desktop/mobile views, console errors, keyboard focus and motion preferences. `npm test` runs the browser unit and packaging tests. For an automated WCAG 2.1 A/AA check of every view at desktop and phone widths, start the backend against a throwaway database with `--seed-demo --serve 4199` and run `npm run test:a11y`; it catches a subset of problems and does not replace a screen-reader test.
 
 Use an isolated checkout or local patch for personal customization. The public source repository is https://github.com/omauilabs/OmaPit. Release/install acceptance remains in progress. See ASSET-LICENSES.md before publishing bundled models or illustrations.

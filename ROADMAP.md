@@ -135,7 +135,11 @@ Grouped navigation around Cook, Plan and Journal with context-specific views and
 
 ## 0.4.2 notification bell — October 5, 2026
 
-Moved browser notification status, permission and test controls into a bell popover. Tagged as a developer pre-release with continuous integration for the software tests and build. three.js now builds as two lazily loaded chunks so the production build is free of size warnings; total bytes are unchanged. Added a favicon and phone home-screen icon. See RELEASE-0.4.2.md. Native Linux runtime and CHEF iQ field acceptance remain the gates before a stable release.
+Moved browser notification status, permission and test controls into a bell popover. Prepared as a developer pre-release, never tagged, and folded into 0.5.0; added continuous integration for the software tests and build. three.js now builds as two lazily loaded chunks so the production build is free of size warnings; total bytes are unchanged. Added a favicon and phone home-screen icon. See RELEASE-0.4.2.md. Native Linux runtime and CHEF iQ field acceptance remain the gates before a stable release.
+
+## 0.5.0 release groundwork — October 10, 2026
+
+Bundles the untagged 0.4.2 changes with the 1.0 groundwork below. See [RELEASE-0.5.0.md](RELEASE-0.5.0.md).
 
 ## 1.0 release gates — October 10, 2026
 
@@ -146,7 +150,15 @@ Software groundwork for the 1.0 milestone, no hardware involved:
 - Troubleshooting diagnostics: read-only `omapit.py diagnose` and [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
 - Reproducible install and migration/rollback documentation: `packaging/install.py` and [INSTALL.md](INSTALL.md). Tested against a temporary home folder only.
 
-Still open for 1.0: native Linux/Quickshell acceptance, exercising the install/update path on a clean Omarchy setup, the CHEF iQ owner acceptance session, and real bridge and notification sessions.
+Follow-up, same day:
+
+- The browser preview bundles its fonts and makes no third-party requests.
+- The MQTT bridge is tested in CI against a real local Mosquitto broker: retained and stale samples, reconnection, password auth and TLS. A real thermometer publisher is still untested.
+- Alarm delivery is tested in CI against a real self-hosted ntfy server: HTTPS, token access, and refusal of bad tokens and untrusted certificates. Phone receipt is still untested.
+- Every browser view passes an automated WCAG 2.1 A/AA audit (axe-core) at desktop and phone widths in CI, after fixes to three issues. Screen-reader testing is still open.
+- CI checks the native QML for syntax errors with qmllint. Omarchy-only types cannot be checked, so this is not native acceptance.
+
+Still open for 1.0: native Linux/Quickshell acceptance, exercising the install/update path on a clean Omarchy setup, the CHEF iQ owner acceptance session, Linux/BlueZ probe reception, a Home Assistant session, a real MQTT publisher, phone notification receipt, and screen-reader testing.
 
 ## Cut explorer expansion — requested October 4, 2026
 

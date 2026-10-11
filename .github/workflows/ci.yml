@@ -24,6 +24,51 @@ jobs:
       - name: Community benchmark tests
         run: python -m unittest discover -s community -p 'test_*.py' -v
 
+  mqtt:
+    # MQTT bridge against a real local Mosquitto broker (tests/test_mqtt_broker.py).
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: sudo apt-get update && sudo apt-get install -y mosquitto
+      - run: pip install -r backend/requirements-bridge.txt
+      - name: Broker tests
+        run: python -m unittest discover -s tests -p 'test_mqtt_broker.py' -v
+
+  qml:
+    # Syntax check only: Quickshell/Omarchy modules are unavailable here.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y qt6-declarative-dev-tools qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtquick-templates
+      - run: python3 packaging/check_qml.py
+
+  ntfy:
+    # Alarm delivery to a real ntfy server (tests/test_ntfy_delivery.py), built from its pinned Go module.
+    runs-on: ubuntu-latest
+    env:
+      NTFY_VERSION: v2.29.0
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+          cache: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Build ntfy server
+        run: |
+          src=$(go mod download -json "heckel.io/ntfy/v2@$NTFY_VERSION" | python3 -c "import json,sys;print(json.load(sys.stdin)['Dir'])")
+          cp -r "$src" "$RUNNER_TEMP/ntfy-src" && chmod -R u+w "$RUNNER_TEMP/ntfy-src" && cd "$RUNNER_TEMP/ntfy-src"
+          # The web app and docs are not needed; empty placeholders satisfy go:embed.
+          mkdir -p server/site server/docs && echo ok > server/site/index.html && echo ok > server/docs/index.html
+          go build -o "$RUNNER_TEMP/ntfy" .
+      - name: Delivery tests
+        run: NTFY_BIN="$RUNNER_TEMP/ntfy" python -m unittest discover -s tests -p 'test_ntfy_delivery.py' -v
+
   preview:
     runs-on: ubuntu-latest
     defaults:
@@ -38,4 +83,26 @@ jobs:
           cache-dependency-path: preview/package-lock.json
       - run: npm ci
       - run: npm run build
-      - run: npm run test:sites
+      - run: npm test
+
+  a11y:
+    # Automated WCAG 2.1 A/AA audit of every browser view (axe-core); not a screen-reader test.
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: preview/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Audit desktop and phone views
+        run: |
+          python3 ../backend/omapit.py --db "$RUNNER_TEMP/a11y.sqlite3" --static dist/client --seed-demo --serve 4199 &
+          for i in $(seq 30); do curl -sf http://127.0.0.1:4199/ >/dev/null && break; sleep 1; done
+          npm run test:a11y

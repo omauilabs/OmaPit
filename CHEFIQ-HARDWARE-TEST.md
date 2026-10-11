@@ -4,4 +4,4 @@ Local test on October 5, 2026. Detected a real CQ60 advertising protocol 4.0.0 t
 
 Food reception and response to warming are verified. Ambient returned an invalid sensor value, and battery was unavailable. Accuracy against the manufacturer app, cooking performance, range, reconnection and alarms remain unverified.
 
-Installed Bleak in work/chefiq-venv and restarted both local app servers using that environment with the existing journal database.
+Setup: Bleak in a dedicated Python virtual environment, with the local app servers restarted on that interpreter against the existing journal database. Linux/BlueZ reception has not been tested.

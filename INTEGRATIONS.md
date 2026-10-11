@@ -1,6 +1,6 @@
 # OmaPit integrations — 0.3.0
 
-Everything is opt-in. No hardware scans, Home Assistant connections, MQTT subscriptions or external messages were run automatically while developing this release. Contract tests and mock notification delivery do not establish hardware compatibility.
+Everything is opt-in. No hardware scans, Home Assistant connections, MQTT subscriptions or external messages were run automatically while developing this release; the MQTT tests use a throwaway broker on the test machine only. Contract tests and mock notification delivery do not establish hardware compatibility.
 
 ## Bridge schema v1
 
@@ -46,7 +46,7 @@ Install optional `backend/requirements-bridge.txt` in the app environment. Publi
 python3 backend/bridges.py --db JOURNAL mqtt --host YOUR_BROKER --topic omapit/temperatures --tls --port 8883
 ```
 
-Optional credentials: `OMAPIT_MQTT_USER`, `OMAPIT_MQTT_PASSWORD`. TLS verifies certificates using the system trust store. A broker acceptance test remains outstanding. Reference: [Paho Python client](https://eclipse.dev/paho/files/paho.mqtt.python/html/client.html).
+Optional credentials: `OMAPIT_MQTT_USER`, `OMAPIT_MQTT_PASSWORD`. TLS verifies certificates using the system trust store; for a broker with its own certificate authority, set `SSL_CERT_FILE` to that CA file. `tests/test_mqtt_broker.py` exercises the bridge against a real local Mosquitto broker, including retained and stale samples, reconnection, password auth and TLS. It runs when `mosquitto` and paho-mqtt are installed. No real thermometer publisher has been tested. Reference: [Paho Python client](https://eclipse.dev/paho/files/paho.mqtt.python/html/client.html).
 
 ## Phone companion
 
@@ -74,7 +74,7 @@ A systemd user-service template is in `packaging/omapit-monitor.service`; edit i
 - Linux desktop: set `OMAPIT_DESKTOP_NOTIFY=1` for the monitor/server. Uses `notify-send`; native delivery needs Linux acceptance.
 - Phone push: set `OMAPIT_NTFY_URL` to your HTTPS topic and optionally `OMAPIT_NTFY_TOKEN`. Subscribe your phone to that topic using ntfy. Self-hosting is supported through the configured endpoint. Nothing is sent until configured and an alarm actually fires.
 
-Delivery health records sent/failed attempts. Up to three attempts per notice, with ten-second spacing; notices older than a minute are not newly delivered. A crash during an in-flight attempt may leave it `sending`; later alarm repeats provide another notice. Delivery is best-effort, not exactly-once or a safety guarantee. An acknowledged/snoozed/resolved episode is not newly sent. ntfy/provider delivery and phone sound behavior remain unverified. Keep topics/access credentials private. Reference: [ntfy publishing](https://docs.ntfy.sh/publish/).
+Delivery health records sent/failed attempts. Up to three attempts per notice, with ten-second spacing; notices older than a minute are not newly delivered. A crash during an in-flight attempt may leave it `sending`; later alarm repeats provide another notice. Delivery is best-effort, not exactly-once or a safety guarantee. An acknowledged/snoozed/resolved episode is not newly sent. `tests/test_ntfy_delivery.py` exercises delivery to a real self-hosted ntfy server over HTTPS with per-user token access: an alarm arrives once with its title and high priority, while a wrong or missing token, an untrusted certificate or a plain-HTTP URL is refused and recorded as failed. For a server with its own certificate authority, set `SSL_CERT_FILE` to that CA. On Python 3.13 and newer, verification is strict: the CA certificate needs a key usage extension, as certificates from public authorities have. Delivery from ntfy to a phone, and phone sound behavior, remain unverified. Keep topics/access credentials private. Reference: [ntfy publishing](https://docs.ntfy.sh/publish/).
 
 High/low alarms use a two-degree Fahrenheit recovery margin by default to resist jitter; `hysteresis` is configurable in the command payload. Condition buffers and repeat intervals are configurable. Food alarms follow that food's current probe mapping; finishing a food resolves its alarms. Replay/demo samples never trigger live temperature alarms.
 

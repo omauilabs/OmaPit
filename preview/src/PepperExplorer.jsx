@@ -4,7 +4,7 @@ import {Pepper} from '@phosphor-icons/react/dist/csr/Pepper';
 import {peppers,pepperSources,heatBand,shuLabel,heatPosition} from './pepperCatalog';
 import './meal-explorers.css';
 import './peppers.css';
-function HeatRange({pepper}){return <div className="pepper-scale" aria-label={`${pepper.name}: ${shuLabel(pepper)}, logarithmic heat scale`}><span style={{left:`${heatPosition(pepper.min)}%`,width:`${Math.max(1,heatPosition(pepper.max)-heatPosition(pepper.min))}%`}}/></div>}
+function HeatRange({pepper}){return <div className="pepper-scale" role="img" aria-label={`${pepper.name}: ${shuLabel(pepper)}, logarithmic heat scale`}><span style={{left:`${heatPosition(pepper.min)}%`,width:`${Math.max(1,heatPosition(pepper.max)-heatPosition(pepper.min))}%`}}/></div>}
 export function PepperExplorer({download}){
  const [selected,setSelected]=useState('poblano'),[query,setQuery]=useState(''),[region,setRegion]=useState('All'),[heat,setHeat]=useState('All'),[sort,setSort]=useState('heat'),[compare,setCompare]=useState([]),[message,setMessage]=useState('');
  const item=peppers.find(p=>p.id===selected);

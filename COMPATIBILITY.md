@@ -2,7 +2,7 @@
 
 <!-- Generated from assets/compatibility.json by `python3 backend/compatibility.py --write`. Edit the JSON, not this page. -->
 
-OmaPit 0.4.2. Every row is scoped to one model, protocol, transport and adapter version. Nothing here is a claim about other firmware, other units of the same model or the whole brand.
+OmaPit 0.5.0. Every row is scoped to one model, protocol, transport and adapter version. Nothing here is a claim about other firmware, other units of the same model or the whole brand.
 
 **Experimental** means OmaPit decodes the format but it has not passed full owner acceptance on real hardware. **Seen live** lists channels observed from real hardware; it does not cover accuracy, range, reconnection or alarms. OmaPit only reads temperatures: no adapter controls a grill, fan or probe.
 
@@ -22,7 +22,7 @@ A bridge carries readings from another system. Its status says nothing about whi
 |---|---|---|---|
 | JSON v1 | implemented | contract and HTTP tests | publisher-specific; not a universal thermometer API |
 | Home Assistant REST entity polling | experimental transport | contract and mocked REST conversion tests | depends on installed integration; may depend on cloud |
-| MQTT exact-topic subscription | experimental transport | contract tests; broker acceptance pending | publisher must emit OmaPit schema v1 |
+| MQTT exact-topic subscription | experimental transport | contract tests; automated tests against a local Mosquitto 2.0 broker: live, retained, stale and out-of-order samples, reconnection, password auth and TLS verification. No real thermometer publisher tested | publisher must emit OmaPit schema v1 |
 
 ## Not supported yet
 

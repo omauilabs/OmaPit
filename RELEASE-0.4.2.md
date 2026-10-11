@@ -1,6 +1,6 @@
 # OmaPit 0.4.2 — developer preview
 
-October 5, 2026. Tagged as a pre-release. This is a software milestone for the browser preview and Python store; it is not a verified catalog release.
+October 5, 2026. Prepared as a pre-release but never tagged; these changes ship in [0.5.0](RELEASE-0.5.0.md). This is a software milestone for the browser preview and Python store; it is not a verified catalog release.
 
 ## Since 0.4.0
 
