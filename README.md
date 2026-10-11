@@ -1,4 +1,4 @@
-# OmaPit · 0.5.0
+# OmaPit · 0.5.1
 
 Open-source grilling companion from [OmaUI Labs](https://github.com/omauilabs/OmaPit) for [Omarchy](https://github.com/basecamp/omarchy).
 
@@ -107,7 +107,7 @@ Run `python3 backend/omapit.py diagnose` for a read-only report on your install,
 | Writing an adapter | [ADAPTERS.md](ADAPTERS.md) |
 | Customising with an agent | [CUSTOMIZATION.md](CUSTOMIZATION.md) |
 | Sharing hardware test results | [community/README.md](community/README.md) |
-| Release history | [CHANGELOG.md](CHANGELOG.md) and [RELEASE-0.5.0.md](RELEASE-0.5.0.md) |
+| Release history | [CHANGELOG.md](CHANGELOG.md) and [RELEASE-0.5.1.md](RELEASE-0.5.1.md) |
 | Plans and release gates | [ROADMAP.md](ROADMAP.md) |
 | Design, research and QA notes | [docs/](docs/README.md) |
 

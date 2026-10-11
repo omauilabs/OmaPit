@@ -1,6 +1,6 @@
 # OmaPit 0.3.0 acceptance record
 
-Later records: [0.4.0](RELEASE-0.4.0.md), [0.4.2](RELEASE-0.4.2.md), [0.5.0](../RELEASE-0.5.0.md).
+Later records: [0.4.0](RELEASE-0.4.0.md), [0.4.2](RELEASE-0.4.2.md), [0.5.0](RELEASE-0.5.0.md).
 
 October 4, 2026. All five recommended software build stages are implemented. This is a software milestone; field acceptance remains open.
 

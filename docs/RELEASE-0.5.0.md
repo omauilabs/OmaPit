@@ -1,16 +1,16 @@
 # OmaPit 0.5.0 — release groundwork
 
-October 10, 2026. A developer pre-release. It includes everything in [0.4.2](docs/RELEASE-0.4.2.md), which was prepared but never tagged, plus the software groundwork for 1.0 below. It is not a verified catalog release: the native Omarchy plugin and hardware acceptance are still open.
+October 10, 2026. A developer pre-release. It includes everything in [0.4.2](RELEASE-0.4.2.md), which was prepared but never tagged, plus the software groundwork for 1.0 below. It is not a verified catalog release: the native Omarchy plugin and hardware acceptance are still open.
 
 ## New since 0.4.2
 
 **Adding devices and claiming compatibility**
-- Device adapters plug into a registry with a checked contract instead of the code being hard-wired to CHEF iQ. CHEF iQ decoding is unchanged (adapter 0.2.0). See [ADAPTERS.md](ADAPTERS.md).
-- [COMPATIBILITY.md](COMPATIBILITY.md) is generated from a validated manifest. A row can't claim more than its evidence: nothing is "implemented" without an OmaPit live test, and channels show as seen live only where a real observation exists.
+- Device adapters plug into a registry with a checked contract instead of the code being hard-wired to CHEF iQ. CHEF iQ decoding is unchanged (adapter 0.2.0). See [ADAPTERS.md](../ADAPTERS.md).
+- [COMPATIBILITY.md](../COMPATIBILITY.md) is generated from a validated manifest. A row can't claim more than its evidence: nothing is "implemented" without an OmaPit live test, and channels show as seen live only where a real observation exists.
 
 **Installing and troubleshooting**
-- `python3 packaging/install.py` installs or updates the Omarchy plugin. It refuses folders it didn't install, edited files and downgrades unless told otherwise, keeps a backup of the previous version outside the plugin folder, and never touches the cook store. See [INSTALL.md](INSTALL.md) for update, rollback and uninstall.
-- `python3 backend/omapit.py diagnose` gives a read-only report on the install, cook store, optional packages, probes and alarm monitor. It never changes data, and it reports no cook names, notes, temperatures, device addresses or secrets. See [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
+- `python3 packaging/install.py` installs or updates the Omarchy plugin. It refuses folders it didn't install, edited files and downgrades unless told otherwise, keeps a backup of the previous version outside the plugin folder, and never touches the cook store. See [INSTALL.md](../INSTALL.md) for update, rollback and uninstall.
+- `python3 backend/omapit.py diagnose` gives a read-only report on the install, cook store, optional packages, probes and alarm monitor. It never changes data, and it reports no cook names, notes, temperatures, device addresses or secrets. See [TROUBLESHOOTING.md](../TROUBLESHOOTING.md).
 
 **Browser preview**
 - Fonts are bundled with the app; the preview makes no third-party requests.
