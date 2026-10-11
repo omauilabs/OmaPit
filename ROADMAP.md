@@ -137,6 +137,11 @@ Grouped navigation around Cook, Plan and Journal with context-specific views and
 
 Moved browser notification status, permission and test controls into a bell popover. Prepared as a developer pre-release, never tagged, and folded into 0.5.0; added continuous integration for the software tests and build. three.js now builds as two lazily loaded chunks so the production build is free of size warnings; total bytes are unchanged. Added a favicon and phone home-screen icon. See RELEASE-0.4.2.md. Native Linux runtime and CHEF iQ field acceptance remain the gates before a stable release.
 
+## Unreleased
+
+- The Home Assistant bridge is tested in CI against a real local Home Assistant Core: unit conversion, Home Assistant timestamps, unavailable and stale entities, and token checks. Entity states are written over REST; no thermometer integration through Home Assistant has been tested.
+- [OMARCHY-ACCEPTANCE.md](OMARCHY-ACCEPTANCE.md): a step-by-step checklist and results template for the first native run on Omarchy.
+
 ## 0.5.0 release groundwork — October 10, 2026
 
 Bundles the untagged 0.4.2 changes with the 1.0 groundwork below. See [RELEASE-0.5.0.md](RELEASE-0.5.0.md).
