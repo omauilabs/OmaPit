@@ -50,7 +50,7 @@ Never promote an entire brand based on one device. “Upstream verified” descr
 | MQTT publishers | Versioned ingestion contract | No universal thermometer MQTT schema is assumed | Planned |
 | Other thermometer brands | Bridge first; direct adapter after feasibility review | Not assessed in this roadmap | Candidates, not supported |
 
-Evaluate MEATER, ThermoPro, Inkbird, FireBoard and Combustion as candidates using: owner demand, documented/local interface, reusable implementation, licensing, firmware coverage, sample availability and maintenance cost. Do not promise a direct adapter before that review.
+Evaluate MEATER, ThermoPro, Inkbird, FireBoard and Combustion as candidates using: owner demand, documented/local interface, reusable implementation, licensing, firmware coverage, sample availability and maintenance cost. Do not promise a direct adapter before that review. The review is in [ADAPTER-CANDIDATES.md](ADAPTER-CANDIDATES.md) (October 11, 2026): ThermoPro TempSpike, then Combustion, then Inkbird iBBQ look feasible as direct adapters; MEATER and FireBoard belong on the Home Assistant or cloud route.
 
 ## Adapter and data design
 
@@ -141,6 +141,7 @@ Moved browser notification status, permission and test controls into a bell popo
 
 - The Home Assistant bridge is tested in CI against a real local Home Assistant Core: unit conversion, Home Assistant timestamps, unavailable and stale entities, and token checks. Entity states are written over REST; no thermometer integration through Home Assistant has been tested.
 - [OMARCHY-ACCEPTANCE.md](OMARCHY-ACCEPTANCE.md): a step-by-step checklist and results template for the first native run on Omarchy.
+- [ADAPTER-CANDIDATES.md](ADAPTER-CANDIDATES.md): the feasibility review of MEATER, ThermoPro, Inkbird, FireBoard and Combustion. No new brand is supported.
 
 ## 0.5.0 release groundwork — October 10, 2026
 

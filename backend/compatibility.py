@@ -116,7 +116,8 @@ def render(manifest):
     for row in manifest.get('bridges', []):
         lines.append('| ' + ' | '.join(_cell(row[k]) for k in BRIDGE_TEXT) + ' |')
     lines += ['', '## Not supported yet', '',
-              'MEATER, ThermoPro, Inkbird, FireBoard, Combustion and other brands are candidates under review, not supported devices. '
+              'MEATER, ThermoPro, Inkbird, FireBoard, Combustion and other brands are not supported. '
+              '[ADAPTER-CANDIDATES.md](ADAPTER-CANDIDATES.md) reviews how each could be added. '
               'Owners can help by sharing an aggregate report; see [community/README.md](community/README.md). '
               'Developers can add a device by following [ADAPTERS.md](ADAPTERS.md).', '']
     return '\n'.join(lines)
