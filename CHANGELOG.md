@@ -10,7 +10,7 @@ An adapter registry and guide, a generated compatibility page, a plugin installe
 
 Browser notification status, permission and test controls now live in a bell popover beside Devices and the unit toggle. The panel links to alarm rules and delivery health, closes on Escape or outside click, and shows an attention dot for actionable alarms. Urgent cook alarms remain visible separately.
 
-See [0.4.2 release notes](RELEASE-0.4.2.md) for validation and open gates.
+See [0.4.2 release notes](docs/RELEASE-0.4.2.md) for validation and open gates.
 
 ## 0.4.1: navigation
 
@@ -25,7 +25,7 @@ Primary areas are Cook, Plan and Journal. Cook contains Live cook, At the grill,
 - Insights includes planned versus recorded durations and a saved next-time observation. Completed timing and lessons survive backups.
 - Service heartbeat, clearer device onboarding, a companion systemd restart template, keyboard heading focus and smaller browser bundles support the new flows.
 
-See [0.4.0 acceptance](RELEASE-0.4.0.md). Native setup/next-action/reservation controls are included as QML source; Linux runtime and screen-reader acceptance remain open.
+See [0.4.0 acceptance](docs/RELEASE-0.4.0.md). Native setup/next-action/reservation controls are included as QML source; Linux runtime and screen-reader acceptance remain open.
 
 ## 0.3.0: workbench
 
@@ -37,7 +37,7 @@ The five recommended software stages are implemented:
 4. Dated serving goals, task dependencies, changing-duration replanning, recipe import/editor/scaling/cooking mode, outcomes/photos, CSV and portable backup/restore.
 5. Conservative trend ranges, a held-out evaluation tool and per-food previous-cook comparison.
 
-See [INTEGRATIONS.md](INTEGRATIONS.md) for setup, credentials, payload contracts, notification limitations and migration/rollback. See [RELEASE-ACCEPTANCE.md](RELEASE-ACCEPTANCE.md) for tested boundaries. The synthetic evaluation is intentionally small: one stable case is estimated and five changing/stalled/cooling/dropout cases abstain. It does not prove accuracy on real cooks. CI tests the bridges against a real local Mosquitto broker, Home Assistant Core and ntfy server (see INTEGRATIONS.md). No real phone, thermometer publisher or native Linux shell was tested. No hardware was purchased.
+See [INTEGRATIONS.md](INTEGRATIONS.md) for setup, credentials, payload contracts, notification limitations and migration/rollback. See [RELEASE-ACCEPTANCE.md](docs/RELEASE-ACCEPTANCE.md) for tested boundaries. The synthetic evaluation is intentionally small: one stable case is estimated and five changing/stalled/cooling/dropout cases abstain. It does not prove accuracy on real cooks. CI tests the bridges against a real local Mosquitto broker, Home Assistant Core and ntfy server (see INTEGRATIONS.md). No real phone, thermometer publisher or native Linux shell was tested. No hardware was purchased.
 
 ## 0.2.1: live fire effects
 
