@@ -1,113 +1,64 @@
 # OmaPit · 0.5.0
 
-Open-source grilling companion from [OmaUI Labs](https://github.com/omauilabs/OmaPit).
+Open-source grilling companion from [OmaUI Labs](https://github.com/omauilabs/OmaPit) for [Omarchy](https://github.com/basecamp/omarchy).
 
-An Omarchy grilling companion with persistent alarms, independent foods/probes, flexible workflows, a dated meal timeline, personal recipes, a local cook journal and experimental temperature trend ranges.
+OmaPit lives in your Omarchy bar. It shows probe temperatures, raises alarms when a cook needs attention, plans a meal around a serving time and keeps a local journal of every cook. A browser view runs on the same data, including a phone-friendly view at the grill.
 
 ## Status
 
-The Python/SQLite store and browser preview are working and tested. Native QML plugin source is included but has not been run on Linux/Quickshell. This is an initial development build, not a verified catalog release.
+OmaPit is an early development release.
 
-Manual temperature entry, labeled demo data, and an experimental CHEF iQ BLE adapter are implemented. A CQ60 / protocol 4.0.0 unit has delivered live food/tip readings during a hand-warming test. Accuracy, ambient, battery, reconnection and cook alarms remain unverified. No fan/grill control or food-safety assessment is implemented. Short-term trend ranges are experimental and abstain for stale, sparse, flat, changing or distant-target data; they are not validated finish forecasts. Flexible food workflows and dated serving goals are implemented in Meal and Timeline. The old single-cook brisket checklist remains for legacy/demo sessions. One active meal journal can hold independent foods across multiple named grills/zones; multiple active meal journals are not implemented.
+- **Tested:** the Python/SQLite store, the browser view, the installer and the bridges. The bridges are tested in CI against real Mosquitto, Home Assistant Core and ntfy servers.
+- **Not yet run on Omarchy:** the native plugin. [OMARCHY-ACCEPTANCE.md](OMARCHY-ACCEPTANCE.md) is the checklist for that first run.
+- **Experimental:** the CHEF iQ adapter. One CQ60 has delivered live readings; accuracy, battery, reconnection and alarms on real hardware are unverified. [COMPATIBILITY.md](COMPATIBILITY.md) lists exactly what has been tested.
 
-## New in 0.5.0
+OmaPit only reads temperatures. It never controls a grill, fan or probe, and it does not judge food safety. Trend ranges are experimental and decline to estimate when the data is unsuitable.
 
-An adapter registry and guide, a generated compatibility page, a plugin installer with update and rollback, read-only diagnostics, bundled fonts, accessibility fixes, and CI against real MQTT and ntfy servers. See [0.5.0 release notes](RELEASE-0.5.0.md) for validation and open gates.
+## What it does
 
-## Notifications in 0.4.2
+- **Live cook:** large readings, manual entry, stale-reading warnings and an "At the grill" view for your phone.
+- **Alarms:** target, high/low, stale data, battery and timers, with acknowledge, snooze and repeat. Alarms survive restarts. Delivery is by desktop notification, browser or optional ntfy push.
+- **Meals:** one to eight foods, each with its own steps and targets, scheduled back from a serving time across named grills and zones.
+- **Journal:** notes, fuel events, photos and outcomes. It also has recipes with scaling, comparisons with past cooks, CSV export and full backup/restore.
+- **Thermometers:** a direct Bluetooth adapter for CHEF iQ probes, plus Home Assistant, MQTT and JSON import bridges for other devices.
+- **Reference:** a 3D cut explorer, sauces, rubs, woods and cooker guides.
 
-Browser notification status, permission and test controls now live in a bell popover beside Devices and the unit toggle. The panel links to alarm rules and delivery health, closes on Escape or outside click, and shows an attention dot for actionable alarms. Urgent cook alarms remain visible separately.
+Everything is stored locally in SQLite. Nothing is sent anywhere unless you set up a bridge or notification service.
 
-See [0.4.2 release notes](RELEASE-0.4.2.md) for validation and open gates.
+## Quick start
 
-## Navigation in 0.4.1
+You need Python 3.9 or newer. Building the browser view also needs Node.js and npm.
 
-Primary areas are Cook, Plan and Journal. Cook contains Live cook, At the grill, Foods & probes and Alerts. Plan contains Timeline and New meal. Journal contains Cookbook, Recipes and Insights. Devices is a utility control. The browser remembers the last selected view in each area during the session. Native QML uses the same grouping; runtime acceptance remains open.
-
-## New in 0.4.0
-
-- Guided meal setup builds one to eight foods, a grill reservation plan, dated serving goal and optional target reminders atomically.
-- Your next move combines important alarms, stale readings, running steps and upcoming tasks. Start and completion are explicit and persist after reload.
-- Grill scheduling uses space units and cooking temperatures. Unknown temperatures reserve exclusive time; temperatures within 25°F can overlap if capacity permits. This is a planning heuristic, not measured grill behavior.
-- At the grill offers large readings, manual entry and acknowledge/snooze controls, with focused mobile navigation. Use `/#grill` to open it directly.
-- Insights includes planned versus recorded durations and a saved next-time observation. Completed timing and lessons survive backups.
-- Service heartbeat, clearer device onboarding, a companion systemd restart template, keyboard heading focus and smaller browser bundles support the new flows.
-
-See [0.4.0 acceptance](RELEASE-0.4.0.md). Native setup/next-action/reservation controls are included as QML source; Linux runtime and screen-reader acceptance remain open.
-
-## Visual bundle
-
-The repository includes owner-authorized AI culinary imagery, wordmarks, theme materials, Meshy animal models, cut-region data, and animation assets. See ASSET-LICENSES.md. Local journals and sensor reports remain excluded.
-
-Build the browser bundle from a fresh checkout before running it:
+### Browser view
 
 ```sh
 cd preview
 npm ci
 npm run build
 cd ..
-```
-
-## Run the included browser preview
-
-Python 3 is sufficient for the prebuilt preview. From this directory:
-
-```sh
 python3 backend/omapit.py --db ./preview-cooks.sqlite3 --static preview/dist/client --seed-demo --serve 4176
 ```
 
-Open http://127.0.0.1:4176. The server binds only to loopback. `--seed-demo` seeds only an empty store. Finish that demo before starting a manual cook. The Cookbook retains completed sessions. Insights adds outcomes/photos, per-food comparison and CSV/full-cook export; Recipes provides whole-journal backup/restore. This development preview is not a hosted service.
+Open http://127.0.0.1:4176. The server listens on this computer only. `--seed-demo` adds a labelled demo cook to an empty store; finish it before starting a real cook. To use it from a phone on your home network, set an access token as described under phone access in [INTEGRATIONS.md](INTEGRATIONS.md); this has not yet been tested on a real phone.
 
-To rebuild after changing the React preview:
+### Omarchy plugin
 
-```sh
-cd preview
-npm ci
-npm run build
-```
-
-## Try the native plugin on Omarchy
-
-Requires a recent Omarchy shell with plugin support and Python 3. Review the source first. Copy this project's `manifest.json`, QML files, `backend/` and `assets/` into a new directory:
-
-```text
-~/.config/omarchy/plugins/local.omapit/
-```
-
-Or let the installer do it: `python3 packaging/install.py` copies exactly these files, refuses to overwrite a folder it did not install, and backs up the previous version on update. See [INSTALL.md](INSTALL.md) for updating, rolling back and uninstalling. If you copy by hand, do not overwrite an existing directory. Then run the documented Omarchy commands:
+You need a recent Omarchy shell with plugin support.
 
 ```sh
+python3 packaging/install.py --dry-run
+python3 packaging/install.py
 omarchy-shell shell rescanPlugins
 omarchy plugin enable local.omapit
 ```
 
-The widget is declared for the right bar section. Click it to open the cook journal. Native mode invokes the Python helper directly; no HTTP server is needed. Native storage is `$XDG_DATA_HOME/omapit/cooks.sqlite3`, defaulting to `~/.local/share/omapit/cooks.sqlite3`. `OMAPIT_DB` can override the store location. Native surfaces use current Omarchy foreground/background tokens; amber and blue retain their temperature meanings. The native Meal workbench exposes food workflows, probe mappings, alarms, meal steps, recipes and trend summaries. Photo attachment, comparison charts and download/restore UI are in the browser companion. Full native/browser feature parity is not claimed.
+The widget appears in the right section of the bar; click it to open the cook journal. Your cooks are stored in `~/.local/share/omapit/cooks.sqlite3`, or `OMAPIT_DB` if set. [INSTALL.md](INSTALL.md) covers updating, rolling back and uninstalling.
 
-CI checks the QML files for syntax errors with `packaging/check_qml.py`; that is not a runtime test. [OMARCHY-ACCEPTANCE.md](OMARCHY-ACCEPTANCE.md) is the step-by-step checklist for a first run on Omarchy. Native acceptance still required: QML loading, bar placement, panel open/close, dialogs, theme switching, keyboard navigation, window sizing, and end-to-end persistence on the target Linux machine.
+The native panel covers the cook, foods, alarms, meal steps, recipes and trends. Photos, comparison charts and backup/restore are in the browser view.
 
-## Troubleshooting
+### Bluetooth probes (optional)
 
-Run `python3 backend/omapit.py diagnose` for a read-only report on your install, cook store, optional packages, probes and alarm monitor. [TROUBLESHOOTING.md](TROUBLESHOOTING.md) explains each warning and how to recover a store.
-
-## Validation
-
-```sh
-python3 -m unittest discover -s tests -v
-```
-
-The automated tests cover storage, devices, the adapter registry and compatibility claims, read-only diagnostics, alert episodes/restarts/jitter, independent foods, bridge contracts, schedule cycles, recipes, backup/restore, source isolation, predictions and HTTP authentication/background alarms. Browser checks exercised wrap gating, note persistence after reload, unit persistence, manual readings, archive/history, responsive overflow, and modal keyboard handling. Production preview build passed. See `design-qa.md` for visual scope and limits.
-
-## Roadmap
-
-See [ROADMAP.md](ROADMAP.md) for the release sequence, adapter architecture, compatibility evidence, and community capture/testing strategy. CHEF iQ CQ50 and CQ60 are both initial targets; [COMPATIBILITY.md](COMPATIBILITY.md) lists exactly what has been tested. Decoding, optional scanning, selection and automatic recording are implemented experimentally; CQ60 protocol 4.0.0 live reception has been observed on one unit; complete acceptance for it and other models remains open. Broader coverage will use direct adapters, Home Assistant, MQTT and imports as appropriate. To add a thermometer, see [ADAPTERS.md](ADAPTERS.md).
-
-Official plugin documentation: https://github.com/basecamp/omarchy/blob/master/docs/omarchy-shell.md
-
-## CHEF iQ experimental adapter
-
-The Devices screen starts a 60-second local scan. Select a receiving probe during a real cook to record its food and ambient channels automatically. The discovery worker continues receiving while a live cook is selected; after its discovery window, it stops when that cook finishes or switches to manual mode. After an application/computer restart, scan again to resume reception. Demo and replay probes cannot be selected. The adapter decodes newer V3, V2 and legacy layouts; older layouts remain experimental. Unknown future major protocols are rejected. The screen labels model as unknown when it is not reported, and never infers model from purchase date.
-
-Live scanning needs Python 3 and Bleak in the interpreter running OmaPit. For a dedicated environment:
+Manual entry needs no extra packages. To read a CHEF iQ probe directly, install Bleak in a virtual environment and run OmaPit with that Python:
 
 ```sh
 python3 -m venv .venv
@@ -115,49 +66,66 @@ python3 -m venv .venv
 .venv/bin/python backend/omapit.py --db ./preview-cooks.sqlite3 --static preview/dist/client --serve 4176
 ```
 
-Native mode uses `OMAPIT_PYTHON` if set in the shell environment, otherwise `python3` from PATH; that interpreter must have Bleak available. On Linux the Bluetooth adapter must be enabled and accessible through BlueZ. On macOS the interpreter needs system Bluetooth permission. OmaPit reports dependency/scan failures in Devices. No Bluetooth scan was performed during this development pass.
+For the Omarchy plugin, set `OMAPIT_PYTHON` to that Python instead, as described in [INSTALL.md](INSTALL.md). On Linux, Bluetooth must be enabled and reachable through BlueZ. On macOS, the Python needs Bluetooth permission. The MQTT bridge similarly needs `backend/requirements-bridge.txt`.
 
-A selected probe records only new readings received after selection. A status packet does not refresh food/ambient channels. Channels become stale after 30 seconds; invalid sensors clear their current value. Battery can be missing or stale independently. The current chart stores same-packet valid food/ambient pairs; raw channel samples preserve partial updates for export. Live source selection can be changed back to manual mode. Existing manual samples keep their provenance.
+## Using a CHEF iQ probe
+
+In Devices, start a 60-second scan with the probe out of its charger and near the computer. Select the probe during a cook to record its food and probe-ambient channels. After a restart, scan again to resume.
+
+- Only readings received after you select the probe are recorded. Existing manual readings keep their source.
+- A channel is marked stale after 30 seconds without data. Invalid sensors clear their value, and a missing battery reading is shown as unknown, never 0%.
+- The model is shown as unknown when the probe doesn't report it. Unknown future protocol versions are rejected rather than guessed.
+- Demo and replayed probes can never be selected for a live cook.
 
 ### Capture and replay
 
-Capture only one selected device; the command refuses to capture without `--address`. Addresses refer to the local scan identity (MAC on Linux, UUID on macOS). Captures omit the radio address and advertised name; embedded address bytes in known legacy/status formats are zeroed. Review files before sharing, especially unknown formats, which may contain unrecognized identifiers. Nothing is uploaded automatically.
+To help support a firmware version, capture one selected probe and replay it into a separate store:
 
 ```sh
 .venv/bin/python backend/devices.py --db ./preview-cooks.sqlite3 scan --seconds 60 --address YOUR_PROBE_ADDRESS --capture ./probe-capture.jsonl
 python3 backend/devices.py --db ./replay-cooks.sqlite3 replay ./probe-capture.jsonl
 ```
 
-A replay uses isolated device IDs and cannot record a live cook. The included `tests/fixtures/synthetic-chefiq.jsonl` is generated test data, not a real-device capture. Replay it to explore the device cards:
+- **Address:** the scan's local identity for the probe, a MAC on Linux or a UUID on macOS. The command refuses to capture without one.
+- **What a capture contains:** captures leave out the radio address and advertised name, and zero the address bytes inside known formats. Review a capture before sharing it, especially one in an unknown format.
+- **Synthetic data:** to explore without a probe, replay `tests/fixtures/synthetic-chefiq.jsonl`, which is generated test data.
+
+The decoder is adapted from [chefiq-ble](https://github.com/Invader444/chefiq-ble) under the MIT licence (`backend/adapters/CHEFIQ-LICENSE.txt`). To add another thermometer, see [ADAPTERS.md](ADAPTERS.md) and [ADAPTER-CANDIDATES.md](ADAPTER-CANDIDATES.md).
+
+## Troubleshooting
+
+Run `python3 backend/omapit.py diagnose` for a read-only report on your install, cook store, optional packages, probes and alarm monitor. [TROUBLESHOOTING.md](TROUBLESHOOTING.md) explains each warning and how to recover a store.
+
+## Documentation
+
+| Topic | Document |
+|---|---|
+| Install, update, roll back | [INSTALL.md](INSTALL.md) |
+| Supported thermometers | [COMPATIBILITY.md](COMPATIBILITY.md) |
+| Home Assistant, MQTT, phone access, notifications | [INTEGRATIONS.md](INTEGRATIONS.md) |
+| First run on Omarchy | [OMARCHY-ACCEPTANCE.md](OMARCHY-ACCEPTANCE.md) |
+| Writing an adapter | [ADAPTERS.md](ADAPTERS.md) |
+| Customising with an agent | [CUSTOMIZATION.md](CUSTOMIZATION.md) |
+| Sharing hardware test results | [community/README.md](community/README.md) |
+| Release history | [CHANGELOG.md](CHANGELOG.md) and [RELEASE-0.5.0.md](RELEASE-0.5.0.md) |
+| Plans and release gates | [ROADMAP.md](ROADMAP.md) |
+
+Omarchy's plugin documentation: https://github.com/basecamp/omarchy/blob/master/docs/omarchy-shell.md
+
+## Development
 
 ```sh
-python3 backend/devices.py --db ./preview-cooks.sqlite3 replay tests/fixtures/synthetic-chefiq.jsonl
+python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s community -p 'test_*.py' -v
+cd preview && npm test
 ```
 
-Database schema v1 adds devices, channels, samples, cook associations and reading provenance. The first migration creates `DATABASE.before-devices-v1.bak`. To roll back, stop all OmaPit processes, preserve the current database, restore that backup to its original filename, and use the previous build. Later device data is not present in the pre-migration backup.
+CI also checks the QML for syntax errors and audits every browser view for WCAG 2.1 A/AA issues at desktop and phone widths. A QML syntax check is not a runtime test; see [design-qa.md](design-qa.md) and [RELEASE-ACCEPTANCE.md](RELEASE-ACCEPTANCE.md) for what has been checked by hand.
 
-Protocol documentation is adapted from [chefiq-ble](https://github.com/Invader444/chefiq-ble); upstream MIT attribution is included in `backend/adapters/CHEFIQ-LICENSE.txt`. The decoder avoids Home Assistant dependencies; transport uses optional Bleak. Upstream CQ60 5.0.0 verification is not an OmaPit live test.
+## Contribute
 
-## Live fire effects (0.2.1)
+Report bugs, Omarchy acceptance results and thermometer requests through the [issue forms](https://github.com/omauilabs/OmaPit/issues/new/choose). Report security problems privately as described in [SECURITY.md](SECURITY.md). Contributors and their agents should read [AGENTS.md](AGENTS.md) first.
 
-The browser build renders procedural WebGL fire in the logo, advected smoke and glowing ember particles over the grill. These are decorative atmosphere, independent of measured temperatures. They are real-time shaders, not video files. The Atmosphere switch pauses motion and remembers the preference. System reduced-motion renders a still frame. Animation pauses when hidden/offscreen, caps resolution at 1.5 device pixels and targets 30 frames per second. WebGL-unavailable devices receive a static flame mark; the atmosphere disappears gracefully. Context-loss restoration handlers are included but were not force-tested.
+## Licence
 
-This effect is implemented and visually checked in the browser preview. Native QML retains its existing presentation; a Qt shader port and native rendering acceptance remain outstanding. No native visual parity is claimed.
-
-## Workbench release (0.3.0)
-
-The five recommended software stages are implemented:
-
-1. Persistent target/high-low, stale-data, battery and timer alarms with buffer, repeat, acknowledgement, snooze and recovery hysteresis.
-2. Independent foods, named zones, editable targets/steps, manual readings and live probe mappings.
-3. Versioned JSON/HA/MQTT ingestion, compatibility manifest, opt-in authenticated phone serving and optional notification transports.
-4. Dated serving goals, task dependencies, changing-duration replanning, recipe import/editor/scaling/cooking mode, outcomes/photos, CSV and portable backup/restore.
-5. Conservative trend ranges, a held-out evaluation tool and per-food previous-cook comparison.
-
-See [INTEGRATIONS.md](INTEGRATIONS.md) for setup, credentials, payload contracts, notification limitations and migration/rollback. See [RELEASE-ACCEPTANCE.md](RELEASE-ACCEPTANCE.md) for tested boundaries. The synthetic evaluation is intentionally small: one stable case is estimated and five changing/stalled/cooling/dropout cases abstain. It does not prove accuracy on real cooks. CI tests the bridges against a real local Mosquitto broker, Home Assistant Core and ntfy server (see INTEGRATIONS.md). No real phone, thermometer publisher or native Linux shell was tested. No hardware was purchased.
-
-## Customize and contribute
-
-Original software and documentation use the MIT license. See [CUSTOMIZATION.md](CUSTOMIZATION.md) for agent-assisted changes and [community/README.md](community/README.md) for local benchmark collection, validation and destination-specific opt-in submission. Settings explains the workflow and provides an agent prompt. No repository, uploader or scheduler is enabled by default. Bundled media licensing: [ASSET-LICENSES.md](ASSET-LICENSES.md).
-
-Report bugs, Omarchy acceptance results and thermometer requests through the [issue forms](https://github.com/omauilabs/OmaPit/issues/new/choose). Report security problems privately as described in [SECURITY.md](SECURITY.md).
+Original software and documentation are MIT licensed. The repository also includes owner-authorized AI culinary imagery, wordmarks, theme materials, 3D animal models and cut-region data, plus bundled fonts under the SIL Open Font License; see [ASSET-LICENSES.md](ASSET-LICENSES.md). Third-party dependencies keep their own licences.
