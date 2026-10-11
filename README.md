@@ -109,6 +109,7 @@ Run `python3 backend/omapit.py diagnose` for a read-only report on your install,
 | Sharing hardware test results | [community/README.md](community/README.md) |
 | Release history | [CHANGELOG.md](CHANGELOG.md) and [RELEASE-0.5.0.md](RELEASE-0.5.0.md) |
 | Plans and release gates | [ROADMAP.md](ROADMAP.md) |
+| Design, research and QA notes | [docs/](docs/README.md) |
 
 Omarchy's plugin documentation: https://github.com/basecamp/omarchy/blob/master/docs/omarchy-shell.md
 
@@ -120,7 +121,7 @@ python3 -m unittest discover -s community -p 'test_*.py' -v
 cd preview && npm test
 ```
 
-CI also checks the QML for syntax errors and audits every browser view for WCAG 2.1 A/AA issues at desktop and phone widths. A QML syntax check is not a runtime test; see [design-qa.md](design-qa.md) and [RELEASE-ACCEPTANCE.md](RELEASE-ACCEPTANCE.md) for what has been checked by hand.
+CI also checks the QML for syntax errors and audits every browser view for WCAG 2.1 A/AA issues at desktop and phone widths. A QML syntax check is not a runtime test; see [design-qa.md](docs/design-qa.md) and [RELEASE-ACCEPTANCE.md](docs/RELEASE-ACCEPTANCE.md) for what has been checked by hand.
 
 ## Contribute
 

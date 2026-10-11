@@ -99,7 +99,7 @@ Browser logo fire, grill smoke and ember shaders are implemented and visually ve
 
 ## Competitive review priorities — October 3, 2026
 
-See [competitive research](COMPETITIVE-RESEARCH.md) for primary sources, parity assessment and acceptance targets. Prioritize software work in this order while hardware acceptance remains independent:
+See [competitive research](docs/COMPETITIVE-RESEARCH.md) for primary sources, parity assessment and acceptance targets. Prioritize software work in this order while hardware acceptance remains independent:
 
 1. Persistent alert engine: target, pit bounds, stale data, known battery and timers; replay/restart verification.
 2. Flexible recipe steps and editable targets, then multiple foods/probes and simultaneous timers.
@@ -127,7 +127,7 @@ Next evidence gates: real CHEF iQ owner session; Linux/Quickshell load and keybo
 
 ## 0.4.0 meal coordination — October 4, 2026
 
-Implemented guided setup, combined next actions, explicit grill capacity/temperature reservations and a focused phone view. Added actual task starts, saved next-time observations, service heartbeat, device onboarding, companion restart template and browser bundle splitting. See RELEASE-0.4.0.md for tested behavior and planning assumptions. Next gate is owner CHEF iQ hardware testing; Linux runtime, real notification delivery and prediction calibration remain open.
+Implemented guided setup, combined next actions, explicit grill capacity/temperature reservations and a focused phone view. Added actual task starts, saved next-time observations, service heartbeat, device onboarding, companion restart template and browser bundle splitting. See [docs/RELEASE-0.4.0.md](docs/RELEASE-0.4.0.md) for tested behavior and planning assumptions. Next gate is owner CHEF iQ hardware testing; Linux runtime, real notification delivery and prediction calibration remain open.
 
 ## 0.4.1 navigation — October 4, 2026
 
@@ -135,7 +135,7 @@ Grouped navigation around Cook, Plan and Journal with context-specific views and
 
 ## 0.4.2 notification bell — October 5, 2026
 
-Moved browser notification status, permission and test controls into a bell popover. Prepared as a developer pre-release, never tagged, and folded into 0.5.0; added continuous integration for the software tests and build. three.js now builds as two lazily loaded chunks so the production build is free of size warnings; total bytes are unchanged. Added a favicon and phone home-screen icon. See RELEASE-0.4.2.md. Native Linux runtime and CHEF iQ field acceptance remain the gates before a stable release.
+Moved browser notification status, permission and test controls into a bell popover. Prepared as a developer pre-release, never tagged, and folded into 0.5.0; added continuous integration for the software tests and build. three.js now builds as two lazily loaded chunks so the production build is free of size warnings; total bytes are unchanged. Added a favicon and phone home-screen icon. See [docs/RELEASE-0.4.2.md](docs/RELEASE-0.4.2.md). Native Linux runtime and CHEF iQ field acceptance remain the gates before a stable release.
 
 ## Unreleased
 
@@ -198,7 +198,7 @@ The Meat Market now saves a local multi-meat shopping list, with editable per-me
 
 ## CHEF iQ replacement acceptance
 
-See [CHEFIQ-PARITY.md](CHEFIQ-PARITY.md) for the prioritized sensor, reliability, cook-monitoring, guidance, remote and hub acceptance gates. The CQ60 hand-warming test proves live food/tip reception only; ambient, battery, accuracy and real-cook reliability remain open.
+See [CHEFIQ-PARITY.md](docs/CHEFIQ-PARITY.md) for the prioritized sensor, reliability, cook-monitoring, guidance, remote and hub acceptance gates. The CQ60 hand-warming test proves live food/tip reception only; ambient, battery, accuracy and real-cook reliability remain open.
 
 ## UI polish and agent contributions — October 5, 2026
 

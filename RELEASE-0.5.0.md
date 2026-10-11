@@ -1,6 +1,6 @@
 # OmaPit 0.5.0 — release groundwork
 
-October 10, 2026. A developer pre-release. It includes everything in [0.4.2](RELEASE-0.4.2.md), which was prepared but never tagged, plus the software groundwork for 1.0 below. It is not a verified catalog release: the native Omarchy plugin and hardware acceptance are still open.
+October 10, 2026. A developer pre-release. It includes everything in [0.4.2](docs/RELEASE-0.4.2.md), which was prepared but never tagged, plus the software groundwork for 1.0 below. It is not a verified catalog release: the native Omarchy plugin and hardware acceptance are still open.
 
 ## New since 0.4.2
 
