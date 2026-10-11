@@ -1,0 +1,58 @@
+name: Bug report
+description: Something in OmaPit doesn't work as described.
+title: 'Bug: '
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: 'Please leave out cook names, notes, photos, temperature logs, device addresses, serial numbers and tokens. Diagnostics output can contain folder paths that include your user name; edit them out if you prefer.'
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where did it happen?
+      options:
+        - Omarchy panel or bar widget
+        - Browser preview
+        - Phone or companion view
+        - Installer
+        - Bluetooth device scan
+        - Home Assistant, MQTT or ntfy
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Start a cook\n2. ..."
+  - type: input
+    id: version
+    attributes:
+      label: OmaPit version or commit
+      description: '`git log -1 --oneline` in your checkout, or the version shown by diagnostics.'
+    validations:
+      required: true
+  - type: textarea
+    id: diagnose
+    attributes:
+      label: Diagnostics output
+      description: 'Output of `python3 backend/omapit.py diagnose`. It is read-only and hides environment setting values, but it shows folder paths; read it before pasting.'
+      render: text
+  - type: textarea
+    id: logs
+    attributes:
+      label: Errors from the shell or browser console
+      render: text
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked this report for personal cook details, device identifiers and credentials.
+          required: true

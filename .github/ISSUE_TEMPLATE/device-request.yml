@@ -1,0 +1,41 @@
+name: Thermometer request
+description: Ask for a thermometer brand or model OmaPit does not support yet.
+title: 'Thermometer request: '
+labels: [device-request]
+body:
+  - type: markdown
+    attributes:
+      value: 'Check [COMPATIBILITY.md](https://github.com/omauilabs/OmaPit/blob/main/COMPATIBILITY.md) and [ADAPTER-CANDIDATES.md](https://github.com/omauilabs/OmaPit/blob/main/ADAPTER-CANDIDATES.md) first. A request is not a promise of support: a new adapter needs an owner who can test it on real hardware. Do not post device addresses, serial numbers, raw captures or account details.'
+  - type: input
+    id: model
+    attributes:
+      label: Brand and model
+      placeholder: e.g. ThermoPro TP970
+    validations:
+      required: true
+  - type: dropdown
+    id: route
+    attributes:
+      label: How do you use it today?
+      multiple: true
+      options:
+        - Vendor phone app over Bluetooth
+        - Vendor Wi-Fi hub or cloud
+        - Home Assistant
+        - MQTT
+        - Not sure
+  - type: dropdown
+    id: help
+    attributes:
+      label: Could you help test an adapter?
+      description: Testing means short local captures reviewed by you, then a live session following the community benchmark guide.
+      options:
+        - Yes, I own it and can test
+        - Maybe later
+        - No
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else

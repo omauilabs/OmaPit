@@ -1,0 +1,36 @@
+name: Omarchy acceptance results
+description: Share the results of OMARCHY-ACCEPTANCE.md from a real Omarchy machine.
+title: 'Omarchy acceptance: '
+labels: [acceptance]
+body:
+  - type: markdown
+    attributes:
+      value: 'Follow [OMARCHY-ACCEPTANCE.md](https://github.com/omauilabs/OmaPit/blob/main/OMARCHY-ACCEPTANCE.md). Leave any check you did not run as **not run**; that is more useful than a guess.'
+  - type: textarea
+    id: results
+    attributes:
+      label: Results block
+      description: Paste the filled-in results block from the end of the checklist.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: failures
+    attributes:
+      label: Failures, errors and screenshots
+      description: For each failure, what you did and what you saw. Include QML or Python errors from the shell log.
+  - type: textarea
+    id: diagnose
+    attributes:
+      label: Diagnostics output
+      description: 'Output of `python3 ~/.config/omarchy/plugins/local.omapit/backend/diagnose.py`. Edit out folder paths if you prefer.'
+      render: text
+  - type: checkboxes
+    id: honesty
+    attributes:
+      label: Before submitting
+      options:
+        - label: Every check marked pass was actually run on this machine.
+          required: true
+        - label: I left out cook names, notes, photos, device addresses and tokens.
+          required: true
