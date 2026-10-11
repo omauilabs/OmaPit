@@ -2,7 +2,7 @@
 
 The first run of the native plugin on a real Omarchy machine. Nothing here has been tested on Omarchy yet, so expect to find problems; each one you record is useful. Plan about 30 minutes, plus 15 if you include the optional Bluetooth part.
 
-Mark every check **pass**, **fail** or **not run**. Leave a check as not run rather than guessing. Copy the results block at the end into an issue, or paste it to whoever is helping you.
+Mark every check **pass**, **fail** or **not run**. Leave a check as not run rather than guessing. Copy the results block at the end into an [Omarchy acceptance issue](https://github.com/omauilabs/OmaPit/issues/new?template=omarchy-acceptance.yml), or paste it to whoever is helping you.
 
 ## Before you start
 

@@ -46,9 +46,9 @@ Never promote an entire brand based on one device. “Upstream verified” descr
 |---|---|---|---|
 | CHEF iQ CQ60, supported V3 format | Direct BLE advertisements | Upstream library reports CQ60 verification with protocol 5.0.0 | Implemented experimentally; no OmaPit live test |
 | CHEF iQ CQ50 / older layouts | Direct BLE advertisements | Upstream library implements V2/legacy but explicitly lacks real-hardware verification | Implemented experimentally; captures needed |
-| Home Assistant temperature entities | Bridge | General integration approach; exact entities depend on installed device integration | Planned |
-| MQTT publishers | Versioned ingestion contract | No universal thermometer MQTT schema is assumed | Planned |
-| Other thermometer brands | Bridge first; direct adapter after feasibility review | Not assessed in this roadmap | Candidates, not supported |
+| Home Assistant temperature entities | Bridge | Tested in CI against a local Home Assistant Core; exact entities depend on installed device integration | Implemented; no thermometer tested through it |
+| MQTT publishers | Versioned ingestion contract | Tested in CI against a local Mosquitto broker; no universal thermometer MQTT schema is assumed | Implemented; no real publisher tested |
+| Other thermometer brands | Bridge first; direct adapter after feasibility review | Desk review in ADAPTER-CANDIDATES.md; no hardware tested | Candidates, not supported |
 
 Evaluate MEATER, ThermoPro, Inkbird, FireBoard and Combustion as candidates using: owner demand, documented/local interface, reusable implementation, licensing, firmware coverage, sample availability and maintenance cost. Do not promise a direct adapter before that review. The review is in [ADAPTER-CANDIDATES.md](ADAPTER-CANDIDATES.md) (October 11, 2026): ThermoPro TempSpike, then Combustion, then Inkbird iBBQ look feasible as direct adapters; MEATER and FireBoard belong on the Home Assistant or cloud route.
 
@@ -142,6 +142,7 @@ Moved browser notification status, permission and test controls into a bell popo
 - The Home Assistant bridge is tested in CI against a real local Home Assistant Core: unit conversion, Home Assistant timestamps, unavailable and stale entities, and token checks. Entity states are written over REST; no thermometer integration through Home Assistant has been tested.
 - [OMARCHY-ACCEPTANCE.md](OMARCHY-ACCEPTANCE.md): a step-by-step checklist and results template for the first native run on Omarchy.
 - [ADAPTER-CANDIDATES.md](ADAPTER-CANDIDATES.md): the feasibility review of MEATER, ThermoPro, Inkbird, FireBoard and Combustion. No new brand is supported.
+- Issue forms for bugs, Omarchy acceptance results and thermometer requests, plus [SECURITY.md](SECURITY.md) for private vulnerability reports.
 
 ## 0.5.0 release groundwork — October 10, 2026
 
