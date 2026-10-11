@@ -158,7 +158,7 @@ Follow-up, same day:
 - Every browser view passes an automated WCAG 2.1 A/AA audit (axe-core) at desktop and phone widths in CI, after fixes to three issues. Screen-reader testing is still open.
 - CI checks the native QML for syntax errors with qmllint. Omarchy-only types cannot be checked, so this is not native acceptance.
 
-Still open for 1.0: native Linux/Quickshell acceptance, exercising the install/update path on a clean Omarchy setup, the CHEF iQ owner acceptance session, Linux/BlueZ probe reception, a Home Assistant session, a real MQTT publisher, phone notification receipt, and screen-reader testing.
+Still open for 1.0: native Linux/Quickshell acceptance, exercising the install/update path on a clean Omarchy setup, the CHEF iQ owner acceptance session, Linux/BlueZ probe reception, a thermometer integration through Home Assistant, a real MQTT publisher, phone notification receipt, and screen-reader testing.
 
 ## Cut explorer expansion — requested October 4, 2026
 

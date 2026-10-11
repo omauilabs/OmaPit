@@ -21,7 +21,7 @@ A bridge carries readings from another system. Its status says nothing about whi
 | Path | Status | Evidence | Hardware compatibility |
 |---|---|---|---|
 | JSON v1 | implemented | contract and HTTP tests | publisher-specific; not a universal thermometer API |
-| Home Assistant REST entity polling | experimental transport | contract and mocked REST conversion tests | depends on installed integration; may depend on cloud |
+| Home Assistant REST entity polling | experimental transport | contract tests; automated tests against a local Home Assistant Core 2026.2 instance: live and updated states with unit conversion, unavailable and stale entities, token and URL checks. Entity states were written through the REST API, not by a thermometer integration | depends on installed integration; may depend on cloud |
 | MQTT exact-topic subscription | experimental transport | contract tests; automated tests against a local Mosquitto 2.0 broker: live, retained, stale and out-of-order samples, reconnection, password auth and TLS verification. No real thermometer publisher tested | publisher must emit OmaPit schema v1 |
 
 ## Not supported yet

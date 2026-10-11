@@ -69,6 +69,21 @@ jobs:
       - name: Delivery tests
         run: NTFY_BIN="$RUNNER_TEMP/ntfy" python -m unittest discover -s tests -p 'test_ntfy_delivery.py' -v
 
+  home-assistant:
+    # Home Assistant bridge against a real local Home Assistant Core (tests/test_home_assistant.py).
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install Home Assistant Core
+        run: |
+          python -m venv "$RUNNER_TEMP/ha"
+          "$RUNNER_TEMP/ha/bin/pip" install homeassistant==2026.2.3 home-assistant-frontend==20260128.6
+      - name: Bridge tests
+        run: HA_PYTHON="$RUNNER_TEMP/ha/bin/python" python -m unittest discover -s tests -p 'test_home_assistant.py' -v
+
   preview:
     runs-on: ubuntu-latest
     defaults:

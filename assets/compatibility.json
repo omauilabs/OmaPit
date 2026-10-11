@@ -63,7 +63,7 @@
     {
       "adapter": "Home Assistant REST entity polling",
       "implementation": "experimental transport",
-      "evidence": "contract and mocked REST conversion tests",
+      "evidence": "contract tests; automated tests against a local Home Assistant Core 2026.2 instance: live and updated states with unit conversion, unavailable and stale entities, token and URL checks. Entity states were written through the REST API, not by a thermometer integration",
       "hardware_compatibility": "depends on installed integration; may depend on cloud"
     },
     {
