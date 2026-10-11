@@ -7,6 +7,7 @@ Canvas {
     property color foodColor: "#7aa2f7"
     property color pitColor: "#e0af68"
     property color ink: "#a9b1d6"
+    property int labelSize: 11
     onReadingsChanged: requestPaint()
     onUnitChanged: requestPaint()
     onWidthChanged: requestPaint()
@@ -14,6 +15,7 @@ Canvas {
     onFoodColorChanged: requestPaint()
     onPitColorChanged: requestPaint()
     onInkChanged: requestPaint()
+    onLabelSizeChanged: requestPaint()
     onPaint: {
         var ctx=getContext("2d"); ctx.reset()
         var left=42, top=12, w=width-left-14, h=height-top-30, max=unit==="F"?300:150
@@ -23,7 +25,7 @@ Canvas {
             max=Math.max(max,Math.ceil(v/50)*50);min=Math.min(min,Math.floor(v/50)*50)
         }
         var range=max-min
-        ctx.font="11px monospace"; ctx.fillStyle=ink
+        ctx.font=labelSize+"px monospace"; ctx.fillStyle=ink
         for(var tick=0; tick<=6; tick++) {
             var y=top+h-tick*h/6
             ctx.strokeStyle="#30384c"; ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(left+w,y);ctx.stroke()
@@ -45,7 +47,9 @@ Canvas {
         ctx.fillStyle=ink
         for(var k=0;k<4;k++) {
             var when=new Date((t0+span*k/3)*1000)
-            ctx.fillText(Qt.formatTime(when,"hh:mm"),left+k*w/3-10,height-4)
+            // The last label ends at the plot edge so it is never clipped.
+            ctx.textAlign=k===3?"right":"left"
+            ctx.fillText(Qt.formatTime(when,"hh:mm"),k===3?left+w:left+k*w/3-10,height-4)
         }
     }
 }
