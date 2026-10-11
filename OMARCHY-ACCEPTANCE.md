@@ -58,7 +58,7 @@ Use a test cook you are happy to delete afterwards.
 |---|---|---|
 | 5.1 | Restart the shell or log out and in | The plugin loads again, and the test cook's readings and notes are still there. |
 | 5.2 | Store location | `python3 ~/.config/omarchy/plugins/local.omapit/backend/diagnose.py` reports the store, schema current, and the cook count you expect. |
-| 5.3 | Browser and panel agree (optional) | Run the browser preview against the same store, as in README.md; it shows the same cooks. |
+| 5.3 | Browser and panel agree (optional) | Run the browser view against the same store, as in "Quick start" in README.md; it shows the same cooks. |
 
 ## 6. Update and roll back
 
