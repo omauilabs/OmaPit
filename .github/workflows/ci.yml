@@ -9,7 +9,10 @@ permissions:
 
 jobs:
   python:
-    runs-on: ubuntu-latest
+    # Self-hosted only (owner rule: never GitHub-hosted, minutes cost money). Public repo:
+    # skip fork PRs so untrusted code never runs on our runners.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, Linux, X64, omauilabs]
     strategy:
       matrix:
         # Oldest supported (see INSTALL.md) and newest.
@@ -26,7 +29,10 @@ jobs:
 
   mqtt:
     # MQTT bridge against a real local Mosquitto broker (tests/test_mqtt_broker.py).
-    runs-on: ubuntu-latest
+    # Self-hosted only (owner rule: never GitHub-hosted, minutes cost money). Public repo:
+    # skip fork PRs so untrusted code never runs on our runners.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, Linux, X64, omauilabs]
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -40,7 +46,10 @@ jobs:
   qml:
     # Syntax check, then a runtime load against stand-ins for Quickshell and
     # Omarchy (tests/qml/stubs) with the real backend. Not native acceptance.
-    runs-on: ubuntu-latest
+    # Self-hosted only (owner rule: never GitHub-hosted, minutes cost money). Public repo:
+    # skip fork PRs so untrusted code never runs on our runners.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, Linux, X64, omauilabs]
     steps:
       - uses: actions/checkout@v5
       - run: sudo apt-get update && sudo apt-get install -y qt6-declarative-dev-tools qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtquick-templates qml6-module-qtquick-window qml6-module-qtqml-workerscript qml6-module-qttest
@@ -50,7 +59,10 @@ jobs:
 
   ntfy:
     # Alarm delivery to a real ntfy server (tests/test_ntfy_delivery.py), built from its pinned Go module.
-    runs-on: ubuntu-latest
+    # Self-hosted only (owner rule: never GitHub-hosted, minutes cost money). Public repo:
+    # skip fork PRs so untrusted code never runs on our runners.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, Linux, X64, omauilabs]
     env:
       NTFY_VERSION: v2.29.0
     steps:
@@ -74,7 +86,10 @@ jobs:
 
   home-assistant:
     # Home Assistant bridge against a real local Home Assistant Core (tests/test_home_assistant.py).
-    runs-on: ubuntu-latest
+    # Self-hosted only (owner rule: never GitHub-hosted, minutes cost money). Public repo:
+    # skip fork PRs so untrusted code never runs on our runners.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, Linux, X64, omauilabs]
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -88,7 +103,10 @@ jobs:
         run: HA_PYTHON="$RUNNER_TEMP/ha/bin/python" python -m unittest discover -s tests -p 'test_home_assistant.py' -v
 
   preview:
-    runs-on: ubuntu-latest
+    # Self-hosted only (owner rule: never GitHub-hosted, minutes cost money). Public repo:
+    # skip fork PRs so untrusted code never runs on our runners.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, Linux, X64, omauilabs]
     defaults:
       run:
         working-directory: preview
@@ -105,7 +123,10 @@ jobs:
 
   a11y:
     # Automated WCAG 2.1 A/AA audit of every browser view (axe-core); not a screen-reader test.
-    runs-on: ubuntu-latest
+    # Self-hosted only (owner rule: never GitHub-hosted, minutes cost money). Public repo:
+    # skip fork PRs so untrusted code never runs on our runners.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, Linux, X64, omauilabs]
     defaults:
       run:
         working-directory: preview
